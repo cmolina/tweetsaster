@@ -1,0 +1,42 @@
+<div class="list-wrapper">
+	{{#each itemController='tweet'}}
+		<div class="list-element">
+			<div class="main-col">
+				<div class="side-col">
+					<div class="time">
+						{{timePassed}}
+					</div>
+					{{#if controller.image}}
+						<div class="img-tweet">
+							<img {{bind-attr src="controller.image"}}>
+						</div>
+					{{/if}}
+				</div>
+				{{{text}}}
+			</div>
+		</div>
+	{{/each}}
+</div>
+
+<script>
+function imageColorBox(){
+	setTimeout(function(){
+	$('img').each(function(){
+		$this = $(this);
+		href = $this.attr('src')
+		console.log(href);
+		$this.colorbox({href:href, height:"100%",fixed:true, closeButton:false});
+	});
+	$('#cboxContent').on('click', function(){
+		$.colorbox.close();
+	});
+},1000);
+
+$(window).on('hashchange', function() {
+  imageColorBox();
+});
+
+}
+
+$(imageColorBox)
+</script>

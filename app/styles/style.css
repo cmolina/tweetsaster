@@ -1,0 +1,117 @@
+html, body {
+	width: 100%;
+	position: relative;
+	font-size: 20px;
+	height: 100%;
+}
+
+.wrapper{
+	width: 100%;
+}
+
+div.header{
+	width: 100%;
+	background: #FF9900;
+	text-align: center;
+	padding: 10px 0;
+	position: fixed;
+	top: 0;
+}
+
+div.list-wrapper{
+	width: 100%;
+	color: #0066FF;
+	margin-top: 43px;
+}
+
+div.list-element{
+	border-bottom: 1px solid #FF9900;
+	padding: 10px 10px;
+}
+
+div.list-element::after{
+	content: '';
+	clear: both;
+	display: block;
+}
+
+div.side-col{
+	float: right;
+}
+
+div.time{
+	float: right;
+	color: grey;
+}
+
+.img-tweet{
+	display: none;
+}
+
+@media (orientation: landscape){
+	div.side-col{
+		text-align: center;
+		width: 30%;
+	}
+	
+	div.time{
+		float: right;
+	}
+	.img-tweet{
+		width: 100%;
+		float:right;
+		display: block;
+	}
+	
+	.img-tweet > img{
+		width: 100%;
+	}
+}
+
+div.menu{
+	position: fixed;
+	top: 4%;
+	left: 15%;
+	width: 70%;
+	height: 300px;
+	background: #bbb;
+	z-index: 100;
+	text-align: center;
+}
+
+div.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	opacity: 0.7;
+	z-index: 1;
+}
+
+ul{
+	list-style: none;
+	padding-left: 0;
+}
+
+a{
+	text-decoration: none;
+	color: #0066FF;
+	background: #FF9900;
+	border-radius: 11px;
+	padding: 12px 16px;
+	display: inline-block;
+	margin-top: 15px;
+}
+
+#colorbox{
+	z-index: 1;
+}
+
+select{
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+}
+
