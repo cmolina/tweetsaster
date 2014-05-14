@@ -112,7 +112,7 @@ function program2(depth0,data) {
     'itemController': ("tweet")
   },inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n</div>\n\n<script>\nfunction imageColorBox(){\n	setTimeout(function(){\n	$('img').each(function(){\n		$this = $(this);\n		href = $this.attr('src')\n		console.log(href);\n		$this.colorbox({href:href, height:\"100%\",fixed:true, closeButton:false});\n	});\n	$('#cboxContent').on('click', function(){\n		$.colorbox.close();\n	});\n},1000);\n\n$(window).on('hashchange', function() {\n  imageColorBox();\n});\n\n}\n\n$(imageColorBox)\n</script>");
+  data.buffer.push("\n</div>\n\n<script>\nfunction imageColorBox(){\n	setTimeout(function(){\n	$('img').each(function(){\n		$this = $(this);\n		href = $this.attr('src')\n		console.log(href);\n		$this.colorbox({href:href, height:\"100%\",fixed:true, closeButton:false});\n	});\n	$('#cboxContent').on('click', function(){\n		$.colorbox.close();\n	});\n},2000);\n\n$(window).on('hashchange', function() {\n  imageColorBox();\n});\n\n}\n\n$(imageColorBox)\n</script>");
   return buffer;
   
 });

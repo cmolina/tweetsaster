@@ -87,7 +87,7 @@ Alarma.TweetController = Ember.ObjectController.extend({
 	image: function(){
 		var image = null
 		//TODO: insert case where url was truncate cos length > len
-		var regExp = new RegExp("(www.[a-zA-Z0-9]*(.[a-zA-Z]*))+|http[s]+:\/+(www.)?[<br>a-zA-Z0-9\-\_]*([\?|\.|\/\-\_][<br>=a-zA-Z0-9\_]*)+");
+		var regExp = new RegExp("(www.[a-zA-Z0-9]*(.[a-zA-Z\/]*))+|http[s]?:\/+(www.)?[<br>a-zA-Z0-9\-\_]*([\?|\.|\/\-\_][<br>=a-zA-Z0-9\_\/]*)+");
 		var tweetText = this.get("model.text");
 		var matchedObj = regExp.exec(tweetText);
 		if (matchedObj){
@@ -111,13 +111,13 @@ Alarma.TweetController = Ember.ObjectController.extend({
 			case parseInt(dayDiff*24*60*60) == 0:
 				timePassed = 'ahora';
 				break;
-			case dayDiff*24*60 < 61:
+			case dayDiff*24*60*60 < 61:
 				timePassed = parseInt(dayDiff*24*60*60) + 's';
 				break;
-			case dayDiff*24 < 1:
+			case dayDiff*24*60 < 60:
 				timePassed = parseInt(dayDiff*24*60) + 'm';
 				break;
-			case dayDiff < 1:
+			case dayDiff*24 < 24:
 				timePassed = parseInt(dayDiff*24) + 'h';
 				break;
 			default:
