@@ -7,9 +7,7 @@ Alarma.TweetsIndexView = Ember.View.extend({
 	
 	isScrolledToBottom: function(){
 		var topViewportPosition = window.pageYOffset;
-		console.log('topViewport ' + topViewportPosition);
 		var viewportMaxGap = ($(document).height() - $(window).height());
-		console.log('gap ' + viewportMaxGap);
 		if (topViewportPosition === 0){
 			return false;
 		}

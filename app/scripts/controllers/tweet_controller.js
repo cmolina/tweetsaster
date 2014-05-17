@@ -6,21 +6,10 @@ Alarma.TweetController = Ember.ObjectController.extend({
 	        load: function() {controller.set('image', imageUrl);  }
 	    });
 	},
-	image: function(){
-		var image = null
-		//TODO: insert case where url was truncate cos length > len
-		var regExp = new RegExp("(www.[a-zA-Z0-9]*(.[a-zA-Z\/]*))+|http[s]?:\/+(www.)?[<br>a-zA-Z0-9\-\_]*([\?|\.|\/\-\_][<br>=a-zA-Z0-9\_\/]*)+");
-		var tweetText = this.get("model.text");
-		var matchedObj = regExp.exec(tweetText);
-		if (matchedObj){
-			var imgUrl = matchedObj[0].replace(/<br>/g, "");
-			this.IsValidImageUrl(imgUrl, this);
-		}
-		return image;
-	}.property(),
+	
 	timePassed: function(){
 		if(this.get("model.created_at")){
-			var creationDatetime = new Date(this.get("model.created_at").substring(0, 22));
+			var creationDatetime = new Date(this.get("model.created_at"));
 		} else {
 			var creationDatetime = new Date(this.get("model.created_at"));
 		}

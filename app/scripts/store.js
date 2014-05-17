@@ -1,2 +1,4 @@
 Alarma.ApplicationSerializer = DS.LSSerializer.extend();
-Alarma.ApplicationAdapter = DS.LSAdapter.extend({});
+Alarma.ApplicationAdapter = DS.LSAdapter.extend({
+	namespace: 'alarma'
+});
