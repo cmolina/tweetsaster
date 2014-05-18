@@ -6,9 +6,6 @@ Alarma.Router.map(function () {
 	});
 });
 
-
-
-
 // Alarma.ApplicationRoute = Ember.Route.extend({});
 // Alarma.TweetsController = Ember.ArrayController.extend({}); 
 // Alarma.TweetsFiresController = Ember.ArrayController.extend({});

@@ -1,21 +1,15 @@
 Alarma.TweetController = Ember.ObjectController.extend({
-	IsValidImageUrl: function(imageUrl, controller) {
-	    $("<img>", {
-	        src: imageUrl,
-	        error: function() { console.log(imageUrl);},
-	        load: function() {controller.set('image', imageUrl);  }
-	    });
-	},
-	
+	// isValidImageUrl: function(imageUrl, controller) {
+// 	    $("<img>", {
+// 	        src: imageUrl,
+// 	        error: function() { console.log(imageUrl);},
+// 	        load: function() {controller.set('image', imageUrl);  }
+// 	    });
+// 	},
 	timePassed: function(){
-		if(this.get("model.created_at")){
-			var creationDatetime = new Date(this.get("model.created_at"));
-		} else {
-			var creationDatetime = new Date(this.get("model.created_at"));
-		}
+		var creationDatetime = new Date(this.get("model.created_at"));
 		var nowDatetime = new Date();
-		//day in ms
-		var dayMs = 24*60*60*1000;
+		var dayMs = 24*60*60*1000; //day in ms
 		var dayDiff = (nowDatetime - creationDatetime) / dayMs;
 		var timePassed;
 		switch(true){
@@ -34,14 +28,7 @@ Alarma.TweetController = Ember.ObjectController.extend({
 			default:
 				timePassed = parseInt(dayDiff) + 'd';
 				break;
-			// case dayDiff <= 29:
-// 					timePassed = parseInt(dayDiff/7) + 's';
-// 					break;
-// 				default:
-// 					timePassed = parseInt(dayDiff/30) + 'm'
-// 					break;
 		}
-		
 		return timePassed;
-	}.property()
+	}.property('created_at')
 });

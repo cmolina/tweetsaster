@@ -5,6 +5,7 @@ Alarma.TweetsIndexRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 	setupController: function(controller, model){
 		this.controllerFor('tweets').set('title', 'Todas');
 		controller.set('model', model);
+		controller.set('page', 1);
 	}
 	
 });
