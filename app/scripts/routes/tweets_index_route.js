@@ -1,4 +1,4 @@
-Alarma.TweetsIndexRoute = Ember.Route.extend({
+Alarma.TweetsIndexRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 	model: function(){
 		return this.modelFor('tweets');
 	},
@@ -6,4 +6,6 @@ Alarma.TweetsIndexRoute = Ember.Route.extend({
 		this.controllerFor('tweets').set('title', 'Todas');
 		controller.set('model', model);
 	}
+	
 });
+

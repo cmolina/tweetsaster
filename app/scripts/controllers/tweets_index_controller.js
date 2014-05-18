@@ -1,4 +1,4 @@
-Alarma.TweetsFiresController = Ember.ArrayController.extend({
+Alarma.TweetsIndexController = Ember.ArrayController.extend({
 	sortProperties: ['created_at'],
 	sortAscending: false,
 	gettingMore: false,

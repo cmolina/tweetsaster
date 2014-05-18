@@ -60,6 +60,16 @@ Alarma.FocusTextAreaComponent = Ember.TextArea.extend({
   }.on('didInsertElement')
 });
 
+Alarma.ScrollTopMixin = Ember.Mixin.create({
+	actions: 
+	{
+		willTransition: function(transition){
+			//on channel change get back to top
+			window.scrollTo(0,0);
+		}
+	}
+});
+
 /* Order and include as you please. */
 require('scripts/controllers/*');
 require('scripts/store');

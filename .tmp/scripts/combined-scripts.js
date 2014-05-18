@@ -62,6 +62,16 @@ Alarma.FocusTextAreaComponent = Ember.TextArea.extend({
   }.on('didInsertElement')
 });
 
+Alarma.ScrollTopMixin = Ember.Mixin.create({
+	actions: 
+	{
+		willTransition: function(transition){
+			//on channel change get back to top
+			window.scrollTo(0,0);
+		}
+	}
+});
+
 /* Order and include as you please. */
 
 
@@ -121,69 +131,7 @@ Alarma.TweetController = Ember.ObjectController.extend({
 
 (function() {
 
-Alarma.TweetsEarthquakesController = Ember.ArrayController.extend({
-	sortProperties: ['created_at'],
-	sortAscending: false,
-	gettingMore: false,
-	page: 1,
-	tweetsPerPage: 10, 
-	arrangedTweets: function(){
-		 return this.get('arrangedContent').slice(0,this.page*this.tweetsPerPage);
-	}.property('arrangedContent.[]', 'page'),
-	actions: {
-		getMore: function(){
-			if(this.get('gettingMore')){
-				return;
-			}
-			console.log("getting more");
-			this.set('gettingMore', true);
-			//TODO good practice to get with this. ??
-			thisController = this;
-			setTimeout(function(){
-				thisController.set('page', thisController.page+1);
-				console.log("page " + thisController.page);
-				thisController.set('gettingMore', false);
-			}, 1500);
-		}
-	}
-});
-
-})();
-
-(function() {
-
 Alarma.TweetsIndexController = Ember.ArrayController.extend({
-	sortProperties: ['created_at'],
-	sortAscending: false,
-	gettingMore: false,
-	page: 1,
-	tweetsPerPage: 10, 
-	arrangedTweets: function(){
-		 return this.get('arrangedContent').slice(0,this.page*this.tweetsPerPage);
-	}.property('arrangedContent.[]', 'page'),
-	actions: {
-		getMore: function(){
-			if(this.get('gettingMore')){
-				return;
-			}
-			console.log("getting more");
-			this.set('gettingMore', true);
-			//TODO good practice to get with this. ??
-			thisController = this;
-			setTimeout(function(){
-				thisController.set('page', thisController.page+1);
-				console.log("page " + thisController.page);
-				thisController.set('gettingMore', false);
-			}, 1500);
-		}
-	}
-});
-
-})();
-
-(function() {
-
-Alarma.TweetsFiresController = Ember.ArrayController.extend({
 	sortProperties: ['created_at'],
 	sortAscending: false,
 	gettingMore: false,
@@ -265,7 +213,7 @@ Alarma.Tweet = DS.Model.extend({
 
 (function() {
 
-Alarma.TweetsEarthquakesRoute = Ember.Route.extend({
+Alarma.TweetsEarthquakesRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
   model: function() {
     return this.modelFor('tweets').filterProperty('channel','earthquake');
   },
@@ -275,14 +223,15 @@ Alarma.TweetsEarthquakesRoute = Ember.Route.extend({
   setupController: function(controller, model) {
 	  this.controllerFor('tweets').set('title', 'Terremotos');
 	  controller.set('model', model);
-  }
+  },
+  controllerName: 'tweetsIndex'
 });
 
 })();
 
 (function() {
 
-Alarma.TweetsFiresRoute = Ember.Route.extend({
+Alarma.TweetsFiresRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 	model: function() {
 	return this.modelFor('tweets').filterProperty('channel','fire');
 	},
@@ -292,14 +241,15 @@ Alarma.TweetsFiresRoute = Ember.Route.extend({
 	setupController: function(controller, model) {
 	  this.controllerFor('tweets').set('title', 'Incendios');
 	  controller.set('model', model);
-	}
+	},
+	controllerName: 'tweetsIndex'
 });
 
 })();
 
 (function() {
 
-Alarma.TweetsIndexRoute = Ember.Route.extend({
+Alarma.TweetsIndexRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 	model: function(){
 		return this.modelFor('tweets');
 	},
@@ -307,7 +257,9 @@ Alarma.TweetsIndexRoute = Ember.Route.extend({
 		this.controllerFor('tweets').set('title', 'Todas');
 		controller.set('model', model);
 	}
+	
 });
+
 
 
 })();
@@ -362,7 +314,6 @@ Alarma.TweetsIndexView = Ember.View.extend({
 	willDestroyElement: function(){
 		console.log('destroy');
 		$(window).off('scroll', $.proxy(this.didScroll, this));
-		window.scrollTo(0,0);
 	}
 	
 });
