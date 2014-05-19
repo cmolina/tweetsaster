@@ -4,24 +4,28 @@ Alarma.TweetsTweetoutController = Ember.ArrayController.extend({
 	needs: ['tweetsIndex'],
 	channels: [
 		{value: '', label: '#generico'}, 
-		{value: 'earthquake', label: '#terremotos'}, 
-		{value: 'fire', label: '#incendios'}
+		{value: 'earthquakes', label: '#terremotos'}, 
+		{value: 'fires', label: '#incendios'}
 		],
 	actions: {
 		tweet: function(){
 			var nowDatetime = new Date();
 			var nowIsoDatetime = nowDatetime.toISOString();
 			var created_at_str = nowIsoDatetime;
+			var channel = this.get('selectedChannel');
 			console.log(created_at_str);
 			var tweet = window.tweet = this.store.createRecord('tweet', {
 				created_at: created_at_str,
 				text: this.get('text'),
-				channel: this.get('selectedChannel')
+				channel: channel.substring(0,channel.length-1) //singularize
 			});
 			this.set('text', '');
 			tweet.save();
-			console.log(tweet);
-			this.transitionToRoute('tweets');
+			if (channel == ''){
+				this.transitionToRoute('tweets');
+			} else {
+			this.transitionToRoute('tweets.'+channel);
+			}
 		}
 	}
 });
