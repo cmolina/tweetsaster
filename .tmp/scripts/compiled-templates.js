@@ -59,7 +59,7 @@ function program7(depth0,data) {
   options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets.tweetout", options) : helperMissing.call(depth0, "link-to", "tweets.tweetout", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n		</li>\n	</ul>\n</div>\n\n<div style=\"display: none\" class=\"overlay\"></div>\n	\n\n<script>\n	function tapToMenu(){\n		var dragging=false;\n		$menu = $('.menu');\n		$overlay = $('.overlay');\n		\n		$(document).on('touchmove', function(e){\n			dragging = true;\n		});\n		\n		$(document).on('touchend', function(e){\n			\n			//if showing menu it doesn't disappear if touching inside it\n			//also doesn't fire if dragging\n			if($(e.target).parents().hasClass('menu') || $(e.target).hasClass('menu') || dragging || \n				$(e.target).parents().is('form') || $(e.target).is('img')){\n				dragging = false;\n				return;\n			}\n			e.preventDefault();\n			if($menu.css('display') == 'none'){\n				$menu.show();\n				$overlay.show();\n			} else {\n				$menu.hide();\n				$overlay.hide();\n			}\n		});\n	}\n	\n	function hideMenu(){\n		$('.menu a').on('click', function(){\n			$menu.hide();\n			$overlay.hide();\n		});\n	}\n	$(tapToMenu);\n	$(hideMenu);\n</script>");
+  data.buffer.push("\n		</li>\n	</ul>\n</div>\n\n<div style=\"display: none\" class=\"overlay\"></div>");
   return buffer;
   
 });
@@ -112,7 +112,7 @@ function program2(depth0,data) {
     'itemController': ("tweet")
   },inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n	<div class=\"list-element\">\n			<div id=\"loading-gif\">\n			</div>\n	</div>\n</div>\n\n<script>\nfunction imageColorBox(){\n	setTimeout(function(){\n	$('img').each(function(){\n		$this = $(this);\n		href = $this.attr('src')\n		console.log(href);\n		$this.colorbox({href:href, height:\"100%\",fixed:true, closeButton:false});\n	});\n	$('#cboxContent').on('click', function(){\n		$.colorbox.close();\n	});\n},2000);\n\n$(window).on('hashchange', function() {\n  imageColorBox();\n});\n\n}\n\n$(imageColorBox)\n</script>");
+  data.buffer.push("\n	<div class=\"list-element\">\n			<div id=\"loading-gif\">\n			</div>\n	</div>\n</div>\n\n<script>\n// function imageColorBox(){\n// 	console.log('imageColorBox');\n// 	setTimeout(function(){\n// 		$('img').each(function(){\n// 			$this = $(this);\n// 			href = $this.attr('src')\n// 			console.log(href);\n// 			$this.colorbox({href:href, height:\"100%\",fixed:true, closeButton:false});\n// 		});\n// 		$('#cboxContent').on('click', function(){\n// 			$.colorbox.close();\n// 		});\n// 	}, 2000);\n// \n// $(window).on('hashchange', function() {\n//   imageColorBox();\n// });\n// \n// }\n// \n// $(imageColorBox)\n</script>");
   return buffer;
   
 });

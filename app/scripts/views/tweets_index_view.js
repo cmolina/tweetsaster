@@ -22,5 +22,4 @@ Alarma.TweetsIndexView = Ember.View.extend({
 		console.log('destroy');
 		$(window).off('scroll', $.proxy(this.didScroll, this));
 	}
-	
 });

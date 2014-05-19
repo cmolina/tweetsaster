@@ -23,24 +23,25 @@
 </div>
 
 <script>
-function imageColorBox(){
-	setTimeout(function(){
-	$('img').each(function(){
-		$this = $(this);
-		href = $this.attr('src')
-		console.log(href);
-		$this.colorbox({href:href, height:"100%",fixed:true, closeButton:false});
-	});
-	$('#cboxContent').on('click', function(){
-		$.colorbox.close();
-	});
-},2000);
-
-$(window).on('hashchange', function() {
-  imageColorBox();
-});
-
-}
-
-$(imageColorBox)
+// function imageColorBox(){
+// 	console.log('imageColorBox');
+// 	setTimeout(function(){
+// 		$('img').each(function(){
+// 			$this = $(this);
+// 			href = $this.attr('src')
+// 			console.log(href);
+// 			$this.colorbox({href:href, height:"100%",fixed:true, closeButton:false});
+// 		});
+// 		$('#cboxContent').on('click', function(){
+// 			$.colorbox.close();
+// 		});
+// 	}, 2000);
+// 
+// $(window).on('hashchange', function() {
+//   imageColorBox();
+// });
+// 
+// }
+// 
+// $(imageColorBox)
 </script>
