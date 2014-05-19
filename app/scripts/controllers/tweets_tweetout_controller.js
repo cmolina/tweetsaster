@@ -20,6 +20,7 @@ Alarma.TweetsTweetoutController = Ember.ArrayController.extend({
 				channel: channel.substring(0,channel.length-1) //singularize
 			});
 			this.set('text', '');
+			this.set('selectedChannel', '');
 			tweet.save();
 			if (channel == ''){
 				this.transitionToRoute('tweets');
