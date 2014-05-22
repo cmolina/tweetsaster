@@ -1,7 +1,7 @@
 html, body {
 	width: 100%;
 	position: relative;
-	font-size: 20px;
+	font-size: 16px;
 	height: 100%;
 }
 
@@ -11,22 +11,27 @@ html, body {
 
 div.header{
 	width: 100%;
-	background: #FF9900;
+	background-image: url('../images/header_bg.png');
 	text-align: center;
 	padding: 10px 0;
 	position: fixed;
 	top: 0;
+  color: white;
 }
 
 div.list-wrapper{
 	width: 100%;
-	color: #0066FF;
-	margin-top: 43px;
+	color: black;
+	margin-top: 38px;
 }
 
 div.list-element{
-	border-bottom: 1px solid #FF9900;
+	border-bottom: 1px solid #D5D9DC;
 	padding: 10px 10px;
+  background: -webkit-linear-gradient(red, green, blue); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(red, green, blue); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(red, green, blue); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#FEFEFE, #F9F9F9); /* Standard syntax */
 }
 
 div.list-element::after{
@@ -41,7 +46,8 @@ div.side-col{
 
 div.time{
 	float: right;
-	color: grey;
+	color: #A5A9AC;
+  font-size: 0.8rem;
 }
 
 .img-tweet{
