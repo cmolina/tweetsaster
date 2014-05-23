@@ -7,7 +7,7 @@ Alarma.TweetsEarthquakesRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
   },
   controllerName: 'tweetsIndex',
   setupController: function(controller, model) {
-	  this.controllerFor('tweets').set('title', 'Terremotos');
+	  this.controllerFor('tweets').set('title', 'Canal: Terremotos');
 	  controller.set('model', model);
 	  controller.set('page', 1);
   },

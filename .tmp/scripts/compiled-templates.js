@@ -6,60 +6,60 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   
-  data.buffer.push("Todas");
+  data.buffer.push("\n					<li class=\"rounded-top\">\n						Todas\n						<span class=\"bubble\">100</span>\n						<div class=\"arrow\">\n					</li>\n				");
   }
 
 function program3(depth0,data) {
   
   
-  data.buffer.push("Terremotos");
+  data.buffer.push("\n					<li>\n						Terremotos\n						<span class=\"bubble\">150</span>\n						<div class=\"arrow\">\n					</li>\n				");
   }
 
 function program5(depth0,data) {
   
   
-  data.buffer.push("Incendios");
+  data.buffer.push("\n					<li class=\"rounded-bottom\">\n						Incendios\n						<span class=\"bubble\">200</span>\n						<div class=\"arrow\">\n					</li>\n				");
   }
 
 function program7(depth0,data) {
   
   
-  data.buffer.push("Componer Msj");
+  data.buffer.push("\n					<li class=\"rounded\">\n						Componer Msj\n						<div class=\"arrow\">\n					</li>\n				");
   }
 
-  data.buffer.push("<div class\"wrapper\">\n	<div class=\"header\">\n			");
+  data.buffer.push("<div class\"wrapper\">\n	<div class=\"header\">\n			<h1>");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "title", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n	</div>\n	");
+  data.buffer.push("</h1>\n	</div>\n	");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</div>\n\n<div class=\"menu\" style=\"display: none\">\n	<ul>\n		<li>\n			");
+  data.buffer.push("\n</div>\n\n<div class=\"menu\" style=\"display: none\">\n	<div class=\"menu-wrapper\">\n		<div class=\"section-wrapper\">\n			<div class=\"section-header\">\n				<h2>Canales</h2>\n			</div>\n			<ul class=\"nav\">\n				");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets", options) : helperMissing.call(depth0, "link-to", "tweets", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n		</li>\n		<li>\n			");
+  data.buffer.push("\n				");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets.earthquakes", options) : helperMissing.call(depth0, "link-to", "tweets.earthquakes", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n		</li>\n		<li>\n			");
+  data.buffer.push("\n				");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets.fires", options) : helperMissing.call(depth0, "link-to", "tweets.fires", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n		</li>\n		<li>\n			");
+  data.buffer.push("\n			</ul>\n		</div>\n		<div class=\"section-wrapper\">\n			<div class=\"section-header\">\n				<h2>Acciones</h2>\n			</div>\n			<ul class =\"nav\">\n				");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets.tweetout", options) : helperMissing.call(depth0, "link-to", "tweets.tweetout", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n		</li>\n	</ul>\n</div>\n\n<div style=\"display: none\" class=\"overlay\"></div>");
+  data.buffer.push("\n			</ul>\n		</div>\n	</div>\n</div>");
   return buffer;
   
 });
@@ -130,15 +130,6 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'on': ("submit")
   },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">\n		");
-  hashContexts = {'value': depth0,'content': depth0,'optionValuePath': depth0,'optionLabelPath': depth0};
-  hashTypes = {'value': "ID",'content': "ID",'optionValuePath': "STRING",'optionLabelPath': "STRING"};
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
-    'value': ("selectedChannel"),
-    'content': ("channels"),
-    'optionValuePath': ("content.value"),
-    'optionLabelPath': ("content.label")
-  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n		<br />\n		");
   hashContexts = {'value': depth0,'cols': depth0,'rows': depth0};
   hashTypes = {'value': "ID",'cols': "STRING",'rows': "STRING"};
   options = {hash:{
@@ -147,7 +138,16 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'rows': ("2")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['focus-text-area'] || depth0['focus-text-area']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "focus-text-area", options))));
-  data.buffer.push("\n		<br />\n		<button type=\"submit\">Envia!</button>\n	</form>\n</div>");
+  data.buffer.push("\n		<br />\n		<div class=\"controls\">\n			");
+  hashContexts = {'value': depth0,'content': depth0,'optionValuePath': depth0,'optionLabelPath': depth0};
+  hashTypes = {'value': "ID",'content': "ID",'optionValuePath': "STRING",'optionLabelPath': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'value': ("selectedChannel"),
+    'content': ("channels"),
+    'optionValuePath': ("content.value"),
+    'optionLabelPath': ("content.label")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n			<button type=\"submit\">Envia!</button>\n		</div>\n	</form>\n</div>");
   return buffer;
   
 });

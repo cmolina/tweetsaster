@@ -6,7 +6,7 @@ Alarma.TweetsFiresRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 	  this.render('tweets/index', {controller: controller});
 	},
 	setupController: function(controller, model) {
-	  this.controllerFor('tweets').set('title', 'Incendios');
+	  this.controllerFor('tweets').set('title', 'Canal: Incendios');
 	  controller.set('model', model);
 	  controller.set('page', 1);
 	},

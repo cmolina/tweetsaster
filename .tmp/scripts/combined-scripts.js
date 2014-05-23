@@ -124,7 +124,7 @@ Alarma.TweetsIndexController = Ember.ArrayController.extend({
 	sortAscending: false,
 	gettingMore: false,
 	page: 1,
-	tweetsPerPage: 10, 
+	tweetsPerPage: 20, 
 	arrangedTweets: function(){
 		 return this.get('arrangedContent').slice(0,this.page*this.tweetsPerPage);
 	}.property('arrangedContent.[]', 'page'),
@@ -215,7 +215,7 @@ Alarma.TweetsEarthquakesRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
   },
   controllerName: 'tweetsIndex',
   setupController: function(controller, model) {
-	  this.controllerFor('tweets').set('title', 'Terremotos');
+	  this.controllerFor('tweets').set('title', 'Canal: Terremotos');
 	  controller.set('model', model);
 	  controller.set('page', 1);
   },
@@ -234,7 +234,7 @@ Alarma.TweetsFiresRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 	  this.render('tweets/index', {controller: controller});
 	},
 	setupController: function(controller, model) {
-	  this.controllerFor('tweets').set('title', 'Incendios');
+	  this.controllerFor('tweets').set('title', 'Canal: Incendios');
 	  controller.set('model', model);
 	  controller.set('page', 1);
 	},
@@ -250,7 +250,7 @@ Alarma.TweetsIndexRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 		return this.modelFor('tweets');
 	},
 	setupController: function(controller, model){
-		this.controllerFor('tweets').set('title', 'Todas');
+		this.controllerFor('tweets').set('title', 'Canal: Todas');
 		controller.set('model', model);
 		controller.set('page', 1);
 	}

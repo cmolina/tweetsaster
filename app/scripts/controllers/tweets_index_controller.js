@@ -3,7 +3,7 @@ Alarma.TweetsIndexController = Ember.ArrayController.extend({
 	sortAscending: false,
 	gettingMore: false,
 	page: 1,
-	tweetsPerPage: 10, 
+	tweetsPerPage: 20, 
 	arrangedTweets: function(){
 		 return this.get('arrangedContent').slice(0,this.page*this.tweetsPerPage);
 	}.property('arrangedContent.[]', 'page'),

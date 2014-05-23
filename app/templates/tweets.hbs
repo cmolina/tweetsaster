@@ -1,25 +1,52 @@
 <div class"wrapper">
 	<div class="header">
-			{{title}}
+			<h1>{{title}}</h1>
 	</div>
 	{{outlet}}
 </div>
 
 <div class="menu" style="display: none">
-	<ul>
-		<li>
-			{{#link-to 'tweets'}}Todas{{/link-to}}
-		</li>
-		<li>
-			{{#link-to 'tweets.earthquakes'}}Terremotos{{/link-to}}
-		</li>
-		<li>
-			{{#link-to 'tweets.fires'}}Incendios{{/link-to}}
-		</li>
-		<li>
-			{{#link-to 'tweets.tweetout'}}Componer Msj{{/link-to}}
-		</li>
-	</ul>
+	<div class="menu-wrapper">
+		<div class="section-wrapper">
+			<div class="section-header">
+				<h2>Canales</h2>
+			</div>
+			<ul class="nav">
+				{{#link-to 'tweets'}}
+					<li class="rounded-top">
+						Todas
+						<span class="bubble">100</span>
+						<div class="arrow">
+					</li>
+				{{/link-to}}
+				{{#link-to 'tweets.earthquakes'}}
+					<li>
+						Terremotos
+						<span class="bubble">150</span>
+						<div class="arrow">
+					</li>
+				{{/link-to}}
+				{{#link-to 'tweets.fires'}}
+					<li class="rounded-bottom">
+						Incendios
+						<span class="bubble">200</span>
+						<div class="arrow">
+					</li>
+				{{/link-to}}
+			</ul>
+		</div>
+		<div class="section-wrapper">
+			<div class="section-header">
+				<h2>Acciones</h2>
+			</div>
+			<ul class ="nav">
+				{{#link-to 'tweets.tweetout'}}
+					<li class="rounded">
+						Componer Msj
+						<div class="arrow">
+					</li>
+				{{/link-to}}
+			</ul>
+		</div>
+	</div>
 </div>
-
-<div style="display: none" class="overlay"></div>
