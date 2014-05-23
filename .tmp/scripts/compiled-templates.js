@@ -59,7 +59,7 @@ function program7(depth0,data) {
   options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets.tweetout", options) : helperMissing.call(depth0, "link-to", "tweets.tweetout", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n			</ul>\n		</div>\n	</div>\n</div>");
+  data.buffer.push("\n			</ul>\n		</div>\n	</div>\n</div>\n\n");
   return buffer;
   
 });
