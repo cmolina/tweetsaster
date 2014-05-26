@@ -24,7 +24,7 @@ function program5(depth0,data) {
 function program7(depth0,data) {
   
   
-  data.buffer.push("\n					<li class=\"rounded\">\n						Componer Msj\n						<div class=\"arrow\">\n					</li>\n				");
+  data.buffer.push("\n					<li class=\"rounded\">\n						Componer Mensaje\n						<div class=\"arrow\">\n					</li>\n				");
   }
 
   data.buffer.push("<div class\"wrapper\">\n	<div class=\"header\">\n			<h1>");

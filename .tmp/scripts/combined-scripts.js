@@ -278,7 +278,7 @@ Alarma.TweetsRoute = Ember.Route.extend({
 
 Alarma.TweetsTweetoutRoute = Ember.Route.extend({
 	setupController: function(controller, model){
-		this.controllerFor('tweets').set('title', 'Componer Msj')
+		this.controllerFor('tweets').set('title', 'Componer Mensaje')
 	}
 });
 
