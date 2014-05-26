@@ -1,10 +1,12 @@
 <div class="list-wrapper">
-	<form {{action "tweet" on="submit"}}>
-		{{focus-text-area value=text cols="23" rows="2"}}
-		<br />
-		<div class="controls">
-			{{view Ember.Select value=selectedChannel content=channels optionValuePath="content.value" optionLabelPath="content.label"}}
-			<button type="submit">Envia!</button>
-		</div>
-	</form>
+    <div class="tweetout">
+    	<form {{action "tweet" on="submit"}}>
+    		{{focus-text-area value=text cols="23" rows="2"}}
+    		<br />
+    		<div class="controls">
+    			{{view Ember.Select value=selectedChannel content=channels optionValuePath="content.value" optionLabelPath="content.label"}}
+    			<button type="submit">Envia!</button>
+    		</div>
+    	</form>
+    </div>
 </div>

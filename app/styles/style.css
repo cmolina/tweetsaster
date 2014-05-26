@@ -21,15 +21,19 @@ h2{
 
 .wrapper{
 	width: 100%;
+	position: relative;
 }
 
 div.header{
 	width: 100%;
-	background-image: url('../images/header_bg.png');
+  background: -webkit-linear-gradient(#737477, #343538); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#737477, #343538); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#737477, #343538); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#737477, #343538); /* Standard syntax */
   border-bottom: 1px solid black;
   border-top: 1px solid #939497;
 	text-align: center;
-	padding: 9px 0;
+	padding: 14px 0;
 	position: fixed;
 	top: 0;
   color: white;
@@ -38,7 +42,7 @@ div.header{
 div.list-wrapper{
 	width: 100%;
 	color: black;
-	margin-top: 38px;
+	margin-top: 45px;
 }
 
 div.list-element{
@@ -120,26 +124,15 @@ ul{
   position: relative;
 }
 
-.nav{
-  padding: 0;
-  margin: 0;
-  width: 90%;
-  margin: auto;
-}
-
-.rounded-top{
-  border-radius: 8px 8px 0 0;
-}
-
-.rounded-bottom{
-  border-radius: 0 0 8px 8px;
-}
-
 .rounded{
   border-radius: 8px;
 }
 
-
+footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
 
 .bubble{
   background: white;
@@ -152,16 +145,25 @@ ul{
   color: black;
 }
 
+ul.nav{
+	text-align: center;
+}
+
 ul.nav li{
   background: -webkit-linear-gradient(#737477, #343538); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#737477, #343538); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#737477, #343538); /* For Firefox 3.6 to 15 */
   background: linear-gradient(#737477, #343538); /* Standard syntax */
-	padding: 14px 14px;
-	display: block;
+	padding: 14px 0;
+	display: inline-block;
   position: relative;
-  border-bottom: 1px solid black;
-  border-top: 1px solid #939497;
+  border: 1px solid #939497;
+	margin-left: -5px;
+	width: 24.8%;
+}
+
+a.active li{
+	background: #6EACDE;
 }
 
 a{
@@ -174,7 +176,7 @@ a:active li{
   border-bottom: none;
 }
 
-.arrow, img{
+.arrow{
   width: 13px;
   background-size: 10px 18px;
   background-repeat: no-repeat;
@@ -185,7 +187,37 @@ a:active li{
   background-image: url('../images/arrow.png');
 }
 
+div.new-tweet{
+	width: 38px;
+	height: 28px;
+	position: absolute;
+	top: 9px;
+	right: 13px;
+	background-size: cover;
+	background-image: url('../images/new_msg_icon.png');
+	background-repeat: no-repeat;
+	border-radius: 5px;
+}
 
+div.new-tweet-background{
+	width: 38px;
+	height: 28px;
+	position: absolute;
+	top: 9px;
+	right: 13px;
+	background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
+	border-radius: 5px;
+}
+
+a:active .new-tweet-background{
+	background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
+}
 
 #colorbox{
 	z-index: 1;
@@ -198,7 +230,7 @@ select{
 }
 
 #loading-gif{
-	height: 45px;
+	height: 85px;
 	background-repeat: no-repeat;
 	margin: 10px auto;
 	width: 45px;
@@ -211,6 +243,10 @@ select{
   text-align: center;
   margin-bottom: 0px;
   position: relative; 
+}
+
+div.tweetout{
+	margin-top: 68px;
 }
 
 .menu-wrapper{
@@ -239,5 +275,6 @@ button[type="submit"]{
   width: 285px;
   margin: auto;
 }
+
 
 
