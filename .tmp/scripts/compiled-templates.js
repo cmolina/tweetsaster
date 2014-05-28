@@ -1,7 +1,7 @@
 Ember.TEMPLATES["tweets"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing, functionType="function", blockHelperMissing=helpers.blockHelperMissing;
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
   
@@ -12,25 +12,25 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   
-  data.buffer.push("\n				<li>\n                    TO\n				</li>\n			");
+  data.buffer.push("\n					<img class=\"menu-icon\" src=\"../images/bell.png\">\n					");
   }
 
 function program5(depth0,data) {
   
   
-  data.buffer.push("\n				<li>\n					TE\n				</li>\n			");
+  data.buffer.push("\n					<img class=\"menu-icon\" src=\"../images/earthquake.png\">\n					");
   }
 
 function program7(depth0,data) {
   
   
-  data.buffer.push("\n				<li>\n					IN\n				</li>\n			");
+  data.buffer.push("\n					<img class=\"menu-icon\" src=\"../images/flame.png\">\n					");
   }
 
 function program9(depth0,data) {
   
   
-  data.buffer.push("\n				<li>\n					..\n				</li>\n			");
+  data.buffer.push("\n					<img class=\"menu-icon\" src=\"../images/dots.png\">\n					");
   }
 
   data.buffer.push("<div class=\"wrapper\">\n	<div class=\"header\">\n			<h1>");
@@ -47,33 +47,42 @@ function program9(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    <footer>\n		<ul class=\"nav\">\n			");
-  hashTypes = {};
-  hashContexts = {};
-  options = {hash:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push("\n    <footer>\n		<ul class=\"nav\">\n					");
+  hashContexts = {'tagName': depth0};
+  hashTypes = {'tagName': "STRING"};
+  options = {hash:{
+    'tagName': ("li")
+  },inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets.index", options) : helperMissing.call(depth0, "link-to", "tweets.index", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n			");
-  hashTypes = {};
-  hashContexts = {};
-  options = {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push("\n			\n					");
+  hashContexts = {'tagName': depth0,'class': depth0};
+  hashTypes = {'tagName': "STRING",'class': "STRING"};
+  options = {hash:{
+    'tagName': ("li"),
+    'class': ("pull-left")
+  },inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets.earthquakes", options) : helperMissing.call(depth0, "link-to", "tweets.earthquakes", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n			");
-  hashTypes = {};
-  hashContexts = {};
-  options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push("\n			\n			\n					");
+  hashContexts = {'tagName': depth0,'class': depth0};
+  hashTypes = {'tagName': "STRING",'class': "STRING"};
+  options = {hash:{
+    'tagName': ("li"),
+    'class': ("pull-left")
+  },inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tweets.fires", options) : helperMissing.call(depth0, "link-to", "tweets.fires", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n			");
-  options = {hash:{},inverse:self.noop,fn:self.program(9, program9, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  if (stack2 = helpers['link-to']) { stack2 = stack2.call(depth0, options); }
-  else { stack2 = depth0['link-to']; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
-  hashTypes = {};
-  hashContexts = {};
-  if (!helpers['link-to']) { stack2 = blockHelperMissing.call(depth0, stack2, options); }
+  data.buffer.push("\n			\n			\n					");
+  hashContexts = {'tagName': depth0,'class': depth0};
+  hashTypes = {'tagName': "STRING",'class': "STRING"};
+  options = {hash:{
+    'tagName': ("li"),
+    'class': ("pull-left")
+  },inverse:self.noop,fn:self.program(9, program9, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "link-to", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n		</ul>\n    </footer>\n</div>");
+  data.buffer.push("\n			\n		</ul>\n    </footer>\n</div>");
   return buffer;
   
 });

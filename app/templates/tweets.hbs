@@ -9,26 +9,24 @@
 	{{outlet}}
     <footer>
 		<ul class="nav">
-			{{#link-to 'tweets.index'}}
-				<li>
-                    TO
-				</li>
-			{{/link-to}}
-			{{#link-to 'tweets.earthquakes'}}
-				<li>
-					TE
-				</li>
-			{{/link-to}}
-			{{#link-to 'tweets.fires'}}
-				<li>
-					IN
-				</li>
-			{{/link-to}}
-			{{#link-to }}
-				<li>
-					..
-				</li>
-			{{/link-to}}
+					{{#link-to 'tweets.index' tagName="li"}}
+					<img class="menu-icon" src="../images/bell.png">
+					{{/link-to}}
+			
+					{{#link-to 'tweets.earthquakes' tagName="li" class="pull-left"}}
+					<img class="menu-icon" src="../images/earthquake.png">
+					{{/link-to}}
+			
+			
+					{{#link-to 'tweets.fires' tagName="li" class="pull-left"}}
+					<img class="menu-icon" src="../images/flame.png">
+					{{/link-to}}
+			
+			
+					{{#link-to tagName="li" class="pull-left"}}
+					<img class="menu-icon" src="../images/dots.png">
+					{{/link-to}}
+			
 		</ul>
     </footer>
 </div>

@@ -154,16 +154,20 @@ ul.nav li{
   background: -o-linear-gradient(#737477, #343538); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#737477, #343538); /* For Firefox 3.6 to 15 */
   background: linear-gradient(#737477, #343538); /* Standard syntax */
-	padding: 14px 0;
+	padding: 2px 0;
 	display: inline-block;
   position: relative;
   border: 1px solid #939497;
-	margin-left: -5px;
-	width: 24.8%;
+	width: 25.2%;
+	box-sizing: border-box;
 }
 
-a.active li{
-	background: #6EACDE;
+ul.nav li.pull-left{
+  margin-left: -5px;
+}
+
+li.active{
+	background: #6EACDE !important;
 }
 
 a{
@@ -171,8 +175,8 @@ a{
   color: white;
 }
 
-a:active li{
-  background: #6EACDE;
+li:active{
+  background: #6EACDE !important;
   border-bottom: none;
 }
 
@@ -274,6 +278,10 @@ button[type="submit"]{
 .controls{
   width: 285px;
   margin: auto;
+}
+
+.menu-icon{
+	height: 35px;
 }
 
 
