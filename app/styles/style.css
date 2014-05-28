@@ -155,15 +155,15 @@ ul.nav li{
   background: -moz-linear-gradient(#737477, #343538); /* For Firefox 3.6 to 15 */
   background: linear-gradient(#737477, #343538); /* Standard syntax */
 	padding: 2px 0;
-	display: inline-block;
+	float: left;
   position: relative;
   border: 1px solid #939497;
-	width: 25.2%;
+	width: 25%;
 	box-sizing: border-box;
 }
 
 ul.nav li.pull-left{
-  margin-left: -5px;
+
 }
 
 li.active{
@@ -216,7 +216,39 @@ div.new-tweet-background{
 	border-radius: 5px;
 }
 
+div.finder{
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 11px;
+	left: 20px;
+	background-size: cover;
+	background-image: url('../images/magnifying.png');
+	background-repeat: no-repeat;
+	border-radius: 5px;
+}
+
+div.finder-background{
+	width: 38px;
+	height: 28px;
+	position: absolute;
+	top: 9px;
+	left: 13px;
+	background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
+	border-radius: 5px;
+}
+
 a:active .new-tweet-background{
+	background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
+}
+
+a:active .finder-background{
 	background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
 	background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
@@ -282,6 +314,7 @@ button[type="submit"]{
 
 .menu-icon{
 	height: 35px;
+	padding-top: 3px;
 }
 
 

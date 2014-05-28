@@ -1,10 +1,14 @@
 <div class="wrapper">
 	<div class="header">
-			<h1>{{title}}</h1>
-			{{#link-to 'tweets.tweetout'}}
-            <div class="new-tweet-background"></div>
-            <div class="new-tweet"></div>
-			{{/link-to}}
+		{{#link-to ''}}
+        <div class="finder-background"></div>
+        <div class="finder"></div>
+		{{/link-to}}
+		<h1>{{title}}</h1>
+		{{#link-to 'tweets.tweetout'}}
+        <div class="new-tweet-background"></div>
+        <div class="new-tweet"></div>
+		{{/link-to}}
 	</div>
 	{{outlet}}
     <footer>

@@ -181,13 +181,10 @@ module.exports = function (grunt) {
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
 			js: '<%= yeoman.dist %>/scripts/{,*/}*.js',
             options: {
-                dirs: ['<%= yeoman.dist %>'],
 				assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images'],
 		        patterns: {
 		          // FIXME While usemin won't have full support for revved files we have to put all references manually here
-		          js: [
-		              ['/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm', 'Update the JS to reference our revved images']
-		          ]
+		          js: [[/src=['"]([^"']+)["']/gm, 'Update the ember templates JS to reference our revved images']]
            	 	}
 			}
         },
