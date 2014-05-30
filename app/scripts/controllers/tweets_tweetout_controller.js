@@ -12,16 +12,26 @@ Alarma.TweetsTweetoutController = Ember.ArrayController.extend({
 			var nowDatetime = new Date();
 			var nowIsoDatetime = nowDatetime.toISOString();
 			var created_at_str = nowIsoDatetime;
+			var text = this.get('text');
 			var channel = this.get('selectedChannel');
-			console.log(created_at_str);
 			var tweet = window.tweet = this.store.createRecord('tweet', {
 				created_at: created_at_str,
-				text: this.get('text'),
+				text: text,
 				channel: channel.substring(0,channel.length-1) //singularize
 			});
 			this.set('text', '');
 			this.set('selectedChannel', '');
 			tweet.save();
+			var cb = new Codebird;
+			cb.setConsumerKey("", "");
+			cb.setToken("", "");
+			cb.__call(
+			    "statuses_update",
+			    {"status": text + ' #cgdiop'},
+			    function (reply) {
+			        // ...
+			    }
+			);
 			if (channel == ''){
 				this.transitionToRoute('tweets');
 			} else {

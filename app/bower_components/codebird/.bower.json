@@ -1,0 +1,15 @@
+{
+  "name": "codebird",
+  "homepage": "https://github.com/mynetx/codebird-js",
+  "version": "2.4.3",
+  "_release": "2.4.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.4.3",
+    "commit": "3756e9ef3d5c62c9764778c1feb49b229e5dbecd"
+  },
+  "_source": "git://github.com/mynetx/codebird-js.git",
+  "_target": "~2.4.3",
+  "_originalSource": "codebird",
+  "_direct": true
+}
