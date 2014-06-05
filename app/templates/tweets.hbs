@@ -1,15 +1,23 @@
 <div class="wrapper">
 	<div class="header">
-		{{#link-to ''}}
-        <div class="finder-background"></div>
-        <div class="finder"></div>
-		{{/link-to}}
+		<button {{action 'toggleSearchBar'}} class="btn" id="top-left-icon">
+	        <div class="finder"></div>
+		</button>
 		<h1>{{title}}</h1>
 		{{#link-to 'tweets.tweetout'}}
         <div class="new-tweet-background"></div>
         <div class="new-tweet"></div>
 		{{/link-to}}
 	</div>
+	{{#if searchBarVisible}}
+	<div class="filler"></div>
+	<div class="sub-header">
+		<input type"text" id="search-field">
+		<!-- TODO: api -->
+		<button {{action 'CALL_TO_API'}} class="btn" id="search-btn">busca</button>
+	</div>
+	
+	{{/if}}
 	{{outlet}}
     <footer>
 		<ul class="nav">

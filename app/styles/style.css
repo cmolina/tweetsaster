@@ -22,6 +22,7 @@ h2{
 .wrapper{
 	width: 100%;
 	position: relative;
+	margin-top: 45px;
 }
 
 div.header{
@@ -42,7 +43,6 @@ div.header{
 div.list-wrapper{
 	width: 100%;
 	color: black;
-	margin-top: 45px;
 }
 
 div.list-element{
@@ -220,25 +220,35 @@ div.finder{
 	width: 24px;
 	height: 24px;
 	position: absolute;
-	top: 11px;
-	left: 20px;
+	top: 2px;
+	left: 6px;
 	background-size: cover;
 	background-image: url('../images/magnifying.png');
 	background-repeat: no-repeat;
 	border-radius: 5px;
 }
 
-div.finder-background{
-	width: 38px;
-	height: 28px;
-	position: absolute;
-	top: 9px;
-	left: 13px;
+.btn{
 	background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
 	background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
 	background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
 	border-radius: 5px;
+	border: 0;
+	outline: none;
+}
+
+#search-btn{
+	width: 27%;
+	padding: 5px;
+}
+
+#top-left-icon{
+	width: 38px;
+	height: 28px;
+	position: absolute;
+	top: 9px;
+	left: 13px;
 }
 
 a:active .new-tweet-background{
@@ -317,5 +327,27 @@ button[type="submit"]{
 	padding-top: 3px;
 }
 
+div.filler{
+	margin-top: 95px;
+}
+
+div.sub-header{
+	height: 49px;
+	position: fixed;
+	background: #ddd;
+	top: 48px;
+	width: 100%;
+	box-shadow: black 0px -1px 11px 0px;
+}
+
+#search-field{
+	margin: 10px;
+	padding: 3px 0;
+	width: 60%;
+	display: inline-block;
+	margin-left: 12px;
+	border-radius: 5px;
+	margin-top: 11px;
+}
 
 
