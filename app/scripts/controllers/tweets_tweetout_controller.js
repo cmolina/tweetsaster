@@ -19,20 +19,12 @@ Alarma.TweetsTweetoutController = Ember.ArrayController.extend({
 				text: text,
 				channel: channel.substring(0,channel.length-1) //singularize
 			});
+			var tweetText = text + ' #' + channel + ' #iopalarma';
+			$.post('http://alarmer.herokuapp.com/tweets', {text: tweetText});
 			this.set('text', '');
 			this.set('selectedChannel', '');
 			tweet.save();
-			var cb = new Codebird;
-			cb.setConsumerKey("", "");
-			cb.setToken("", "");
-			cb.__call(
-			    "statuses_update",
-			    {"status": text + ' #cgdiop'},
-			    function (reply) {
-			        // ...
-			    }
-			);
-			if (channel == ''){
+			if (channel === ''){
 				this.transitionToRoute('tweets');
 			} else {
 			this.transitionToRoute('tweets.'+channel);

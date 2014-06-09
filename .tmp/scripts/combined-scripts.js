@@ -185,20 +185,12 @@ Alarma.TweetsTweetoutController = Ember.ArrayController.extend({
 				text: text,
 				channel: channel.substring(0,channel.length-1) //singularize
 			});
+			var tweetText = text + ' #' + channel + ' #iopalarma';
+			$.post('http://alarmer.herokuapp.com/tweets', {text: tweetText});
 			this.set('text', '');
 			this.set('selectedChannel', '');
 			tweet.save();
-			var cb = new Codebird;
-			cb.setConsumerKey("", "");
-			cb.setToken("", "");
-			cb.__call(
-			    "statuses_update",
-			    {"status": text + ' #cgdiop'},
-			    function (reply) {
-			        // ...
-			    }
-			);
-			if (channel == ''){
+			if (channel === ''){
 				this.transitionToRoute('tweets');
 			} else {
 			this.transitionToRoute('tweets.'+channel);
@@ -271,8 +263,8 @@ Alarma.TweetsFiresRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 
 Alarma.TweetsIndexRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
 	model: function(){
-		//return this.modelFor('tweets');
-		return $.get('http://alarmer.herokuapp.com/tweets.json');
+		return this.modelFor('tweets');
+		//return $.get('http://alarmer.herokuapp.com/tweets.json');
 	},
 	setupController: function(controller, model){
 		this.controllerFor('tweets').set('title', 'Canal: Todas');
