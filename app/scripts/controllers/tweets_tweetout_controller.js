@@ -19,7 +19,11 @@ Alarma.TweetsTweetoutController = Ember.ArrayController.extend({
 				text: text,
 				channel: channel.substring(0,channel.length-1) //singularize
 			});
-			var tweetText = text + ' #' + channel + ' #iopalarma';
+			var tweetChannel = '';
+			if (channel !== ''){
+				tweetChannel = ' #' + channel;
+			}
+			var tweetText = text + tweetChannel + ' #iopalarma';
 			$.post('http://alarmer.herokuapp.com/tweets', {text: tweetText});
 			this.set('text', '');
 			this.set('selectedChannel', '');
