@@ -1,4 +1,4 @@
-Alarma.TweetsView = Ember.View.extend({	
+Tweetsaster.TweetsView = Ember.View.extend({	
 	fastClick: function(){
 		console.log('fast');
 		FastClick.attach(document.body);

@@ -1,4 +1,4 @@
-Alarma.Router.map(function () {
+Tweetsaster.Router.map(function () {
 	this.resource('tweets', {path: '/'}, function(){
 		this.route('earthquakes');
 		this.route('fires');
@@ -6,10 +6,10 @@ Alarma.Router.map(function () {
 	});
 });
 
-// Alarma.ApplicationRoute = Ember.Route.extend({});
-// Alarma.TweetsController = Ember.ArrayController.extend({}); 
-// Alarma.TweetsFiresController = Ember.ArrayController.extend({});
-// Alarma.TweetsEarthquakesController = Ember.ArrayController.extend({});
+// Tweetsaster.ApplicationRoute = Ember.Route.extend({});
+// Tweetsaster.TweetsController = Ember.ArrayController.extend({}); 
+// Tweetsaster.TweetsFiresController = Ember.ArrayController.extend({});
+// Tweetsaster.TweetsEarthquakesController = Ember.ArrayController.extend({});
 
 
 

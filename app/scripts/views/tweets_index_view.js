@@ -1,4 +1,4 @@
-Alarma.TweetsIndexView = Ember.View.extend({
+Tweetsaster.TweetsIndexView = Ember.View.extend({
 	didScroll: function(){
 		if(this.isScrolledToBottom()){
 			this.get('controller').send('getMore');

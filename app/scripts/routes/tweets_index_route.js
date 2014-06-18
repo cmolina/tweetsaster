@@ -1,7 +1,12 @@
-Alarma.TweetsIndexRoute = Ember.Route.extend(Alarma.ScrollTopMixin,{
+Tweetsaster.TweetsIndexRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
+ 	beforeModel: function(){
+		var store = this.store;
+		$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=top').then(function(res){
+			store.pushMany('tweet',res);
+		});
+ 	},
 	model: function(){
-		return this.modelFor('tweets');
-		//return $.get('http://alarmer.herokuapp.com/tweets.json');
+		return this.store.filter('tweet');
 	},
 	setupController: function(controller, model){
 		this.controllerFor('tweets').set('title', 'Canal: Todas');

@@ -151,9 +151,9 @@ function program2(depth0,data) {
   data.buffer.push("<div class=\"list-wrapper\">\n	");
   hashContexts = {'itemController': depth0};
   hashTypes = {'itemController': "STRING"};
-  stack1 = helpers.each.call(depth0, "arrangedTweets", {hash:{
+  stack1 = helpers.each.call(depth0, {hash:{
     'itemController': ("tweet")
-  },inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  },inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n	<div class=\"list-element\">\n			<div id=\"loading-gif\">\n			</div>\n	</div>\n</div>\n\n<script>\n// function imageColorBox(){\n// 	console.log('imageColorBox');\n// 	setTimeout(function(){\n// 		$('img').each(function(){\n// 			$this = $(this);\n// 			href = $this.attr('src')\n// 			console.log(href);\n// 			$this.colorbox({href:href, height:\"100%\",fixed:true, closeButton:false});\n// 		});\n// 		$('#cboxContent').on('click', function(){\n// 			$.colorbox.close();\n// 		});\n// 	}, 2000);\n// \n// $(window).on('hashchange', function() {\n//   imageColorBox();\n// });\n// \n// }\n// \n// $(imageColorBox)\n</script>");
   return buffer;

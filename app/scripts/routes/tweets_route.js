@@ -1,7 +1,4 @@
-Alarma.TweetsRoute = Ember.Route.extend({
-  model: function() {
-	  return this.store.find('tweet');
-  },
+Tweetsaster.TweetsRoute = Ember.Route.extend({
   setupController: function(controller, model) {
 	  this.controllerFor('tweets').set('title', 'Terremotos');
   }

@@ -1,4 +1,5 @@
-Alarma.ApplicationSerializer = DS.LSSerializer.extend();
-Alarma.ApplicationAdapter = DS.LSAdapter.extend({
-	namespace: 'alarma'
+Tweetsaster.ApplicationSerializer = DS.LSSerializer.extend();
+Tweetsaster.ApplicationAdapter = DS.RESTAdapter.extend({});
+DS.RESTAdapter.reopen({
+  host: 'https://alarmer.herokuapp.com'
 });

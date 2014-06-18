@@ -1,5 +1,5 @@
-Alarma.Tweet = DS.Model.extend({
+Tweetsaster.Tweet = DS.Model.extend({
   text: DS.attr('string'),
   created_at: DS.attr('string'),
-  channel: DS.attr('string')
+  channel: DS.attr('string'),
 });

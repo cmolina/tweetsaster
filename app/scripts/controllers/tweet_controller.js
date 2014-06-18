@@ -1,4 +1,4 @@
-Alarma.TweetController = Ember.ObjectController.extend({
+Tweetsaster.TweetController = Ember.ObjectController.extend({
 	// isValidImageUrl: function(imageUrl, controller) {
 // 	    $("<img>", {
 // 	        src: imageUrl,
