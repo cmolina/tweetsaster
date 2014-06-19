@@ -1,25 +1,33 @@
 <div class="list-wrapper">
-	{{#each itemController='tweet'}}
-		<div class="list-element">
-			<div class="main-col">
-				<div class="side-col">
-					<div class="time">
-						{{timePassed}}
-					</div>
-					{{#if controller.image}}
-						<div class="img-tweet">
-							<img {{bind-attr src="controller.image"}}>
-						</div>
-					{{/if}}
-				</div>
-				{{{text}}}
-			</div>
-		</div>
-	{{/each}}
+    {{#if model}}
+    	{{#each itemController='tweet'}}
+    		<div class="list-element">
+    			<div class="main-col">
+    				<div class="side-col">
+    					<div class="time">
+    						{{timePassed}}
+    					</div>
+    					{{#if controller.image}}
+    						<div class="img-tweet">
+    							<img {{bind-attr src="controller.image"}}>
+    						</div>
+    					{{/if}}
+    				</div>
+    				{{{text}}}
+    			</div>
+    		</div>
+    	{{/each}}
+    	<div class="list-element">
+    			<div id="loading-gif">
+    			</div>
+    	</div>
+    {{else}}
 	<div class="list-element">
-			<div id="loading-gif">
-			</div>
+		<div class="main-col">
+			Todavía no hay tweets en este canal
+		</div>
 	</div>
+    {{/if}}
 </div>
 
 <script>
