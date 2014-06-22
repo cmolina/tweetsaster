@@ -22,7 +22,10 @@ h2{
 .wrapper{
 	width: 100%;
 	position: relative;
-	margin-top: 45px;
+}
+
+.spacer{
+	height: 45px;
 }
 
 div.header{
@@ -38,6 +41,7 @@ div.header{
 	position: fixed;
 	top: 0;
   color: white;
+	z-index: 10;
 }
 
 div.list-wrapper{
@@ -292,7 +296,7 @@ select{
 }
 
 div.tweetout{
-	margin-top: 68px;
+	margin-top: 40px;
 }
 
 .menu-wrapper{
@@ -328,7 +332,7 @@ button[type="submit"]{
 }
 
 div.filler{
-	margin-top: 95px;
+	margin-top: 55px;
 }
 
 div.sub-header{

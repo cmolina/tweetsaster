@@ -12,4 +12,5 @@ Tweetsaster.TweetsView = Ember.View.extend({
 		this.fastClick();
 		this.enableActivePseudoStyles();
 	}
+	
 })

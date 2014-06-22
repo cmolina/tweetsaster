@@ -142,18 +142,18 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
 	page: 1,
 	tweetsPerPage: 20, 
 	lastID: false,
+	firstID: false,
 	actions: {
-		getMore: function(){
+		getMoreBottom: function(){
 			if(this.get('gettingMore')){
 				return;
 			}
-			console.log("getting more");
+			console.log("getting more bottom");
 			this.set('gettingMore', true);
 			var controller = this;
 			var model = this.get('model');
 			var store = this.store;
-			var lastID = model.get('lastObject').get('id');
-			console.log(lastID);
+			var lastID = this.get('arrangedContent').get('lastObject').get('id');
 			$.get('http://alarmer.herokuapp.com/tweets?quantity=' + controller.get('tweetsPerPage')+'&position=bottom&id='+lastID).then(function(tweets){
 				tweets.forEach(function(tweet){
 					mongoID = tweet.id;
@@ -165,6 +165,27 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
 				page = controller.get('page');
 				controller.set('page', page+1);
 				console.log("page " + controller.page);
+				controller.set('gettingMore', false);
+			});
+		},
+		getMoreTop: function(){
+			if(this.get('gettingMore')){
+				return;
+			}
+			console.log("getting more top");
+			this.set('gettingMore', true);
+			var controller = this;
+			var model = this.get('model');
+			var store = this.store;
+			var firstID = this.get('arrangedContent').get('firstObject').get('id');
+			$.get('http://alarmer.herokuapp.com/tweets?quantity=' + controller.get('tweetsPerPage')+'&position=top&id='+firstID).then(function(tweets){
+				tweets.forEach(function(tweet){
+					mongoID = tweet.id;
+					if(mongoID > firstID){
+						controller.set('firstID', mongoID);
+					}
+					store.push('tweet',{id: tweet.id, text: Tweetsaster.truncStr(tweet.text), created_at: tweet.created_at, channel: tweet.channel});
+				});
 				controller.set('gettingMore', false);
 			});
 		}
@@ -290,7 +311,8 @@ Tweetsaster.TweetsFiresRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
 Tweetsaster.TweetsIndexRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
  	beforeModel: function(){
 		var store = this.store;
-		$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=top').then(function(res){
+		//$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=top').then(function(res){
+		$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=bottom&id=538f7d9a9da29ffccb3c13db').then(function(res){
 			store.pushMany('tweet',res);
 		});
  	},
@@ -334,12 +356,14 @@ Tweetsaster.TweetsTweetoutRoute = Ember.Route.extend({
 Tweetsaster.TweetsIndexView = Ember.View.extend({
 	didScroll: function(){
 		if(this.isScrolledToBottom()){
-			this.get('controller').send('getMore');
+			this.get('controller').send('getMoreBottom');
 		}
 	},
 	isScrolledToBottom: function(){
 		var topViewportPosition = window.pageYOffset;
 		var viewportMaxGap = ($(document).height() - $(window).height());
+		console.log(topViewportPosition);
+		console.log(viewportMaxGap);
 		if (topViewportPosition === 0){
 			return false;
 		}
@@ -349,6 +373,14 @@ Tweetsaster.TweetsIndexView = Ember.View.extend({
 	didInsertElement: function(){
 		console.log('insert');
 		$(window).on('scroll', $.proxy(this.didScroll, this));
+		view = this;
+		$('#hook').hook({
+  		reloadPage: false,
+  		reloadEl: function(){
+				view.get('controller').send('getMoreTop');
+  		},
+			swipeDistance: 250
+		});
 	},
 	
 	willDestroyElement: function(){
@@ -375,6 +407,7 @@ Tweetsaster.TweetsView = Ember.View.extend({
 		this.fastClick();
 		this.enableActivePseudoStyles();
 	}
+	
 })
 
 })();

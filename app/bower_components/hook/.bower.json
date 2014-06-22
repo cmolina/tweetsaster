@@ -1,0 +1,14 @@
+{
+  "name": "hook",
+  "homepage": "https://github.com/jordansinger/Hook.js",
+  "_release": "85e0561a4c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "85e0561a4c9bb0777465574dc97605c012c92752"
+  },
+  "_source": "git://github.com/jordansinger/Hook.js.git",
+  "_target": "*",
+  "_originalSource": "hook",
+  "_direct": true
+}

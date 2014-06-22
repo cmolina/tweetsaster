@@ -1,7 +1,8 @@
 Tweetsaster.TweetsIndexRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
  	beforeModel: function(){
 		var store = this.store;
-		$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=top').then(function(res){
+		//$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=top').then(function(res){
+		$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=bottom&id=538f7d9a9da29ffccb3c13db').then(function(res){
 			store.pushMany('tweet',res);
 		});
  	},
