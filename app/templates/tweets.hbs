@@ -14,9 +14,8 @@
 	{{#if searchBarVisible}}
 	<div class="filler"></div>
 	<div class="sub-header">
-		<input type"text" id="search-field">
-		<!-- TODO: api -->
-		<button {{action 'CALL_TO_API'}} class="btn" id="search-btn">busca</button>
+		{{input type="text" id="search-field" value=searchString}}
+		<button {{action 'getMoreSearch'}} class="btn" id="search-btn">otros</button>
 	</div>
 	
 	{{/if}}

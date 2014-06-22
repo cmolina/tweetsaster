@@ -1,6 +1,6 @@
 <div class="list-wrapper">
-    {{#if model}}
-    	{{#each itemController='tweet'}}
+    {{#if filteredTweets}}
+    	{{#each filteredTweets itemController='tweet'}}
     		<div class="list-element">
     			<div class="main-col">
     				<div class="side-col">
@@ -24,7 +24,7 @@
     {{else}}
 	<div class="list-element">
 		<div class="main-col">
-			Todavía no hay tweets en este canal
+			No hay tweets..
 		</div>
 	</div>
     {{/if}}
@@ -52,5 +52,4 @@
 // }
 // 
 // $(imageColorBox)
-    
 </script>

@@ -123,10 +123,15 @@ Tweetsaster.TweetController = Ember.ObjectController.extend({
 
 Tweetsaster.TweetsController = Ember.ObjectController.extend({
 	title: '',
+	searchString: '',
 	searchBarVisible: false,
 	actions:{
 		toggleSearchBar: function(){
 			this.toggleProperty('searchBarVisible');
+			this.set('searchString', '');
+		},
+		getMoreSearch: function(){
+			this.controllerFor('tweetsIndex').send('getMoreSearch');
 		}
 	}
 });
@@ -136,6 +141,7 @@ Tweetsaster.TweetsController = Ember.ObjectController.extend({
 (function() {
 
 Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
+	needs: 'tweets',
 	sortProperties: ['id'],
 	sortAscending: false,
 	gettingMore: false,
@@ -143,7 +149,30 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
 	tweetsPerPage: 20, 
 	lastID: false,
 	firstID: false,
+	filteredTweets: function(){
+		console.log('filter');
+		var regexp = new RegExp(this.get('controllers.tweets.searchString'));
+		return this.get('arrangedContent').filter(function(tweet){
+			return tweet.get('text').match(regexp);
+		});
+	}.property('controllers.tweets.searchString', 'model.length'),
 	actions: {
+		getMoreSearch: function(){
+			if(this.get('gettingMore')){
+				return;
+			}
+			console.log("getting more search");
+			this.set('gettingMore', true);
+			var controller = this;
+			var model = this.get('model');
+			var store = this.store;
+			$.get('http://alarmer.herokuapp.com/tweets?position=search&query='+this.get('controllers.tweets.searchString')).then(function(tweets){
+				tweets.forEach(function(tweet){
+					store.push('tweet',{id: tweet.id, text: Tweetsaster.truncStr(tweet.text), created_at: tweet.created_at, channel: tweet.channel});
+				});
+				controller.set('gettingMore', false);
+			});
+		},
 		getMoreBottom: function(){
 			if(this.get('gettingMore')){
 				return;
@@ -311,6 +340,8 @@ Tweetsaster.TweetsFiresRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
 Tweetsaster.TweetsIndexRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
  	beforeModel: function(){
 		var store = this.store;
+		//the get should be the one commented out but for demo purposes (pullToRefresh) it loads older tweets than the ones
+		//available
 		//$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=top').then(function(res){
 		$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=bottom&id=538f7d9a9da29ffccb3c13db').then(function(res){
 			store.pushMany('tweet',res);
