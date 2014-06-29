@@ -256,7 +256,6 @@ Tweetsaster.TweetsTweetoutController = Ember.ArrayController.extend({
 
 (function() {
 
-Tweetsaster.ApplicationSerializer = DS.LSSerializer.extend();
 Tweetsaster.ApplicationAdapter = DS.RESTAdapter.extend({});
 
 })();
