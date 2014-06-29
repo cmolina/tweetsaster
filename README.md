@@ -6,8 +6,8 @@ Tweetsaster is a mobile web (prototype) application developed for an ongoing pro
 The idea is to use a database with filtered tweets (not done here) to avoid noise (spam tweets) and provide them in a meaningful and easy to use way to involve older people.
 
 The application is developed with leading edge technologies and frameworks:
-Frontend -> Ember.js
-Backend -> Ruby on Rails, MongoDB 
+* Frontend -> Ember.js
+* Backend -> Ruby on Rails, MongoDB 
 
 ##Yeah, but.. How does that work?
 
