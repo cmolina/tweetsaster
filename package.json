@@ -2,7 +2,6 @@
   "name": "desktop",
   "version": "0.0.0",
   "dependencies": {
-    "grunt-npm-install": "^0.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
