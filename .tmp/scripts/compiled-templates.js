@@ -1,3 +1,26 @@
+Ember.TEMPLATES["components/search-bar"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, hashContexts, hashTypes, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push("<div class=\"filler\"></div>\n<div class=\"sub-header\">\n	");
+  hashContexts = {'id': depth0,'value': depth0};
+  hashTypes = {'id': "STRING",'value': "ID"};
+  options = {hash:{
+    'id': ("search-field"),
+    'value': ("query")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n	<button ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "search", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(" class=\"btn\" id=\"search-btn\">busca!</button>\n</div>");
+  return buffer;
+  
+});
+
 Ember.TEMPLATES["tweets"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
@@ -12,20 +35,15 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n	<div class=\"filler\"></div>\n	<div class=\"sub-header\">\n		");
-  hashContexts = {'type': depth0,'id': depth0,'value': depth0};
-  hashTypes = {'type': "STRING",'id': "STRING",'value': "ID"};
+  data.buffer.push("\n		");
+  hashContexts = {'hide': depth0,'search': depth0};
+  hashTypes = {'hide': "STRING",'search': "STRING"};
   options = {hash:{
-    'type': ("text"),
-    'id': ("search-field"),
-    'value': ("searchString")
+    'hide': ("toggleSearchBar"),
+    'search': ("getMoreSearch")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n		<button ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "getMoreSearch", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(" class=\"btn\" id=\"search-btn\">otros</button>\n	</div>\n	\n	");
+  data.buffer.push(escapeExpression(((stack1 = helpers['search-bar'] || depth0['search-bar']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "search-bar", options))));
+  data.buffer.push("\n	");
   return buffer;
   }
 
@@ -111,7 +129,7 @@ function program11(depth0,data) {
   },inverse:self.noop,fn:self.program(11, program11, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "link-to", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n			\n		</ul>\n    </footer>\n</div>");
+  data.buffer.push("\n			\n		</ul>\n    </footer>\n</div>\n");
   return buffer;
   
 });
@@ -119,7 +137,7 @@ function program11(depth0,data) {
 Ember.TEMPLATES["tweets/index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
@@ -127,11 +145,16 @@ function program1(depth0,data) {
   data.buffer.push("\n    	");
   hashContexts = {'itemController': depth0};
   hashTypes = {'itemController': "STRING"};
-  stack1 = helpers.each.call(depth0, "filteredTweets", {hash:{
+  stack1 = helpers.each.call(depth0, {hash:{
     'itemController': ("tweet")
-  },inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  },inverse:self.noop,fn:self.program(2, program2, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    	<div class=\"list-element\">\n    			<div id=\"loading-gif\">\n    			</div>\n    	</div>\n    ");
+  data.buffer.push("\n		\n    	\n		");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "showingSpinner", {hash:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n    	\n		\n    ");
   return buffer;
   }
 function program2(depth0,data) {
@@ -141,12 +164,7 @@ function program2(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "timePassed", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    					</div>\n    					");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "controller.image", {hash:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    				</div>\n    				");
+  data.buffer.push("\n    					</div>\n    				</div>\n    				");
   hashContexts = {'unescaped': depth0};
   hashTypes = {'unescaped': "STRING"};
   stack1 = helpers._triageMustache.call(depth0, "text", {hash:{
@@ -156,21 +174,14 @@ function program2(depth0,data) {
   data.buffer.push("\n    			</div>\n    		</div>\n    	");
   return buffer;
   }
-function program3(depth0,data) {
+
+function program4(depth0,data) {
   
-  var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n    						<div class=\"img-tweet\">\n    							<img ");
-  hashContexts = {'src': depth0};
-  hashTypes = {'src': "STRING"};
-  options = {hash:{
-    'src': ("controller.image")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push(">\n    						</div>\n    					");
-  return buffer;
+  
+  data.buffer.push("\n			<div class=\"list-element\">\n    			<div id=\"loading-gif\">\n    			</div>\n			</div>\n		");
   }
 
-function program5(depth0,data) {
+function program6(depth0,data) {
   
   
   data.buffer.push("\n	<div class=\"list-element\">\n		<div class=\"main-col\">\n			No hay tweets..\n		</div>\n	</div>\n    ");
@@ -179,9 +190,9 @@ function program5(depth0,data) {
   data.buffer.push("<div class=\"list-wrapper\">\n    ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "filteredTweets", {hash:{},inverse:self.program(5, program5, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "hasTweets", {hash:{},inverse:self.program(6, program6, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n</div>\n\n<script>\n// function imageColorBox(){\n// 	console.log('imageColorBox');\n// 	setTimeout(function(){\n// 		$('img').each(function(){\n// 			$this = $(this);\n// 			href = $this.attr('src')\n// 			console.log(href);\n// 			$this.colorbox({href:href, height:\"100%\",fixed:true, closeButton:false});\n// 		});\n// 		$('#cboxContent').on('click', function(){\n// 			$.colorbox.close();\n// 		});\n// 	}, 2000);\n// \n// $(window).on('hashchange', function() {\n//   imageColorBox();\n// });\n// \n// }\n// \n// $(imageColorBox)\n</script>");
+  data.buffer.push("\n</div>\n");
   return buffer;
   
 });

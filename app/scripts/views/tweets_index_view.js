@@ -7,16 +7,13 @@ Tweetsaster.TweetsIndexView = Ember.View.extend({
 	isScrolledToBottom: function(){
 		var topViewportPosition = window.pageYOffset;
 		var viewportMaxGap = ($(document).height() - $(window).height());
-		console.log(topViewportPosition);
-		console.log(viewportMaxGap);
 		if (topViewportPosition === 0){
 			return false;
 		}
 		return topViewportPosition > (viewportMaxGap-100);
 	},
-	
+
 	didInsertElement: function(){
-		console.log('insert');
 		$(window).on('scroll', $.proxy(this.didScroll, this));
 		view = this;
 		$('#hook').hook({
@@ -24,12 +21,11 @@ Tweetsaster.TweetsIndexView = Ember.View.extend({
   		reloadEl: function(){
 				view.get('controller').send('getMoreTop');
   		},
-			swipeDistance: 250
+			swipeDistance: 100
 		});
 	},
 	
 	willDestroyElement: function(){
-		console.log('destroy');
 		$(window).off('scroll', $.proxy(this.didScroll, this));
 	}
 });

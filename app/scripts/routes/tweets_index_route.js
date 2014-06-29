@@ -1,5 +1,6 @@
 Tweetsaster.TweetsIndexRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
  	beforeModel: function(){
+		this.controllerFor('tweets').send('hideSearchBar');
 		var store = this.store;
 		//the get should be the one commented out but for demo purposes (pullToRefresh) it loads older tweets than the ones
 		//available
@@ -13,8 +14,7 @@ Tweetsaster.TweetsIndexRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
 	},
 	setupController: function(controller, model){
 		this.controllerFor('tweets').set('title', 'Canal: Todas');
-		controller.set('model', model);
-		controller.set('page', 1);
+		this._super(controller, model);
 	}
 	
 });

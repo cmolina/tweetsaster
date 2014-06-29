@@ -12,12 +12,7 @@
 		{{/link-to}}
 	</div>
 	{{#if searchBarVisible}}
-	<div class="filler"></div>
-	<div class="sub-header">
-		{{input type="text" id="search-field" value=searchString}}
-		<button {{action 'getMoreSearch'}} class="btn" id="search-btn">otros</button>
-	</div>
-	
+		{{search-bar hide='toggleSearchBar' search='getMoreSearch'}}
 	{{/if}}
     
 	{{outlet}}

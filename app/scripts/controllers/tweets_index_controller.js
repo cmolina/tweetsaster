@@ -1,80 +1,83 @@
+Tweetsaster.getLastIdFrom = function(arrangedContent, position){
+	if(position === 'bottom'){
+			return arrangedContent.get('lastObject').get('id');
+		} else { //top
+			return arrangedContent.get('firstObject').get('id');
+		}
+}
+
+Tweetsaster.ghashtags= function(arrangedContent, position){
+	if(position === 'bottom'){
+			return arrangedContent.get('lastObject').get('id');
+		} else { //top
+			return arrangedContent.get('firstObject').get('id');
+		}
+}
+
+Tweetsaster.updateControllerIDs = function(id, position, controller){
+	if(position === 'bottom'){
+		if(id < controller.get('lastID')){
+			controller.set('lastID', id);
+			}
+		} else { //top
+			if(id > controller.get('lastID')){
+				controller.set('firstID', id);
+			}
+		}
+}
+
+Tweetsaster.moreBottomTweets = function(tweets, controller){
+	var moreTweets = true;
+	if(tweets.length != 20){
+		moreTweets = false;
+	}
+	controller.set('moreBottomTweets', moreTweets);
+}
+
+Tweetsaster.getMoreTweets = function(position, controller){
+	if(controller.get('gettingMore')){
+		return;
+	}
+	controller.set('gettingMore', true);
+	var id = Tweetsaster.getLastIdFrom(controller.get('arrangedContent'), position);
+	var store = controller.store;
+	$.get('http://alarmer.herokuapp.com/tweets?quantity=' + controller.get('tweetsPerRequest')+'&position='+position+'&id='+id).always(function(){
+		controller.set('gettingMore', false);
+	}).then(function(tweets){
+		tweets.forEach(function(tweet){
+			Tweetsaster.updateControllerIDs(tweet.id, position, controller);
+			store.push('tweet', {id: tweet.id, text: Tweetsaster.truncStr(tweet.text), created_at: tweet.created_at, channel: tweet.channel});
+		});
+		if(position === 'bottom'){
+			Tweetsaster.moreBottomTweets(tweets, controller);
+		}
+	});
+}
+
 Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
 	needs: 'tweets',
 	sortProperties: ['id'],
 	sortAscending: false,
 	gettingMore: false,
-	page: 1,
-	tweetsPerPage: 20, 
+	tweetsPerRequest: 20, 
 	lastID: false,
 	firstID: false,
-	filteredTweets: function(){
-		console.log('filter');
-		var regexp = new RegExp(this.get('controllers.tweets.searchString'));
-		return this.get('arrangedContent').filter(function(tweet){
-			return tweet.get('text').match(regexp);
-		});
-	}.property('controllers.tweets.searchString', 'model.length'),
+	moreBottomTweets: true,
+	tweetsCount: function(){
+		return this.get('arrangedContent.length');
+	}.property('length'),
+	hasTweets: function(){
+		return this.get('tweetsCount') > 0;
+	}.property('tweetsCount'),
+	showingSpinner: function(){
+		return this.get('tweetsCount') > 10 && this.get('moreBottomTweets');
+	}.property('length', 'moreBottomTweets'),
 	actions: {
-		getMoreSearch: function(){
-			if(this.get('gettingMore')){
-				return;
-			}
-			console.log("getting more search");
-			this.set('gettingMore', true);
-			var controller = this;
-			var model = this.get('model');
-			var store = this.store;
-			$.get('http://alarmer.herokuapp.com/tweets?position=search&query='+this.get('controllers.tweets.searchString')).then(function(tweets){
-				tweets.forEach(function(tweet){
-					store.push('tweet',{id: tweet.id, text: Tweetsaster.truncStr(tweet.text), created_at: tweet.created_at, channel: tweet.channel});
-				});
-				controller.set('gettingMore', false);
-			});
-		},
 		getMoreBottom: function(){
-			if(this.get('gettingMore')){
-				return;
-			}
-			console.log("getting more bottom");
-			this.set('gettingMore', true);
-			var controller = this;
-			var model = this.get('model');
-			var store = this.store;
-			var lastID = this.get('arrangedContent').get('lastObject').get('id');
-			$.get('http://alarmer.herokuapp.com/tweets?quantity=' + controller.get('tweetsPerPage')+'&position=bottom&id='+lastID).then(function(tweets){
-				tweets.forEach(function(tweet){
-					mongoID = tweet.id;
-					if(mongoID < lastID){
-						controller.set('lastID', mongoID);
-					}
-					store.push('tweet',{id: tweet.id, text: Tweetsaster.truncStr(tweet.text), created_at: tweet.created_at, channel: tweet.channel});
-				});
-				page = controller.get('page');
-				controller.set('page', page+1);
-				console.log("page " + controller.page);
-				controller.set('gettingMore', false);
-			});
+			Tweetsaster.getMoreTweets('bottom', this);
 		},
 		getMoreTop: function(){
-			if(this.get('gettingMore')){
-				return;
-			}
-			console.log("getting more top");
-			this.set('gettingMore', true);
-			var controller = this;
-			var model = this.get('model');
-			var store = this.store;
-			var firstID = this.get('arrangedContent').get('firstObject').get('id');
-			$.get('http://alarmer.herokuapp.com/tweets?quantity=' + controller.get('tweetsPerPage')+'&position=top&id='+firstID).then(function(tweets){
-				tweets.forEach(function(tweet){
-					mongoID = tweet.id;
-					if(mongoID > firstID){
-						controller.set('firstID', mongoID);
-					}
-					store.push('tweet',{id: tweet.id, text: Tweetsaster.truncStr(tweet.text), created_at: tweet.created_at, channel: tweet.channel});
-				});
-				controller.set('gettingMore', false);
-			});
+			Tweetsaster.getMoreTweets('top', this);
 		}
 	}
 });

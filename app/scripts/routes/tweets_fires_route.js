@@ -1,5 +1,6 @@
 Tweetsaster.TweetsFiresRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
  	beforeModel: function(){
+		this.controllerFor('tweets').send('hideSearchBar');
 		var store = this.store;
 		$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=top&channel=fires').then(function(res){
 			store.pushMany('tweet',res);
@@ -15,8 +16,7 @@ Tweetsaster.TweetsFiresRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
 	},
 	setupController: function(controller, model) {
 	  this.controllerFor('tweets').set('title', 'Canal: Incendios');
-	  controller.set('model', model);
-	  controller.set('page', 1);
+		this._super(controller, model);
 	},
 	controllerName: 'tweetsIndex'
 });

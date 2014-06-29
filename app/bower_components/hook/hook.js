@@ -100,14 +100,10 @@
                             });
 
                             addHandler('touchmove', function(e) {
-                                //swipe = e.originalEvent.touches[0].pageY + lastY;
-                                //st = $(this).scrollTop();
 																endFingerPos = e.originalEvent.touches[0].pageY;
-                                // if(swipe < settings.swipeDistance) {
-                                //   e.preventDefault();
-                                // }
+																endViewportPos = window.pageYOffset;
 																//if we are scrolled on top AND we are scrolling up
-                                if(startViewportPos == 0 && endFingerPos > startFingerPos) {
+                                if(startViewportPos == 0 && endFingerPos > startFingerPos && endFingerPos - startFingerPos > settings.swipeDistance) {
                                     methods.onSwipe($this, settings);
                                 }
 																
@@ -151,7 +147,7 @@
                 el.animate({
                     "marginTop": "50px"
                 }, 200);
-                el.delay(1500).slideUp(200, function () {
+                el.delay(1000).slideUp(200, function () {
                     if(settings.reloadPage) {
                         window.location.reload(true);
                     }

@@ -1,26 +1,27 @@
 <div class="list-wrapper">
-    {{#if filteredTweets}}
-    	{{#each filteredTweets itemController='tweet'}}
+    {{#if hasTweets}}
+    	{{#each itemController='tweet'}}
     		<div class="list-element">
     			<div class="main-col">
     				<div class="side-col">
     					<div class="time">
     						{{timePassed}}
     					</div>
-    					{{#if controller.image}}
-    						<div class="img-tweet">
-    							<img {{bind-attr src="controller.image"}}>
-    						</div>
-    					{{/if}}
     				</div>
     				{{{text}}}
     			</div>
     		</div>
     	{{/each}}
-    	<div class="list-element">
+		
+    	
+		{{#if showingSpinner}}
+			<div class="list-element">
     			<div id="loading-gif">
     			</div>
-    	</div>
+			</div>
+		{{/if}}
+    	
+		
     {{else}}
 	<div class="list-element">
 		<div class="main-col">
@@ -29,27 +30,3 @@
 	</div>
     {{/if}}
 </div>
-
-<script>
-// function imageColorBox(){
-// 	console.log('imageColorBox');
-// 	setTimeout(function(){
-// 		$('img').each(function(){
-// 			$this = $(this);
-// 			href = $this.attr('src')
-// 			console.log(href);
-// 			$this.colorbox({href:href, height:"100%",fixed:true, closeButton:false});
-// 		});
-// 		$('#cboxContent').on('click', function(){
-// 			$.colorbox.close();
-// 		});
-// 	}, 2000);
-// 
-// $(window).on('hashchange', function() {
-//   imageColorBox();
-// });
-// 
-// }
-// 
-// $(imageColorBox)
-</script>

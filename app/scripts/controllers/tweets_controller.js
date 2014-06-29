@@ -7,8 +7,13 @@ Tweetsaster.TweetsController = Ember.ObjectController.extend({
 			this.toggleProperty('searchBarVisible');
 			this.set('searchString', '');
 		},
-		getMoreSearch: function(){
-			this.controllerFor('tweetsIndex').send('getMoreSearch');
+		hideSearchBar: function(){
+			this.set('searchBarVisible', false);
+			this.set('searchString', '');
+		},
+		getMoreSearch: function(query){
+			var params = Ember.Router.QueryParameters.create({ query: query });
+			this.transitionToRoute('tweets.search', params);
 		}
 	}
 });

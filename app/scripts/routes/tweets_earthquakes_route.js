@@ -1,5 +1,6 @@
 Tweetsaster.TweetsEarthquakesRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin,{
  	beforeModel: function(){
+		this.controllerFor('tweets').send('hideSearchBar');
 		var store = this.store;
 		$.get('http://alarmer.herokuapp.com/tweets?quantity=20&position=top&channel=earthquakes').then(function(res){
 			store.pushMany('tweet',res);
@@ -16,8 +17,7 @@ Tweetsaster.TweetsEarthquakesRoute = Ember.Route.extend(Tweetsaster.ScrollTopMix
   controllerName: 'tweetsIndex',
   setupController: function(controller, model) {
 	  this.controllerFor('tweets').set('title', 'Canal: Terremotos');
-	  controller.set('model', model);
-	  controller.set('page', 1);
+	  this._super(controller, model);
   },
   
 });

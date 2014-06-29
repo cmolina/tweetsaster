@@ -14,11 +14,12 @@ Tweetsaster.TweetsTweetoutController = Ember.ArrayController.extend({
 			var created_at_str = nowIsoDatetime;
 			var text = this.get('text');
 			var channel = this.get('selectedChannel');
-			var tweetChannel = '';
+			var hashtags = '';
 			if (channel !== ''){
-				tweetChannel = ' #' + channel;
+				hashtags += ' #' + channel;
 			}
-			var tweetText = text + tweetChannel + ' #tweetsaster';
+			hashtags += ' #tweetsaster';
+			var tweetText = text + hashtags;
 			$.post('http://alarmer.herokuapp.com/tweets', {text: tweetText});
 			this.set('text', '');
 			this.set('selectedChannel', '');
