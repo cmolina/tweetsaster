@@ -36,6 +36,7 @@ Try it yourself with this [DEMO](http://www.riccardoodone.com/tweetsaster).
 * Increment time passed on every tweet synchronously without having to refresh the page [2]
 * Show parsed image from tweets in landscape mode and provide possibility to view them fullscreen
 * Implement i18n
+* If you need text processing utility functions for Tweets there's [twitter-text-js](https://github.com/twitter/twitter-text-js)
 
 ##Gimme the [ ] references!
 
