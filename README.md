@@ -1,5 +1,5 @@
 #Tweetsaster
-##Hey man what's that?
+##Hey man what's this?
 
 Tweetsaster is a mobile web (prototype) application developed for an ongoing project between the Chilean Natural Research Center for Integrated Natural Disaster Management ([CIGIDEN](http://www.cigiden.cl/en)) and four of the best university of the country.
 
