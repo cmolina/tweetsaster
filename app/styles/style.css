@@ -19,13 +19,16 @@ h2{
   font-size: 1.1rem;
 }
 
-.wrapper{
-	width: 100%;
-	position: relative;
+a{
+	text-decoration: none;
+  color: white;
 }
 
-.spacer{
-	height: 48px;
+ul{
+	list-style: none;
+	padding-left: 0;
+  margin: 0;
+  position: relative;
 }
 
 div.header{
@@ -42,6 +45,164 @@ div.header{
 	top: 0;
   color: white;
 	z-index: 10;
+}
+
+.menu-icon{
+	height: 35px;
+	padding-top: 3px;
+}
+
+div.sub-header{
+	height: 49px;
+	position: fixed;
+	background: #ddd;
+	top: 48px;
+	width: 100%;
+	box-shadow: black 0px -1px 11px 0px;
+}
+
+.section-header{
+  padding: 10px 0;
+  text-align: center;
+  margin-bottom: 0px;
+  position: relative; 
+}
+
+div.finder{
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 2px;
+	left: 6px;
+	background-size: cover;
+	background-image: url('../images/magnifying.png');
+	background-repeat: no-repeat;
+	border-radius: 5px;
+}
+
+a:active .finder-background{
+	background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
+}
+
+
+a:active .new-tweet-background{
+	background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
+}
+
+div.new-tweet{
+	width: 38px;
+	height: 28px;
+	position: absolute;
+	top: 9px;
+	right: 13px;
+	background-size: cover;
+	background-image: url('../images/new_msg_icon.png');
+	background-repeat: no-repeat;
+	border-radius: 5px;
+}
+
+div.new-tweet-background{
+	width: 38px;
+	height: 28px;
+	position: absolute;
+	top: 9px;
+	right: 13px;
+	background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
+	border-radius: 5px;
+}
+
+a:active .new-tweet-background{
+	background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
+}
+
+.spacer{
+	height: 48px;
+}
+
+div.filler{
+	margin-top: 49px;
+}
+
+.menu-wrapper{
+  height: 95%;
+  overflow: scroll;
+}
+
+div.menu{
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(#777, #222); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#777, #222); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#777, #222); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#777, #222);
+  z-index: 100;
+}
+
+div.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	z-index: 1;
+}
+
+.bubble{
+  background: white;
+  border-radius: 8px;
+  padding: 2px 4px;
+  position: absolute;
+  right: 38px;
+  font-size: 0.9rem;
+  top: 13px;
+  color: black;
+}
+
+
+.arrow{
+  width: 13px;
+  background-size: 10px 18px;
+  background-repeat: no-repeat;
+  height: 33px;
+  top: 14px;
+  right: 10px;
+  position: absolute;
+  background-image: url('../images/arrow.png');
+}
+
+.btn{
+	background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
+	border-radius: 5px;
+	border: 0;
+	outline: none;
+}
+
+.rounded{
+  border-radius: 8px;
+}
+
+.wrapper{
+	width: 100%;
+	position: relative;
 }
 
 div.list-wrapper{
@@ -79,6 +240,105 @@ div.time{
 	display: none;
 }
 
+div.tweetout{
+	margin-top: 10px;
+}
+
+select{
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+}
+
+select{
+  width: auto;
+  margin-left: 0;
+}
+
+textarea{
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+
+button[type="submit"]{
+  margin-left: 40px;
+  width: 100px;
+}
+
+.controls{
+  width: 285px;
+  margin: auto;
+}
+
+footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+ul.nav li{
+  background: -webkit-linear-gradient(#737477, #343538); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#737477, #343538); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#737477, #343538); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#737477, #343538); /* Standard syntax */
+	padding: 2px 0;
+	float: left;
+  position: relative;
+  border: 1px solid #939497;
+	width: 25%;
+	box-sizing: border-box;
+}
+
+ul.nav{
+	text-align: center;
+}
+
+li.active{
+	background: #6EACDE !important;
+}
+
+li:active{
+  background: #6EACDE !important;
+  border-bottom: none;
+}
+
+#loading-gif{
+	height: 85px;
+	background-repeat: no-repeat;
+	margin: 10px auto;
+	width: 45px;
+	min-height: 45px;
+  background-image: url('../images/loading.gif');
+}
+
+#search-btn{
+	width: 27%;
+	padding: 5px;
+}
+
+#top-left-icon{
+	width: 38px;
+	height: 28px;
+	position: absolute;
+	top: 9px;
+	left: 13px;
+}
+
+#colorbox{
+	z-index: 1;
+}
+
+#search-field{
+	margin: 10px;
+	padding: 3px 0;
+	width: 60%;
+	display: inline-block;
+	margin-left: 12px;
+	border-radius: 5px;
+	margin-top: 11px;
+}
+
 @media (orientation: landscape){
 	div.side-col{
 		text-align: center;
@@ -99,259 +359,55 @@ div.time{
 	}
 }
 
-div.menu{
-  position: fixed;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background: -webkit-linear-gradient(#777, #222); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#777, #222); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#777, #222); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#777, #222);
-  z-index: 100;
-}
 
-div.overlay{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #fff;
-	z-index: 1;
-}
 
-ul{
-	list-style: none;
-	padding-left: 0;
-  margin: 0;
-  position: relative;
-}
 
-.rounded{
-  border-radius: 8px;
-}
 
-footer{
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-}
 
-.bubble{
-  background: white;
-  border-radius: 8px;
-  padding: 2px 4px;
-  position: absolute;
-  right: 38px;
-  font-size: 0.9rem;
-  top: 13px;
-  color: black;
-}
 
-ul.nav{
-	text-align: center;
-}
 
-ul.nav li{
-  background: -webkit-linear-gradient(#737477, #343538); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#737477, #343538); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#737477, #343538); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#737477, #343538); /* Standard syntax */
-	padding: 2px 0;
-	float: left;
-  position: relative;
-  border: 1px solid #939497;
-	width: 25%;
-	box-sizing: border-box;
-}
 
-ul.nav li.pull-left{
 
-}
 
-li.active{
-	background: #6EACDE !important;
-}
 
-a{
-	text-decoration: none;
-  color: white;
-}
 
-li:active{
-  background: #6EACDE !important;
-  border-bottom: none;
-}
 
-.arrow{
-  width: 13px;
-  background-size: 10px 18px;
-  background-repeat: no-repeat;
-  height: 33px;
-  top: 14px;
-  right: 10px;
-  position: absolute;
-  background-image: url('../images/arrow.png');
-}
 
-div.new-tweet{
-	width: 38px;
-	height: 28px;
-	position: absolute;
-	top: 9px;
-	right: 13px;
-	background-size: cover;
-	background-image: url('../images/new_msg_icon.png');
-	background-repeat: no-repeat;
-	border-radius: 5px;
-}
 
-div.new-tweet-background{
-	width: 38px;
-	height: 28px;
-	position: absolute;
-	top: 9px;
-	right: 13px;
-	background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
-	border-radius: 5px;
-}
 
-div.finder{
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	top: 2px;
-	left: 6px;
-	background-size: cover;
-	background-image: url('../images/magnifying.png');
-	background-repeat: no-repeat;
-	border-radius: 5px;
-}
 
-.btn{
-	background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
-	border-radius: 5px;
-	border: 0;
-	outline: none;
-}
 
-#search-btn{
-	width: 27%;
-	padding: 5px;
-}
 
-#top-left-icon{
-	width: 38px;
-	height: 28px;
-	position: absolute;
-	top: 9px;
-	left: 13px;
-}
 
-a:active .new-tweet-background{
-	background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
-}
 
-a:active .finder-background{
-	background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
-}
 
-#colorbox{
-	z-index: 1;
-}
 
-select{
-	width: 100px;
-	height: 30px;
-	line-height: 30px;
-}
 
-#loading-gif{
-	height: 85px;
-	background-repeat: no-repeat;
-	margin: 10px auto;
-	width: 45px;
-	min-height: 45px;
-  background-image: url('../images/loading.gif');
-}
 
-.section-header{
-  padding: 10px 0;
-  text-align: center;
-  margin-bottom: 0px;
-  position: relative; 
-}
 
-div.tweetout{
-	margin-top: 10px;
-}
 
-.menu-wrapper{
-  height: 95%;
-  overflow: scroll;
-}
 
-textarea{
-  width: 90%;
-  margin: auto;
-  display: block;
-}
 
-select{
-  width: auto;
-  margin-left: 0;
-}
 
-button[type="submit"]{
-  margin-left: 40px;
-  width: 100px;
-}
 
-.controls{
-  width: 285px;
-  margin: auto;
-}
 
-.menu-icon{
-	height: 35px;
-	padding-top: 3px;
-}
 
-div.filler{
-	margin-top: 49px;
-}
 
-div.sub-header{
-	height: 49px;
-	position: fixed;
-	background: #ddd;
-	top: 48px;
-	width: 100%;
-	box-shadow: black 0px -1px 11px 0px;
-}
 
-#search-field{
-	margin: 10px;
-	padding: 3px 0;
-	width: 60%;
-	display: inline-block;
-	margin-left: 12px;
-	border-radius: 5px;
-	margin-top: 11px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
