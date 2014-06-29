@@ -1,6 +1,6 @@
 {
-  "name": "desktop",
-  "version": "0.0.0",
+  "name": "tweetsaster",
+  "version": "0.0.1",
   "dependencies": {
   },
   "devDependencies": {
