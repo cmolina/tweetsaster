@@ -1,32 +1,30 @@
 <div class="list-wrapper">
-    {{#if hasTweets}}
-    	{{#each itemController='tweet'}}
-    		<div class="list-element">
-    			<div class="main-col">
-    				<div class="side-col">
-    					<div class="time">
-    						{{timePassed}}
-    					</div>
-    				</div>
-    				{{{text}}}
-    			</div>
-    		</div>
-    	{{/each}}
-		
-    	
-		{{#if showingSpinner}}
-			<div class="list-element">
-    			<div id="loading-gif">
-    			</div>
-			</div>
-		{{/if}}
-    	
-		
-    {{else}}
-	<div class="list-element">
-		<div class="main-col">
-			No hay tweets..
-		</div>
-	</div>
-    {{/if}}
+{{#if hasTweets}}
+  {{#each itemController='tweet'}}
+    <div class="list-element">
+      <div class="main-col">
+        <div class="side-col">
+          <div class="time">
+            {{timePassed}}
+          </div>
+        </div>
+        {{{text}}}
+      </div>
+    </div>
+  {{/each}}
+  
+  {{#if showingSpinner}}
+    <div class="list-element">
+        <div id="loading-gif">
+        </div>
+    </div>
+  {{/if}}  
+    
+{{else}}
+  <div class="list-element">
+    <div class="main-col">
+      No hay tweets..
+    </div>
+  </div>
+{{/if}}
 </div>
