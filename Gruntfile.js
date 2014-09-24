@@ -31,6 +31,10 @@ module.exports = function (grunt) {
                 files: '<%= yeoman.app %>/templates/**/*.hbs',
                 tasks: ['emberTemplates']
             },
+            compass: {
+                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                tasks: ['compass:server']
+            },
             neuter: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
                 tasks: ['neuter']
@@ -122,31 +126,27 @@ module.exports = function (grunt) {
                 }
             }
         },
-		bowerInstall: {
-
-		  target: {
-
-		    // Point to the files that should be updated when
-		    // you run `grunt bower-install`
-		    src: [
-		      'app/views/**/*.html',   // .html support...
-		      'app/views/**/*.jade',   // .jade support...
-		      'app/styles/main.scss',  // .scss & .sass support...
-		      'app/config.yml'         // and .yml & .yaml support out of the box!
-		    ],
-
-		    // Optional:
-		    // ---------
-		    cwd: '',
-		    dependencies: true,
-		    devDependencies: false,
-		    exclude: [],
-		    fileTypes: {},
-		    ignorePath: '',
-		    overrides: {}
-		  }
-		},
-		
+        compass: {
+            options: {
+                sassDir: '<%= yeoman.app %>/styles',
+                cssDir: '.tmp/styles',
+                generatedImagesDir: '.tmp/images/generated',
+                imagesDir: '<%= yeoman.app %>/images',
+                javascriptsDir: '<%= yeoman.app %>/scripts',
+                fontsDir: '<%= yeoman.app %>/styles/fonts',
+                importPath: '<%= yeoman.app %>/bower_components',
+                httpImagesPath: '/images',
+                httpGeneratedImagesPath: '/images/generated',
+                httpFontsPath: '/styles/fonts',
+                relativeAssets: false
+            },
+            dist: {},
+            server: {
+                options: {
+                    debugInfo: true
+                }
+            }
+        },
         // not used since Uglify task does concat,
         // but still available if needed
         /*concat: {
@@ -181,12 +181,8 @@ module.exports = function (grunt) {
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
 						js: '<%= yeoman.dist %>/scripts/{,*/}*.js',
             options: {
-				assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images'],
-		        patterns: {
-		          // FIXME While usemin won't have full support for revved files we have to put all references manually here
-		          js: [[/src=['"]([^"']+)["']/gm, 'Update the ember templates JS to reference our revved images']]
-           	 	}
-			}
+                dirs: ['<%= yeoman.dist %>']
+            }
         },
         imagemin: {
             dist: {
@@ -274,7 +270,7 @@ module.exports = function (grunt) {
                         cwd: '<%= yeoman.app %>/bower_components/',
                         dest: '<%= yeoman.app %>/styles/fonts/',
                         src: [ 
-                            'bootstrap-sass/dist/fonts/**', // Bootstrap
+                            'bootstrap-sass-official/vendor/assets/fonts/bootstrap/**', // Bootstrap
                             'font-awesome/fonts/**' // Font-Awesome
                         ]
                     }
@@ -300,12 +296,15 @@ module.exports = function (grunt) {
         concurrent: {
             server: [
                 'emberTemplates',
+                'compass:server'
             ],
             test: [
                 'emberTemplates',
+                'compass'
             ],
             dist: [
                 'emberTemplates',
+                'compass:dist',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
@@ -320,7 +319,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    '.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
+                    '.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/**/*.hbs'
                 }
             }
         },
@@ -387,6 +386,4 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
-
-	
 };
