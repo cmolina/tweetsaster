@@ -26,6 +26,7 @@ Try it yourself with this [DEMO](http://www.riccardoodone.com/tweetsaster).
 * [hook.js](https://github.com/jordansinger/hook.js/) to implement a pull-to-refresh iphone style feature.
 * [fastclick.js](https://github.com/ftlabs/fastclick) to eliminate the 300ms delay between a physical tap and the firing of a click event on mobile browsers. [1]
 * [ember-query-params](https://github.com/ElteHupkes/ember-query-params) to handle query params.
+* [sass-css-importer](https://github.com/chriseppstein/sass-css-importer) to import CSS files from styles.scss
 
 ##It's so cool I'm going to fork it. Any ideas for the future?
 

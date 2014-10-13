@@ -1,11 +1,10 @@
-html, body {
-  width: 100%;
-  position: relative;
-  font-size: 16px;
-  height: 100%;
-  background-color: #ddd;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
+/* https://github.com/twbs/bootstrap-sass/issues/582 */
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+/* Starts bootstrap */
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+/* http://stackoverflow.com/questions/7111610/import-regular-css-file-in-scss-file */
+@import "CSS:../bower_components/bootstrap-actionbar/actionbar";
+
 
 h1 {
   margin: 0;
@@ -33,10 +32,10 @@ ul {
 
 .header {
   width: 100%;
-  background: -webkit-linear-gradient(#737477, #343538); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#737477, #343538); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#737477, #343538); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#737477, #343538); /* Standard syntax */
+  background: -webkit-linear-gradient(#737477, #343538);
+  background: -o-linear-gradient(#737477, #343538);
+  background: -moz-linear-gradient(#737477, #343538);
+  background: linear-gradient(#737477, #343538);
   border-bottom: 1px solid black;
   border-top: 1px solid #939497;
   text-align: center;
@@ -52,19 +51,19 @@ ul {
   padding-top: 3px;
 }
 
-div.sub-header {
+.sub-header {
   height: 49px;
   position: fixed;
   background: #ddd;
   top: 48px;
   width: 100%;
-  box-shadow: black 0px -1px 11px 0px;
+  box-shadow: black 0 -1px 11px 0;
 }
 
 .section-header {
   padding: 10px 0;
   text-align: center;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   position: relative; 
 }
 
@@ -81,18 +80,18 @@ div.sub-header {
 }
 
 a:active .finder-background {
-  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
+  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E);
+  background: -o-linear-gradient(#6BA9DB, #1E5C8E);
+  background: -moz-linear-gradient(#6BA9DB, #1E5C8E);
+  background: linear-gradient(#6BA9DB, #1E5C8E);
 }
 
 
 a:active .new-tweet-background {
-  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
+  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E);
+  background: -o-linear-gradient(#6BA9DB, #1E5C8E);
+  background: -moz-linear-gradient(#6BA9DB, #1E5C8E);
+  background: linear-gradient(#6BA9DB, #1E5C8E);
 }
 
 .new-tweet {
@@ -113,18 +112,18 @@ a:active .new-tweet-background {
   position: absolute;
   top: 9px;
   right: 13px;
-  background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
+  background: -webkit-linear-gradient(#6BA9DB, #3E7CAE);
+  background: -o-linear-gradient(#6BA9DB, #3E7CAE);
+  background: -moz-linear-gradient(#6BA9DB, #3E7CAE);
+  background: linear-gradient(#6BA9DB, #3E7CAE);
   border-radius: 5px;
 }
 
 a:active .new-tweet-background {
-  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#6BA9DB, #1E5C8E); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#6BA9DB, #1E5C8E); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#6BA9DB, #1E5C8E); /* Standard syntax */
+  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E);
+  background: -o-linear-gradient(#6BA9DB, #1E5C8E);
+  background: -moz-linear-gradient(#6BA9DB, #1E5C8E);
+  background: linear-gradient(#6BA9DB, #1E5C8E);
 }
 
 .spacer {
@@ -142,13 +141,13 @@ a:active .new-tweet-background {
 
 .menu {
   position: fixed;
-  top: 0%;
-  left: 0%;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: -webkit-linear-gradient(#777, #222); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#777, #222); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#777, #222); /* For Firefox 3.6 to 15 */
+  background: -webkit-linear-gradient(#777, #222);
+  background: -o-linear-gradient(#777, #222);
+  background: -moz-linear-gradient(#777, #222);
   background: linear-gradient(#777, #222);
   z-index: 100;
 }
@@ -187,10 +186,10 @@ a:active .new-tweet-background {
 }
 
 .btn {
-  background: -webkit-linear-gradient(#6BA9DB, #3E7CAE); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#6BA9DB, #3E7CAE); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#6BA9DB, #3E7CAE); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#6BA9DB, #3E7CAE); /* Standard syntax */
+  background: -webkit-linear-gradient(#6BA9DB, #3E7CAE);
+  background: -o-linear-gradient(#6BA9DB, #3E7CAE);
+  background: -moz-linear-gradient(#6BA9DB, #3E7CAE);
+  background: linear-gradient(#6BA9DB, #3E7CAE);
   border-radius: 5px;
   border: 0;
   outline: none;
@@ -212,12 +211,12 @@ a:active .new-tweet-background {
 
 .list-element {
   border-bottom: 1px solid #D5D9DC;
-  padding: 10px 10px;
-  min-height: 18px;
-  background: -webkit-linear-gradient(#FEFEFE, #F9F9F9); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#FEFEFE, #F9F9F9); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#FEFEFE, #F9F9F9); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#FEFEFE, #F9F9F9); /* Standard syntax */
+  padding: 10px;
+  min-height: 64px;
+  background: -webkit-linear-gradient(#FEFEFE, #F9F9F9);
+  background: -o-linear-gradient(#FEFEFE, #F9F9F9);
+  background: -moz-linear-gradient(#FEFEFE, #F9F9F9);
+  background: linear-gradient(#FEFEFE, #F9F9F9);
 }
 
 .list-element::after {
@@ -245,7 +244,6 @@ a:active .new-tweet-background {
 }
 
 select {
-  width: 100px;
   height: 30px;
   line-height: 30px;
   width: auto;
@@ -275,10 +273,10 @@ footer {
 }
 
 ul.nav li {
-  background: -webkit-linear-gradient(#737477, #343538); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#737477, #343538); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#737477, #343538); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#737477, #343538); /* Standard syntax */
+  background: -webkit-linear-gradient(#737477, #343538);
+  background: -o-linear-gradient(#737477, #343538);
+  background: -moz-linear-gradient(#737477, #343538);
+  background: linear-gradient(#737477, #343538);
   padding: 2px 0;
   float: left;
   position: relative;
@@ -289,10 +287,6 @@ ul.nav li {
 
 ul.nav {
   text-align: center;
-}
-
-li.active {
-  background: #6EACDE !important;
 }
 
 li:active {
@@ -314,6 +308,7 @@ li:active {
   padding: 5px;
 }
 
+/* TODO: Remove */
 #top-left-icon {
   width: 38px;
   height: 28px;
@@ -354,4 +349,36 @@ li:active {
   .img-tweet > img {
     width: 100%;
   }
+}
+
+$actionbar-blue-1: #7b96f7;
+$actionbar-blue-2: #5476e8;
+$actionbar-color: #e9ebf5;
+
+.actionbar .container {
+  padding: 0 !important;
+  width: auto;
+}
+
+.actionbar-btn {
+  color: $actionbar-color !important;
+}
+
+.actionbar-title {
+  /* Firefox doesn't show the title */
+  z-index: 0 !important;
+  color: $actionbar-color;
+  background-image: -o-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%); 
+  background-image: -moz-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%); 
+  background-image: -webkit-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%); 
+  background-image: -ms-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%); 
+  background-image: linear-gradient(to bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%);
+}
+
+.actionbar-btn {
+  font-size: 1.3rem;
+}
+
+.tabs-img {
+  margin-top: -10px;
 }

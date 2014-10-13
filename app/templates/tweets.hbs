@@ -1,40 +1,62 @@
 <div class="hook" id="hook"></div>
 <div class="spacer"></div>
 <div class="wrapper">
-  <div class="header">
-    <button {{action 'toggleSearchBar'}} class="btn" id="top-left-icon">
-      <div class="finder"></div>
-    </button>
-    <h1>{{title}}</h1>
-    {{#link-to 'tweets.tweetout'}}
-    <div class="new-tweet-background"></div>
-    <div class="new-tweet"></div>
-    {{/link-to}}
-  </div>
+
+  <nav class="actionbar actionbar-default actionbar-fixed-top">
+    <div class="container">
+      <ul class="actionbar-nav">
+        <li class="actionbar-title">{{title}}</li>
+        <!--<li class="pull-left">
+        </li>-->
+        <li> 
+          {{#link-to 'tweets.tweetout' class='actionbar-btn'}}
+            <span class="glyphicon glyphicon-plus"></span>
+          {{/link-to}}
+        </li>
+        <li>
+          <a {{action 'toggleSearchBar'}} class="actionbar-btn">
+            <span class="glyphicon glyphicon-search"></span> Buscar
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   {{#if searchBarVisible}}
     {{search-bar hide='toggleSearchBar' search='getMoreSearch'}}
   {{/if}}
   
   {{outlet}}
-  <footer>
-    <ul class="nav">
-      {{#link-to 'tweets.index' tagName="li"}}
-      <img class="menu-icon" src="images/bell.png">
-      {{/link-to}}
-  
-      {{#link-to 'tweets.earthquakes' tagName="li" class="pull-left"}}
-      <img class="menu-icon" src="images/earthquake.png">
-      {{/link-to}}
-  
-  
-      {{#link-to 'tweets.fires' tagName="li" class="pull-left"}}
-      <img class="menu-icon" src="images/flame.png">
-      {{/link-to}}
-  
-  
-      <li class="pull-left">
-      <img class="menu-icon" src="images/dots.png">
-      </li>
-    </ul>
-  </footer>
+
+  <nav class="actionbar actionbar-default actionbar-fixed-bottom">
+    <div class="container">
+      <ul class="actionbar-nav actionbar-tabs">
+        <li class="active">
+          {{#link-to 'tweets.index'}}
+          <img class="tabs-img" src="images/geography-25.png">
+          <p>Cercanos</p>
+          {{/link-to}}
+        </li>
+        <li>
+          {{#link-to 'tweets.earthquakes'}}
+            <img class="tabs-img" src="images/earthquakes-25.png">
+            <p>Terremotos</p>
+          {{/link-to}}
+        </li>
+        <li>
+          {{#link-to 'tweets.fires'}}
+            <img class="tabs-img" src="images/fires-25.png">
+            <p>Incendios</p>
+          {{/link-to}}
+        </li>
+        <li>
+          {{#link-to 'tweets.fires'}}
+            <img class="tabs-img" src="images/floods-25.png">
+            <p>Inundaciones</p>
+          {{/link-to}}
+        </li>
+      </ul>
+    </div>
+  </nav>
+
 </div>
