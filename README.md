@@ -32,7 +32,6 @@ Try it yourself with this [DEMO](http://www.riccardoodone.com/tweetsaster).
 
 * Paginate search results (same way the app handles tweets on top or bottom)
 * Provide a streaming style auto-update of new tweets from backend without forcing the user to load the page again or pull-to-refresh it
-* RESTify it with a better backend and Ember REST Adapter
 * Use ember "official" query-params
 * Increment time passed on every tweet synchronously without having to refresh the page [2]
 * Show parsed image from tweets in landscape mode and provide possibility to view them fullscreen

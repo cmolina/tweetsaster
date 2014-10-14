@@ -1,3 +1,5 @@
+/* Imports */
+
 /* https://github.com/twbs/bootstrap-sass/issues/582 */
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 /* Starts bootstrap */
@@ -5,6 +7,31 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 /* http://stackoverflow.com/questions/7111610/import-regular-css-file-in-scss-file */
 @import "CSS:../bower_components/bootstrap-actionbar/actionbar";
 
+
+/* Variables */
+
+$actionbar-blue-1: #7b96f7;
+$actionbar-blue-2: #5476e8;
+$actionbar-color: #e9ebf5;
+
+
+/* Mixins */
+
+@mixin background-image($angle, $color0, $color1) {
+  background-image: -o-linear-gradient($angle, $color0, $color1); 
+  background-image: -moz-linear-gradient($angle, $color0, $color1); 
+  background-image: -webkit-linear-gradient($angle, $color0, $color1); 
+  background-image: -ms-linear-gradient($angle, $color0, $color1); 
+  background-image: linear-gradient(to $angle, $color0, $color1);
+}
+
+
+/* Rules */
+
+body { 
+  /* http://getbootstrap.com/components/#navbar-fixed-top */
+  padding-top: 50px; 
+}
 
 h1 {
   margin: 0;
@@ -126,10 +153,6 @@ a:active .new-tweet-background {
   background: linear-gradient(#6BA9DB, #1E5C8E);
 }
 
-.spacer {
-  height: 48px;
-}
-
 .filler {
   margin-top: 49px;
 }
@@ -199,17 +222,13 @@ a:active .new-tweet-background {
   border-radius: 8px;
 }
 
-.wrapper {
-  width: 100%;
-  position: relative;
-}
-
 .list-wrapper {
   width: 100%;
   color: black;
 }
 
 .list-element {
+  color: black;
   border-bottom: 1px solid #D5D9DC;
   padding: 10px;
   min-height: 64px;
@@ -351,13 +370,13 @@ li:active {
   }
 }
 
-$actionbar-blue-1: #7b96f7;
-$actionbar-blue-2: #5476e8;
-$actionbar-color: #e9ebf5;
+.actionbar-fixed-top {
+  @include background-image(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%);
 
-.actionbar .container {
-  padding: 0 !important;
-  width: auto;
+  .container {
+    padding: 0 !important;
+    width: auto;
+  }
 }
 
 .actionbar-btn {
@@ -368,11 +387,6 @@ $actionbar-color: #e9ebf5;
   /* Firefox doesn't show the title */
   z-index: 0 !important;
   color: $actionbar-color;
-  background-image: -o-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%); 
-  background-image: -moz-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%); 
-  background-image: -webkit-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%); 
-  background-image: -ms-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%); 
-  background-image: linear-gradient(to bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%);
 }
 
 .actionbar-btn {
@@ -381,4 +395,12 @@ $actionbar-color: #e9ebf5;
 
 .tabs-img {
   margin-top: -10px;
+}
+
+.tweet-text {
+  font-size: x-large;
+}
+
+.no-underline:hover {
+  text-decoration: none;
 }

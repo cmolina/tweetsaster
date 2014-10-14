@@ -1,6 +1,7 @@
 <div class="list-wrapper">
 {{#if hasTweets}}
   {{#each itemController='tweet'}}
+    {{#link-to 'tweet.index' this class="no-underline"}}
     <div class="list-element">
       <div class="main-col">
         <div class="side-col">
@@ -11,6 +12,7 @@
         {{{text}}}
       </div>
     </div>
+    {{/link-to}}
   {{/each}}
   
   {{#if showingSpinner}}
