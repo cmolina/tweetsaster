@@ -1,55 +1,25 @@
-<nav class="actionbar actionbar-fixed-top">
-  <div class="container">
-    <ul class="actionbar-nav">
-      <li class="actionbar-title">.</li>
-      <li class="pull-left">
-        {{#link-to 'tweets' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-chevron-left"></span> Noticias
-        {{/link-to}}
-      </li>
-      <li> 
-        {{#link-to 'tweet.comment' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-comment"></span> Comentar
-        {{/link-to}}
-      </li>
-      <li>
-        {{#link-to 'tweet.share' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-share"></span>
-        {{/link-to}}
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<article class="container-fluid">
-  <h1 class="tweet-text">{{model.formattedText}}</h1>
-  <button type="button" class="btn btn-default">&Uacute;til</button>
-  <button type="button" class="btn btn-danger">Reportar</button>
-  <ul id="comments">
-    <li class="comment"></li>
-  </ul>
-</article>
+{{outlet}}
 
 <nav class="actionbar actionbar-default actionbar-fixed-bottom">
   <div class="container">
     <ul class="actionbar-nav actionbar-tabs">
       {{#link-to 'tweet.index' tagName='li' replace=true}}
         <a>
-        <img class="tabs-img" src="images/info-25.png">
-        <p>Informaci&oacute;n</p>
+          <img class="tabs-img" src="images/info-25.png">
+          <p>Informaci&oacute;n</p>
         </a>
       {{/link-to}}
       {{#link-to 'tweet.map' tagName='li' replace=true}}
-      <a>
-          <img class="tabs-img" src="images/waypoint_map-25.png">
-          <p>Lugar</p>
-      </a>
+        <a>
+            <img class="tabs-img" src="images/waypoint_map-25.png">
+            <p>Lugar</p>
+        </a>
       {{/link-to}}
       {{#link-to 'tweet.pictures'  tagName='li' replace=true}}
-      <a>
-          <img class="tabs-img" src="images/picture-25.png">
-          <p>Fotos</p>
-      </a>
+        <a>
+            <img class="tabs-img" src="images/picture-25.png">
+            <p>Fotos</p>
+        </a>
       {{/link-to}}
     </ul>
   </div>

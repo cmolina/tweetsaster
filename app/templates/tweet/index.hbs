@@ -1,0 +1,30 @@
+<nav class="actionbar actionbar-fixed-top">
+  <div class="container">
+    <ul class="actionbar-nav">
+      <li class="pull-left">
+        {{#link-to 'tweets' class='actionbar-btn'}}
+          <span class="glyphicon glyphicon-chevron-left"></span> Noticias
+        {{/link-to}}
+      </li>
+      <li> 
+        {{#link-to 'tweet.comment' class='actionbar-btn'}}
+          <span class="glyphicon glyphicon-comment"></span> Comentar
+        {{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'tweet.share' class='actionbar-btn'}}
+          <span class="glyphicon glyphicon-share"></span>
+        {{/link-to}}
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<article class="container-fluid">
+  <h1 class="tweet-text">{{model.formattedText}}</h1>
+  <button type="button" class="btn btn-default">&Uacute;til</button>
+  <button type="button" class="btn btn-danger">Reportar</button>
+  <ul id="comments">
+    <li class="comment"></li>
+  </ul>
+</article>

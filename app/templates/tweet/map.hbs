@@ -1,0 +1,24 @@
+<nav class="actionbar actionbar-fixed-top">
+  <div class="container">
+    <ul class="actionbar-nav">
+      <li class="pull-left">
+        {{#link-to 'tweets' class='actionbar-btn'}}
+          <span class="glyphicon glyphicon-chevron-left"></span> Noticias
+        {{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'tweet.share' class='actionbar-btn'}}
+          <span class="glyphicon glyphicon-map-marker"></span>
+        {{/link-to}}
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<article class="container-fluid">
+{{#if controller.model.geo.coordinates}}
+  <iframe class="map" {{bind-attr src=mapURL}}></iframe>
+{{else}}
+    <p>No hay informaci&oacute;n geogr&aacute;fica</p>
+{{/if}}
+</article>

@@ -17,12 +17,12 @@ $actionbar-color: #e9ebf5;
 
 /* Mixins */
 
-@mixin background-image($angle, $color0, $color1) {
-  background-image: -o-linear-gradient($angle, $color0, $color1); 
-  background-image: -moz-linear-gradient($angle, $color0, $color1); 
-  background-image: -webkit-linear-gradient($angle, $color0, $color1); 
-  background-image: -ms-linear-gradient($angle, $color0, $color1); 
-  background-image: linear-gradient(to $angle, $color0, $color1);
+@mixin background($angle, $color0, $color1) {
+  background: -o-linear-gradient($angle, $color0, $color1); 
+  background: -moz-linear-gradient($angle, $color0, $color1); 
+  background: -webkit-linear-gradient($angle, $color0, $color1); 
+  background: -ms-linear-gradient($angle, $color0, $color1); 
+  background: linear-gradient(to $angle, $color0, $color1);
 }
 
 
@@ -59,10 +59,7 @@ ul {
 
 .header {
   width: 100%;
-  background: -webkit-linear-gradient(#737477, #343538);
-  background: -o-linear-gradient(#737477, #343538);
-  background: -moz-linear-gradient(#737477, #343538);
-  background: linear-gradient(#737477, #343538);
+  @include background(top, #737477, #343538);
   border-bottom: 1px solid black;
   border-top: 1px solid #939497;
   text-align: center;
@@ -107,18 +104,12 @@ ul {
 }
 
 a:active .finder-background {
-  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E);
-  background: -o-linear-gradient(#6BA9DB, #1E5C8E);
-  background: -moz-linear-gradient(#6BA9DB, #1E5C8E);
-  background: linear-gradient(#6BA9DB, #1E5C8E);
+  @include background(top, #6BA9DB, #1E5C8E);
 }
 
 
 a:active .new-tweet-background {
-  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E);
-  background: -o-linear-gradient(#6BA9DB, #1E5C8E);
-  background: -moz-linear-gradient(#6BA9DB, #1E5C8E);
-  background: linear-gradient(#6BA9DB, #1E5C8E);
+  @include background(top, #6BA9DB, #1E5C8E);
 }
 
 .new-tweet {
@@ -139,18 +130,12 @@ a:active .new-tweet-background {
   position: absolute;
   top: 9px;
   right: 13px;
-  background: -webkit-linear-gradient(#6BA9DB, #3E7CAE);
-  background: -o-linear-gradient(#6BA9DB, #3E7CAE);
-  background: -moz-linear-gradient(#6BA9DB, #3E7CAE);
-  background: linear-gradient(#6BA9DB, #3E7CAE);
+  @include background(top, #6BA9DB, #3E7CAE);
   border-radius: 5px;
 }
 
 a:active .new-tweet-background {
-  background: -webkit-linear-gradient(#6BA9DB, #1E5C8E);
-  background: -o-linear-gradient(#6BA9DB, #1E5C8E);
-  background: -moz-linear-gradient(#6BA9DB, #1E5C8E);
-  background: linear-gradient(#6BA9DB, #1E5C8E);
+  @include background(top, #6BA9DB, #1E5C8E);
 }
 
 .filler {
@@ -168,10 +153,7 @@ a:active .new-tweet-background {
   left: 0;
   width: 100%;
   height: 100%;
-  background: -webkit-linear-gradient(#777, #222);
-  background: -o-linear-gradient(#777, #222);
-  background: -moz-linear-gradient(#777, #222);
-  background: linear-gradient(#777, #222);
+  @include background(top, #777, #222);
   z-index: 100;
 }
 
@@ -209,10 +191,7 @@ a:active .new-tweet-background {
 }
 
 .btn {
-  background: -webkit-linear-gradient(#6BA9DB, #3E7CAE);
-  background: -o-linear-gradient(#6BA9DB, #3E7CAE);
-  background: -moz-linear-gradient(#6BA9DB, #3E7CAE);
-  background: linear-gradient(#6BA9DB, #3E7CAE);
+  @include background(top, #6BA9DB, #3E7CAE);
   border-radius: 5px;
   border: 0;
   outline: none;
@@ -232,10 +211,7 @@ a:active .new-tweet-background {
   border-bottom: 1px solid #D5D9DC;
   padding: 10px;
   min-height: 64px;
-  background: -webkit-linear-gradient(#FEFEFE, #F9F9F9);
-  background: -o-linear-gradient(#FEFEFE, #F9F9F9);
-  background: -moz-linear-gradient(#FEFEFE, #F9F9F9);
-  background: linear-gradient(#FEFEFE, #F9F9F9);
+  @include background(top, #FEFEFE, #F9F9F9);
 }
 
 .list-element::after {
@@ -292,10 +268,7 @@ footer {
 }
 
 ul.nav li {
-  background: -webkit-linear-gradient(#737477, #343538);
-  background: -o-linear-gradient(#737477, #343538);
-  background: -moz-linear-gradient(#737477, #343538);
-  background: linear-gradient(#737477, #343538);
+  @include background(top, #737477, #343538);
   padding: 2px 0;
   float: left;
   position: relative;
@@ -371,7 +344,7 @@ li:active {
 }
 
 .actionbar-fixed-top {
-  @include background-image(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%);
+  @include background(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%);
 
   .container {
     padding: 0 !important;
@@ -403,4 +376,11 @@ li:active {
 
 .no-underline:hover {
   text-decoration: none;
+}
+
+.map {
+  width: 100%;
+  min-height: 390px;
+  border: none;
+  @include background(bottom, lightgray 0%, white 100%);
 }
