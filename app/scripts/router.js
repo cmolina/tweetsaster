@@ -11,5 +11,6 @@ Tweetsaster.Router.map(function () {
     this.route('pictures');
     this.route('comment');
     this.route('share');
+    this.route('upload');
   });
 });

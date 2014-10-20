@@ -6,6 +6,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 /* http://stackoverflow.com/questions/7111610/import-regular-css-file-in-scss-file */
 @import "CSS:../bower_components/bootstrap-actionbar/actionbar";
+@import "CSS:../bower_components/hook/hook";
 
 
 /* Variables */
@@ -17,7 +18,7 @@ $actionbar-color: #e9ebf5;
 
 /* Mixins */
 
-@mixin background($angle, $color0, $color1) {
+@mixin background-linear-gradient($angle, $color0, $color1) {
   background: -o-linear-gradient($angle, $color0, $color1); 
   background: -moz-linear-gradient($angle, $color0, $color1); 
   background: -webkit-linear-gradient($angle, $color0, $color1); 
@@ -59,7 +60,7 @@ ul {
 
 .header {
   width: 100%;
-  @include background(top, #737477, #343538);
+  @include background-linear-gradient(top, #737477, #343538);
   border-bottom: 1px solid black;
   border-top: 1px solid #939497;
   text-align: center;
@@ -104,12 +105,12 @@ ul {
 }
 
 a:active .finder-background {
-  @include background(top, #6BA9DB, #1E5C8E);
+  @include background-linear-gradient(top, #6BA9DB, #1E5C8E);
 }
 
 
 a:active .new-tweet-background {
-  @include background(top, #6BA9DB, #1E5C8E);
+  @include background-linear-gradient(top, #6BA9DB, #1E5C8E);
 }
 
 .new-tweet {
@@ -130,12 +131,12 @@ a:active .new-tweet-background {
   position: absolute;
   top: 9px;
   right: 13px;
-  @include background(top, #6BA9DB, #3E7CAE);
+  @include background-linear-gradient(top, #6BA9DB, #3E7CAE);
   border-radius: 5px;
 }
 
 a:active .new-tweet-background {
-  @include background(top, #6BA9DB, #1E5C8E);
+  @include background-linear-gradient(top, #6BA9DB, #1E5C8E);
 }
 
 .filler {
@@ -153,7 +154,7 @@ a:active .new-tweet-background {
   left: 0;
   width: 100%;
   height: 100%;
-  @include background(top, #777, #222);
+  @include background-linear-gradient(top, #777, #222);
   z-index: 100;
 }
 
@@ -191,7 +192,7 @@ a:active .new-tweet-background {
 }
 
 .btn {
-  @include background(top, #6BA9DB, #3E7CAE);
+  @include background-linear-gradient(top, #6BA9DB, #3E7CAE);
   border-radius: 5px;
   border: 0;
   outline: none;
@@ -211,7 +212,7 @@ a:active .new-tweet-background {
   border-bottom: 1px solid #D5D9DC;
   padding: 10px;
   min-height: 64px;
-  @include background(top, #FEFEFE, #F9F9F9);
+  @include background-linear-gradient(top, #FEFEFE, #F9F9F9);
 }
 
 .list-element::after {
@@ -268,7 +269,7 @@ footer {
 }
 
 ul.nav li {
-  @include background(top, #737477, #343538);
+  @include background-linear-gradient(top, #737477, #343538);
   padding: 2px 0;
   float: left;
   position: relative;
@@ -344,7 +345,7 @@ li:active {
 }
 
 .actionbar-fixed-top {
-  @include background(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%);
+  @include background-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%);
 
   .container {
     padding: 0 !important;
@@ -382,5 +383,5 @@ li:active {
   width: 100%;
   min-height: 390px;
   border: none;
-  @include background(bottom, lightgray 0%, white 100%);
+  @include background-linear-gradient(top, lightgray 0%, white 100%);
 }

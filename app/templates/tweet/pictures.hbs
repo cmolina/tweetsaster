@@ -1,0 +1,24 @@
+<nav class="actionbar actionbar-fixed-top">
+  <div class="container">
+    <ul class="actionbar-nav">
+      <li class="pull-left">
+        {{#link-to 'tweets' class='actionbar-btn'}}
+          <span class="glyphicon glyphicon-chevron-left"></span> Noticias
+        {{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'tweet.upload' class='actionbar-btn'}}
+          <span class="glyphicon glyphicon-upload"></span>
+        {{/link-to}}
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<article class="container-fluid">
+{{#if model.pictures}}
+  {{view Tweetsaster.SlideshowView pictures=model.pictures}}
+{{else}}
+  No hay im&aacute;genes subidas todav&iacute;a
+{{/if}}
+</article>

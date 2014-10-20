@@ -12,5 +12,4 @@ require('scripts/routes/*');
 require('scripts/views/*');
 require('scripts/components/*');
 require('scripts/router');
-require('scripts/rrouter');
-
+require('scripts/extras/*');

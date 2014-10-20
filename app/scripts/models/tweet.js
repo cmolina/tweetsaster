@@ -7,6 +7,18 @@ Tweetsaster.Tweet = DS.Model.extend({
   user: DS.attr(),
   // geo.coordinates[latitude, longitude]
   geo: DS.attr(),
+  // entities.media[{type: 'photo', media_url: 'http://...png'}]
+  entities: DS.attr(),
+  pictures: function() {
+    var mediaList = this.get('entities').media,
+        picturesURL = [];
+    mediaList.forEach(function(media) {
+      if (media.type === 'photo')
+        picturesURL.push(media.media_url);
+    });
+    return picturesURL;
+  }.property('entities'),
+
   formattedText: function() {
     var text = this.get('text');
     return text.charAt(0).toUpperCase() + text.slice(1);
