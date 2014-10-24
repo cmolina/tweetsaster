@@ -1,24 +1,20 @@
-<nav class="actionbar actionbar-fixed-top">
-  <div class="container">
-    <ul class="actionbar-nav">
-      <li class="pull-left">
-        {{#link-to 'tweets' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-chevron-left"></span> Noticias
-        {{/link-to}}
-      </li>
-      <li>
-        {{#link-to 'tweet.share' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-map-marker"></span>
-        {{/link-to}}
-      </li>
-    </ul>
-  </div>
+<nav class="bar bar-nav">
+  {{#link-to 'tweets' tagName='button' class='btn btn-link btn-nav pull-left'}}
+    <span class="icon icon-left-nav"></span>
+    Noticias
+  {{/link-to}}
+  {{#link-to 'tweet.share' tagName='button' class='btn btn-link btn-nav pull-right'}}
+    <span class="icon icon-edit"></span>
+    Cambiar ubicaci&oacute;n
+  {{/link-to}}
 </nav>
 
-<article class="container-fluid">
+<div class="content">
 {{#if controller.model.geo.coordinates}}
   <iframe class="map" {{bind-attr src=mapURL}}></iframe>
 {{else}}
-    <p>No hay informaci&oacute;n geogr&aacute;fica</p>
+  <article class="content-padded">
+    <p>No hay informaci&oacute;n geogr&aacute;fica &#x2639;</p>
+  </article>
 {{/if}}
-</article>
+</div>

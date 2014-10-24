@@ -1,24 +1,20 @@
-<nav class="actionbar actionbar-fixed-top">
-  <div class="container">
-    <ul class="actionbar-nav">
-      <li class="pull-left">
-        {{#link-to 'tweets' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-chevron-left"></span> Noticias
-        {{/link-to}}
-      </li>
-      <li>
-        {{#link-to 'tweet.upload' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-upload"></span>
-        {{/link-to}}
-      </li>
-    </ul>
-  </div>
+<nav class="bar bar-nav">
+  {{#link-to 'tweets' tagName='button' class='btn btn-link btn-nav pull-left'}}
+    <span class="icon icon-left-nav"></span>
+    Noticias
+  {{/link-to}}
+  {{#link-to 'tweet.upload' tagName='button' class='btn btn-link btn-nav pull-right'}}
+    <span class="icon icon-up"></span>
+    Subir foto
+  {{/link-to}}
 </nav>
 
-<article class="container-fluid">
+<div class="content">
 {{#if model.pictures}}
   {{view Tweetsaster.SlideshowView pictures=model.pictures}}
 {{else}}
-  No hay im&aacute;genes subidas todav&iacute;a
+  <article class="content-padded">
+    <p>No hay im&aacute;genes subidas <i>todav&iacute;a</i></p>
+  </article>
 {{/if}}
-</article>
+</div>

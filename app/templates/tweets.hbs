@@ -1,56 +1,40 @@
-<div class="hook" id="hook"></div>
-
-<nav class="actionbar actionbar-fixed-top">
-  <div class="container">
-    <ul class="actionbar-nav">
-      <li class="actionbar-title">{{title}}</li>
-      <li> 
-        {{#link-to 'tweets.tweetout' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-plus"></span>
-        {{/link-to}}
-      </li>
-      <li>
-        <a {{action 'toggleSearchBar'}} class="actionbar-btn">
-          <span class="glyphicon glyphicon-search"></span> Buscar
-        </a>
-      </li>
-    </ul>
-  </div>
+<nav class="bar bar-nav">
+  <button class="btn btn-link btn-nav pull-left">
+    <span class="icon icon-search"></span>
+    Buscar
+  </button>
+  <button class="btn btn-link btn-nav pull-right">
+    Redactar
+    <span class="icon icon-plus"></span>
+    </button>
+  <h1 class="title">{{title}}</h1>
 </nav>
+
 
 {{#if searchBarVisible}}
   {{search-bar hide='toggleSearchBar' search='getMoreSearch'}}
 {{/if}}
 
-{{outlet}}
+<div class="content">
+  <div class="hook" id="hook"></div>
+  {{outlet}}
+</div>
 
-<nav class="actionbar actionbar-default actionbar-fixed-bottom">
-  <div class="container">
-    <ul class="actionbar-nav actionbar-tabs">
-      {{#link-to 'tweets.index' tagName='li' replace=true}}
-        <a>
-          <img class="tabs-img" src="images/geography-25.png">
-          <p>Cercanos</p>
-        </a>
-      {{/link-to}}
-      {{#link-to 'tweets.earthquakes' tagName='li' replace=true}}
-        <a>
-          <img class="tabs-img" src="images/earthquakes-25.png">
-          <p>Terremotos</p>
-        </a>
-      {{/link-to}}
-      {{#link-to 'tweets.fires' tagName='li' replace=true}}
-        <a>
-          <img class="tabs-img" src="images/fires-25.png">
-          <p>Incendios</p>
-        </a>
-      {{/link-to}}
-      {{#link-to 'tweets.fires' tagName='li' replace=true}}
-        <a>
-          <img class="tabs-img" src="images/floods-25.png">
-          <p>Inundaciones</p>
-        </a>
-      {{/link-to}}
-    </ul>
-  </div>
+<nav class="bar bar-tab">
+  {{#link-to 'tweets.index' class='tab-item' replace=true}}
+    <span class="icon"><img src="images/geography-25.png"></span>
+    <span class="tab-label">Cercanos</span>
+  {{/link-to}}
+  {{#link-to 'tweets.earthquakes' class='tab-item' replace=true}}
+    <span class="icon"><img src="images/earthquakes-25.png"></span>
+    <span class="tab-label">Terremotos</span> 
+  {{/link-to}}
+  {{#link-to 'tweets.fires' class='tab-item' replace=true}}
+    <span class="icon"><img src="images/fires-25.png"></span>
+    <span class="tab-label">Incendios</span>
+  {{/link-to}}
+  {{#link-to 'tweets.floods' class='tab-item' replace=true}}
+    <span class="icon"><img src="images/floods-25.png"></span>
+    <span class="tab-label">Inundaciones</span>
+  {{/link-to}}
 </nav>

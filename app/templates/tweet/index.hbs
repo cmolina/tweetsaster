@@ -1,30 +1,31 @@
-<nav class="actionbar actionbar-fixed-top">
-  <div class="container">
-    <ul class="actionbar-nav">
-      <li class="pull-left">
-        {{#link-to 'tweets' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-chevron-left"></span> Noticias
-        {{/link-to}}
-      </li>
-      <li> 
-        {{#link-to 'tweet.comment' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-comment"></span> Comentar
-        {{/link-to}}
-      </li>
-      <li>
-        {{#link-to 'tweet.share' class='actionbar-btn'}}
-          <span class="glyphicon glyphicon-share"></span>
-        {{/link-to}}
-      </li>
-    </ul>
-  </div>
+<nav class="bar bar-nav">
+  {{#link-to 'tweets' tagName='button' class='btn btn-link btn-nav pull-left'}}
+    <span class="icon icon-left-nav"></span>
+    Noticias
+  {{/link-to}}
+  {{#link-to 'tweet.comment' tagName='button' class='btn btn-link btn-nav pull-right'}}
+    <span class="icon icon-compose"></span>
+    Comentar
+  {{/link-to}}
 </nav>
 
-<article class="container-fluid">
-  <h1 class="tweet-text">{{model.formattedText}}</h1>
-  <button type="button" class="btn btn-default">&Uacute;til</button>
-  <button type="button" class="btn btn-danger">Reportar</button>
-  <ul id="comments">
-    <li class="comment"></li>
-  </ul>
-</article>
+<div class="content">
+  <article class="content-padded">
+    <h1 class="tweet-text">{{model.formattedText}}</h1>
+    <button type="button" class="btn btn-positive">
+      &Uacute;til
+      <span class="icon icon-star"></span>
+    </button>
+    {{#link-to 'tweet.share' tagName='button' class='btn'}}
+      <span class="icon icon-share">Compartir...</span>
+    {{/link-to}}
+    
+    <button type="button" class="btn btn-negative pull-right">
+      Reportar...
+    </button>
+
+    <ul id="comments">
+      <li class="comment"></li>
+    </ul>
+  </article>
+</div>

@@ -1,12 +1,26 @@
 /* Imports */
 
-/* https://github.com/twbs/bootstrap-sass/issues/582 */
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-/* Starts bootstrap */
-@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "compass";
+
+/* Used by bootstrap */
+  /* https://github.com/twbs/bootstrap-sass/issues/582 */
+  /* $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; */
+  /* Starts bootstrap */
+  /* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap"; */
+
+@import "../bower_components/ratchet/sass/ratchet";
 /* http://stackoverflow.com/questions/7111610/import-regular-css-file-in-scss-file */
-@import "CSS:../bower_components/bootstrap-actionbar/actionbar";
 @import "CSS:../bower_components/hook/hook";
+
+/* Fix for Ratchicons, not loaded */
+@font-face {
+  font-family: 'Ratchicons';
+  src: url('/bower_components/ratchet/fonts/ratchicons.eot');
+  src: url('/bower_components/ratchet/fonts/ratchicons.eot?#iefix') format('embedded-opentype'),
+  url('/bower_components/ratchet/fonts/ratchicons.woff') format('woff'),
+  url('/bower_components/ratchet/fonts/ratchicons.ttf') format('truetype'),
+  url('/bower_components/ratchet/fonts/ratchicons.svg#ratchicons') format('svg');
+}
 
 
 /* Variables */
@@ -16,65 +30,7 @@ $actionbar-blue-2: #5476e8;
 $actionbar-color: #e9ebf5;
 
 
-/* Mixins */
-
-@mixin background-linear-gradient($angle, $color0, $color1) {
-  background: -o-linear-gradient($angle, $color0, $color1); 
-  background: -moz-linear-gradient($angle, $color0, $color1); 
-  background: -webkit-linear-gradient($angle, $color0, $color1); 
-  background: -ms-linear-gradient($angle, $color0, $color1); 
-  background: linear-gradient(to $angle, $color0, $color1);
-}
-
-
 /* Rules */
-
-body { 
-  /* http://getbootstrap.com/components/#navbar-fixed-top */
-  padding-top: 50px; 
-}
-
-h1 {
-  margin: 0;
-  font-size: 1em;
-}
-
-h2 {
-  margin: 0;
-  padding: 0;
-  color: #6EACDE;
-  font-size: 1.1rem;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
-ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  position: relative;
-}
-
-.header {
-  width: 100%;
-  @include background-linear-gradient(top, #737477, #343538);
-  border-bottom: 1px solid black;
-  border-top: 1px solid #939497;
-  text-align: center;
-  padding: 14px 0;
-  position: fixed;
-  top: 0;
-  color: white;
-  z-index: 10;
-}
-
-.menu-icon {
-  height: 35px;
-  padding-top: 3px;
-}
 
 .sub-header {
   height: 49px;
@@ -85,121 +41,8 @@ ul {
   box-shadow: black 0 -1px 11px 0;
 }
 
-.section-header {
-  padding: 10px 0;
-  text-align: center;
-  margin-bottom: 0;
-  position: relative; 
-}
-
-.finder {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: 2px;
-  left: 6px;
-  background-size: cover;
-  background-image: url('../images/magnifying.png');
-  background-repeat: no-repeat;
-  border-radius: 5px;
-}
-
-a:active .finder-background {
-  @include background-linear-gradient(top, #6BA9DB, #1E5C8E);
-}
-
-
-a:active .new-tweet-background {
-  @include background-linear-gradient(top, #6BA9DB, #1E5C8E);
-}
-
-.new-tweet {
-  width: 38px;
-  height: 28px;
-  position: absolute;
-  top: 9px;
-  right: 13px;
-  background-size: cover;
-  background-image: url('../images/new_msg_icon.png');
-  background-repeat: no-repeat;
-  border-radius: 5px;
-}
-
-.new-tweet-background {
-  width: 38px;
-  height: 28px;
-  position: absolute;
-  top: 9px;
-  right: 13px;
-  @include background-linear-gradient(top, #6BA9DB, #3E7CAE);
-  border-radius: 5px;
-}
-
-a:active .new-tweet-background {
-  @include background-linear-gradient(top, #6BA9DB, #1E5C8E);
-}
-
 .filler {
   margin-top: 49px;
-}
-
-.menu-wrapper {
-  height: 95%;
-  overflow: scroll;
-}
-
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  @include background-linear-gradient(top, #777, #222);
-  z-index: 100;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  z-index: 1;
-}
-
-.bubble {
-  background: white;
-  border-radius: 8px;
-  padding: 2px 4px;
-  position: absolute;
-  right: 38px;
-  font-size: 0.9rem;
-  top: 13px;
-  color: black;
-}
-
-
-.arrow {
-  width: 13px;
-  background-size: 10px 18px;
-  background-repeat: no-repeat;
-  height: 33px;
-  top: 14px;
-  right: 10px;
-  position: absolute;
-  background-image: url('../images/arrow.png');
-}
-
-.btn {
-  @include background-linear-gradient(top, #6BA9DB, #3E7CAE);
-  border-radius: 5px;
-  border: 0;
-  outline: none;
-}
-
-.rounded {
-  border-radius: 8px;
 }
 
 .list-wrapper {
@@ -212,7 +55,7 @@ a:active .new-tweet-background {
   border-bottom: 1px solid #D5D9DC;
   padding: 10px;
   min-height: 64px;
-  @include background-linear-gradient(top, #FEFEFE, #F9F9F9);
+  @include background-image(linear-gradient(to top, #FEFEFE, #F9F9F9));
 }
 
 .list-element::after {
@@ -262,14 +105,8 @@ button[type="submit"] {
   margin: auto;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
 ul.nav li {
-  @include background-linear-gradient(top, #737477, #343538);
+  @include background-image(linear-gradient(to top, #737477, #343538));
   padding: 2px 0;
   float: left;
   position: relative;
@@ -299,19 +136,6 @@ li:active {
 #search-btn {
   width: 27%;
   padding: 5px;
-}
-
-/* TODO: Remove */
-#top-left-icon {
-  width: 38px;
-  height: 28px;
-  position: absolute;
-  top: 9px;
-  left: 13px;
-}
-
-#colorbox {
-  z-index: 1;
 }
 
 #search-field {
@@ -344,35 +168,9 @@ li:active {
   }
 }
 
-.actionbar-fixed-top {
-  @include background-linear-gradient(bottom, $actionbar-blue-1 0%, $actionbar-blue-2 100%);
-
-  .container {
-    padding: 0 !important;
-    width: auto;
-  }
-}
-
-.actionbar-btn {
-  color: $actionbar-color !important;
-}
-
-.actionbar-title {
-  /* Firefox doesn't show the title */
-  z-index: 0 !important;
-  color: $actionbar-color;
-}
-
-.actionbar-btn {
-  font-size: 1.3rem;
-}
-
-.tabs-img {
-  margin-top: -10px;
-}
-
 .tweet-text {
-  font-size: x-large;
+  font-size: 1.5em;
+  min-height: 3em;
 }
 
 .no-underline:hover {
@@ -383,5 +181,5 @@ li:active {
   width: 100%;
   min-height: 390px;
   border: none;
-  @include background-linear-gradient(top, lightgray 0%, white 100%);
+  @include background-image(linear-gradient(to top, lightgray 0%, white 100%));
 }

@@ -1,26 +1,18 @@
-{{outlet}}
+<div class="content">
+  {{outlet}}
+</div>
 
-<nav class="actionbar actionbar-default actionbar-fixed-bottom">
-  <div class="container">
-    <ul class="actionbar-nav actionbar-tabs">
-      {{#link-to 'tweet.index' tagName='li' replace=true}}
-        <a>
-          <img class="tabs-img" src="images/info-25.png">
-          <p>Informaci&oacute;n</p>
-        </a>
-      {{/link-to}}
-      {{#link-to 'tweet.map' tagName='li' replace=true}}
-        <a>
-            <img class="tabs-img" src="images/waypoint_map-25.png">
-            <p>Lugar</p>
-        </a>
-      {{/link-to}}
-      {{#link-to 'tweet.pictures'  tagName='li' replace=true}}
-        <a>
-            <img class="tabs-img" src="images/picture-25.png">
-            <p>Fotos</p>
-        </a>
-      {{/link-to}}
-    </ul>
-  </div>
+<nav class="bar bar-tab">
+  {{#link-to 'tweet.index' class='tab-item' replace=true}}
+    <span class="icon"><img class="tabs-img" src="images/info-25.png"></span>
+    <span class="tab-label">Informaci&oacute;n</span>
+  {{/link-to}}
+  {{#link-to 'tweet.map' class='tab-item' replace=true}}
+    <span class="icon"><img class="tabs-img" src="images/waypoint_map-25.png"></span>
+    <span class="tab-label">Lugar</span>
+  {{/link-to}}
+  {{#link-to 'tweet.pictures' class='tab-item' replace=true}}
+    <span class="icon"><img class="tabs-img" src="images/picture-25.png"></span>
+    <span class="tab-label">Fotos</span>
+  {{/link-to}}
 </nav>
