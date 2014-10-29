@@ -10,7 +10,7 @@
 </nav>
 
 <div class="content">
-{{#if controller.model.geo.coordinates}}
+{{#if controller.model.coordinates.coordinates}}
   <iframe class="map" {{bind-attr src=mapURL}}></iframe>
 {{else}}
   <article class="content-padded">
