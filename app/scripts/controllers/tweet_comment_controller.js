@@ -8,9 +8,9 @@ Tweetsaster.TweetCommentController = Ember.ObjectController.extend({
     return 140 - (this.get('prefix').length + this.get('textComment').length);
   }.property('textComment'),
   canSend: function() {
-    var o = 0 < this.get('textComment').length;
-    var p = this.get('remainingCharacters') >= 0;
-    return o && p;
+    var thereIsText = 0 < this.get('textComment').length;
+    var isShortEnough = this.get('remainingCharacters') >= 0;
+    return thereIsText && isShortEnough;
   }.property('remainingCharacters'),
   cantSend: Ember.computed.not('canSend'),
 
@@ -18,18 +18,19 @@ Tweetsaster.TweetCommentController = Ember.ObjectController.extend({
     sendComment: function() {
       var comment = this.store.createRecord('tweet', {
         text: this.get('prefix') + this.get('textComment'),
-        in_reply_to_status_id: this.model.id,
+        in_reply_to_status_id: this.model.get('id_str'),
         coordinates: this.get('coordinates'),
-        channel: this.model.channel
+        channel: this.get('model.channel')
       });
       comment.save().then(
         function(comment) {
-          this.get('controller').transitionToRoute('tweet.index');
-        },
+          this.set('textComment', '');
+          this.transitionToRoute('tweet.index');
+        }.bind(this),
         function(comment) {
           // show message to user
           console.error('Mensaje no enviado :(');
-        }
+        }.bind(this)
       );
     }
   }

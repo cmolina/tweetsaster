@@ -1,6 +1,7 @@
 Tweetsaster.GoogleApiKey = 'AIzaSyDiuj2l9-S2bE7K6i6Cxcgv6ZCDXaUiwYc';
 
 Tweetsaster.Tweet = DS.Model.extend({
+  id_str: DS.attr('string'),
   text: DS.attr('string'),
   created_at: DS.attr('string'),
   channel: DS.attr('string'),
@@ -9,7 +10,7 @@ Tweetsaster.Tweet = DS.Model.extend({
   coordinates: DS.attr(),
   // entities.media[{type: 'photo', media_url: 'http://...png'}]
   entities: DS.attr(),
-  in_reply_to_status_id: DS.attr('number'),
+  in_reply_to_status_id: DS.attr('string'),
 
   pictures: function() {
     var mediaList = this.get('entities').media,
