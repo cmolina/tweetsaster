@@ -16,7 +16,7 @@ Tweetsaster.TweetsEarthquakesRoute = Ember.Route.extend(Tweetsaster.ScrollTopMix
   },
   controllerName: 'tweetsIndex',
   setupController: function(controller, model) {
-    this.controllerFor('tweets').set('title', 'Canal: Terremotos');
+    console.log(this.controllerFor('tweets').get('mapVisible'));
     this._super(controller, model);
   }
 });

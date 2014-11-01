@@ -63,6 +63,9 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
   lastID: false,
   firstID: false,
   moreBottomTweets: true,
+  searchAddress: '',
+  filterRadius: 3000,
+  filterPosition: null,
   tweetsCount: function() {
     return this.get('arrangedContent.length');
   }.property('length'),

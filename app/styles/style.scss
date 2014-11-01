@@ -183,3 +183,8 @@ li:active {
   border: none;
   @include background-image(linear-gradient(to top, lightgray 0%, white 100%));
 }
+
+.map-canvas {
+  width: 100%;
+  min-height: 200px;
+}

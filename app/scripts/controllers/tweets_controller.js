@@ -1,4 +1,4 @@
-Tweetsaster.TweetsController = Ember.ObjectController.extend({
+Tweetsaster.TweetsController = Ember.ArrayController.extend({
   title: '',
   searchBarVisible: false,
   actions: {

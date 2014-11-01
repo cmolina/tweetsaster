@@ -6,7 +6,12 @@ Tweetsaster.TweetsIndexRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin, {
     return this.store.find('tweet');
   },
   setupController: function(controller, model) {
-    this.controllerFor('tweets').set('title', 'Canal: Todas');
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var latLng = new google.maps.LatLng(position.coords.latitude, 
+                                             position.coords.longitude);
+        controller.set('filterPosition', latLng);
+      });
     this._super(controller, model);
   }
 });

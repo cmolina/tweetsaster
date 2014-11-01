@@ -1,3 +1,12 @@
+<form class="content-padded">
+  <div class="input-row">
+    <label>Buscar</label>
+    {{input type="search" placeholder="Mi posición actual" value=searchAddress}}
+  </div>
+  {{google-maps radius=filterRadius center=filterPosition}}
+  <span class="badge pull-right">{{filterRadius}}km</span>
+</form>
+
 {{#if hasTweets}}
   {{#each itemController='tweet'}}
     {{#link-to 'tweet.index' this class="no-underline"}}
