@@ -4,7 +4,10 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
   radius: 1000,
   center: new google.maps.LatLng(-36.739055,-71.0574941),//Chile hardcoded
   zoom: 10,
+  geocoder: null,
+  formattedAddress: '',
   insertMap: function() {
+    geocoder = new google.maps.Geocoder();
     var container = document.querySelector('.map-canvas');
     var options = {
       center: this.get('center'),
@@ -31,9 +34,19 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
       }, 500);
     };
 
+    var reverseGeocoding = function(latLng) {
+      geocoder.geocode({latLng: latLng}, function(results, status) {
+        if (status != google.maps.GeocoderStatus.OK)
+          return;
+        if (results[1])
+          this.set('formattedAddress', results[1].formatted_address);
+      }.bind(this));
+    }.bind(this);
+
     google.maps.event.addListener(circle, 'center_changed', function() {
       centerMapToCircle();
       this.set('center', circle.getCenter());
+      reverseGeocoding(circle.getCenter());
     }.bind(this));
     google.maps.event.addListener(circle, 'radius_changed', function() {
       centerMapToCircle();

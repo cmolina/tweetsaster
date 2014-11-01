@@ -1,9 +1,6 @@
 <form class="content-padded">
-  <div class="input-row">
-    <label>Buscar</label>
-    {{input type="search" placeholder="Mi posición actual" value=searchAddress}}
-  </div>
-  {{google-maps radius=filterRadius center=filterPosition zoom=filterZoom}}
+  {{input type="search" placeholder="Buscar un lugar..." value=searchAddress}}
+  {{google-maps radius=filterRadius center=filterPosition zoom=filterZoom formattedAddress=searchAddress}}
   <span class="badge pull-right">{{filterRadius}}km</span>
 </form>
 
