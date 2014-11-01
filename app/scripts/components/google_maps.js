@@ -3,11 +3,12 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
   circle: null,
   radius: 1000,
   center: new google.maps.LatLng(-36.739055,-71.0574941),//Chile hardcoded
+  zoom: 10,
   insertMap: function() {
     var container = document.querySelector('.map-canvas');
     var options = {
       center: this.get('center'),
-      zoom: this.get('zoom') || 11,
+      zoom: this.get('zoom'),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(container, options);
@@ -38,6 +39,11 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
       centerMapToCircle();
       this.set('radius', Math.ceil(circle.getRadius()));
     }.bind(this));
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      this.set('zoom', map.getZoom());
+    }.bind(this));
+
+
   }.on('didInsertElement'),
   setCenter: function() {
     if (!this.get('center'))

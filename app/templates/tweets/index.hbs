@@ -3,7 +3,7 @@
     <label>Buscar</label>
     {{input type="search" placeholder="Mi posición actual" value=searchAddress}}
   </div>
-  {{google-maps radius=filterRadius center=filterPosition}}
+  {{google-maps radius=filterRadius center=filterPosition zoom=filterZoom}}
   <span class="badge pull-right">{{filterRadius}}km</span>
 </form>
 
