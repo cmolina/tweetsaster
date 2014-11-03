@@ -1,7 +1,7 @@
 <div class="content-padded">
   {{input type="search" placeholder="Buscar un lugar..." value=searchAddress insert-newline='searchAddress'}}
   {{google-maps radius=filterRadius center=filterPosition zoom=filterZoom formattedAddress=searchAddress}}
-  <span class="badge pull-right">{{filterRadius}}km</span>
+  <span class="badge pull-right">{{radiusKm}}km</span>
 </div>
 
 {{#if hasTweets}}

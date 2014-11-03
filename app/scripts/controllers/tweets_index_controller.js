@@ -68,6 +68,9 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
   filterPosition: null,
   filterZoom: 11,
   geocoder: new google.maps.Geocoder(),
+  radiusKm: function() {
+    return (this.get('filterRadius')/1000).toFixed(1);
+  }.property('filterRadius'),
   tweetsCount: function() {
     return this.get('arrangedContent.length');
   }.property('length'),
@@ -79,7 +82,7 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
   }.property('length', 'moreBottomTweets'),
   actions: {
     searchAddress: function() {
-      geocoder.geocode({address: this.get('searchAddress')}, 
+      geocoder.geocode({address: this.get('searchAddress'), region: 'CL'}, 
         function(results, status) {
         if (status != google.maps.GeocoderStatus.OK) {
           console.error('Error al buscar dirección, '+status);
