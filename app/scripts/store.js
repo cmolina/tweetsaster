@@ -1,5 +1,5 @@
 DS.RESTAdapter.reopen({
-  host: 'http://streamsaster.ing.puc.cl:28017'
+  host: 'http://localhost:28017'
 });
 
 Tweetsaster.ApplicationAdapter = DS.RESTAdapter.extend({});

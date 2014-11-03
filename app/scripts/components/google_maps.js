@@ -40,7 +40,7 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
           console.error('Problema obteniendo dirección desde coordenadas, '+status);
           return;
         }
-        var addrDetail = 2;
+        var addrDetail = 1;
         if (addrDetail >= results.length)
           addListener = results.length - 1;
         if (results[addrDetail])
