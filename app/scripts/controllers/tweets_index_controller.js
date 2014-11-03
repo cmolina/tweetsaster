@@ -67,6 +67,7 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
   filterRadius: 5000,
   filterPosition: null,
   filterZoom: 11,
+  geocoder: new google.maps.Geocoder(),
   tweetsCount: function() {
     return this.get('arrangedContent.length');
   }.property('length'),
@@ -77,6 +78,17 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
     return this.get('tweetsCount') > 10 && this.get('moreBottomTweets');
   }.property('length', 'moreBottomTweets'),
   actions: {
+    searchAddress: function() {
+      geocoder.geocode({address: this.get('searchAddress')}, 
+        function(results, status) {
+        if (status != google.maps.GeocoderStatus.OK) {
+          console.error('Error al buscar dirección, '+status);
+          return;
+        }
+        this.set('filterPosition', results[0].geometry.location);
+        document.querySelector('.map-canvas').focus();
+      }.bind(this));
+    },
     getMoreBottom: function() {
       Tweetsaster.getMoreTweets('bottom', this);
     },
