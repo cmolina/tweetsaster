@@ -12,7 +12,7 @@ Tweetsaster.TweetsIndexRoute = Ember.Route.extend(Tweetsaster.ScrollTopMixin, {
           });
         }.bind(this);
     if (latLng)
-      return getTweets(latLng, radius)
+      return getTweets(latLng, radius);
     else if (navigator.geolocation)
       return new Ember.RSVP.Promise(function(resolve) {
         navigator.geolocation.getCurrentPosition(function(position) {
