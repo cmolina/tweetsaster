@@ -80,6 +80,23 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
   showingSpinner: function() {
     return this.get('tweetsCount') > 10 && this.get('moreBottomTweets');
   }.property('length', 'moreBottomTweets'),
+  coordsWillChange: function() {
+    this.set('lastCoords', this.get('filterPosition'));
+  }.observesBefore('filterPosition'),
+  loadData: function() {
+    if (!this.get('lastCoords')) {
+      this.set('lastCoords', this.get('filterPosition'));
+      return;
+    }
+    var latLng = this.get('filterPosition'),
+        radius = this.get('radiusKm');
+    this.set('model', this.store.find('tweet', {
+      coordinates: [latLng.lng(), latLng.lat()],
+      radius: radius
+    }));
+    console.log('load!');
+    return this.get('model');
+  }.observes('filterRadius', 'filterPosition'),
   actions: {
     searchAddress: function() {
       geocoder.geocode({address: this.get('searchAddress'), region: 'CL'}, 
