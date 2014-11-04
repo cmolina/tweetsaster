@@ -1,5 +1,6 @@
 DS.RESTAdapter.reopen({
-  host: 'http://localhost:28017'
+  //host: 'http://localhost:28017'
+  host: 'http://restapi.ngrok.com'
 });
 
 Tweetsaster.ApplicationAdapter = DS.RESTAdapter.extend({});

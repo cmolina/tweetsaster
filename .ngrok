@@ -1,0 +1,8 @@
+auth_token: "Yney0b7Wgh7Jat0w9IiH"
+tunnels:
+  restapi:
+    proto:
+      http: "28017"
+  streamsaster:
+    proto:
+      http: "9000"

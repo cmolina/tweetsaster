@@ -68,6 +68,16 @@ module.exports = function (grunt) {
                     }
                 }
             },
+            nolivereload: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            mountFolder(connect, '.tmp'),
+                            mountFolder(connect, yeomanConfig.app)
+                        ];
+                    }
+                }
+            },
             test: {
                 options: {
                     middleware: function (connect) {
@@ -354,6 +364,23 @@ module.exports = function (grunt) {
             'neuter:app',
             'copy:fonts',
             'connect:livereload',
+            'open',
+            'watch'
+        ]);
+    });
+
+    grunt.registerTask('ngrok', function (target) {
+        if (target === 'dist') {
+            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
+        }
+
+        grunt.task.run([
+            'clean:server',
+            'replace:app',
+            'concurrent:server',
+            'neuter:app',
+            'copy:fonts',
+            'connect:nolivereload',
             'open',
             'watch'
         ]);
