@@ -188,3 +188,45 @@ li:active {
   width: 100%;
   min-height: 200px;
 }
+
+.bar-nav {
+  @include background-image(linear-gradient(to top, #5476E8, #7894EF));
+}
+.bar .btn-link {
+  color: white;
+}
+
+.icon-8 {
+  width: 26px !important;
+  height: 26px !important;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon.world-map {
+  background-image: url("/images/world_map-25.png");
+}
+.active .icon.world-map {
+  background-image: url("/images/world_map-26.png");
+}
+
+.icon.earthquakes {
+  background-image: url("/images/earthquakes-25.png");
+}
+.active .icon.earthquakes {
+  background-image: url("/images/earthquakes-26.png");
+}
+
+.icon.fires {
+  background-image: url("/images/fires-25.png");
+}
+.active .icon.fires {
+  background-image: url("/images/fires-26.png");
+}
+
+.icon.floods {
+  background-image: url("/images/floods-25.png");
+}
+.active .icon.floods {
+  background-image: url("/images/floods-26.png");
+}
