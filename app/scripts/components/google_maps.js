@@ -36,15 +36,18 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
 
     var reverseGeocoding = function(latLng) {
       geocoder.geocode({latLng: latLng}, function(results, status) {
+        var address = '',
+            addrDetail = 1;
         if (status != google.maps.GeocoderStatus.OK) {
           console.error('Problema obteniendo dirección desde coordenadas, '+status);
-          return;
         }
-        var addrDetail = 1;
-        if (addrDetail >= results.length)
-          addListener = results.length - 1;
-        if (results[addrDetail])
-          this.set('formattedAddress', results[addrDetail].formatted_address);
+        else {
+          if (addrDetail >= results.length)
+            addrDetail = results.length - 1;
+          if (results[addrDetail])
+            address = results[addrDetail].formatted_address;
+        }
+        this.set('formattedAddress', address);
       }.bind(this));
     }.bind(this);
 

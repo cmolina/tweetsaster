@@ -101,13 +101,16 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
     searchAddress: function() {
       geocoder.geocode({address: this.get('searchAddress'), region: 'CL'}, 
         function(results, status) {
-        if (status != google.maps.GeocoderStatus.OK) {
-          console.error('Error al buscar dirección, '+status);
-          return;
-        }
-        this.set('filterPosition', results[0].geometry.location);
-        document.querySelector('.map-canvas').focus();
-      }.bind(this));
+          if (status != google.maps.GeocoderStatus.OK) {
+            if (status == google.maps.GeocoderStatus.ZERO_RESULTS)
+              alert('No pudimos encontrar ese lugar. ¿Está bien escrito?\n'+
+                    'Cambia la dirección y vuelve a intentar');
+            console.error('Error al buscar dirección, '+status);
+            return;
+          }
+          this.set('filterPosition', results[0].geometry.location);
+          document.querySelector('.map-canvas').focus();
+        }.bind(this));
     },
     getMoreBottom: function() {
       Tweetsaster.getMoreTweets('bottom', this);
