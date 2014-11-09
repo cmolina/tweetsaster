@@ -1,16 +1,15 @@
 Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
   map: null,
-  circle: null,
   radius: 1000,
-  center: new google.maps.LatLng(-36.739055,-71.0574941),//Chile hardcoded
+  latLng: null,
   zoom: 10,
-  geocoder: null,
+  geocoder: new google.maps.Geocoder(),
   formattedAddress: '',
   insertMap: function() {
-    geocoder = new google.maps.Geocoder();
+    var geocoder = this.get('geocoder');
     var container = document.querySelector('.map-canvas');
     var options = {
-      center: this.get('center'),
+      center: this.get('latLng'),
       zoom: this.get('zoom'),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -22,13 +21,13 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
       fillOpacity: 0.33,
       fillColor: '#FF0000',
       map: map,
-      center: this.get('center'),
+      center: this.get('latLng'),
       radius: this.get('radius'),
       editable: true
     };
     circle = new google.maps.Circle(options);
 
-    var centerMapToCircle = function() {
+    var centerMap = function(latLng) {
       window.setTimeout(function() {
         map.panTo(circle.getCenter());
       }, 500);
@@ -52,24 +51,23 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
     }.bind(this);
 
     google.maps.event.addListener(circle, 'center_changed', function() {
-      centerMapToCircle();
-      this.set('center', circle.getCenter());
-      reverseGeocoding(circle.getCenter());
+      var latLng = circle.getCenter();
+      centerMap(latLng);
+      this.set('latLng', latLng);
+      reverseGeocoding(latLng);
     }.bind(this));
     google.maps.event.addListener(circle, 'radius_changed', function() {
-      centerMapToCircle();
+      centerMap(circle.getCenter());
       this.set('radius', Math.ceil(circle.getRadius()));
     }.bind(this));
     google.maps.event.addListener(map, 'zoom_changed', function() {
       this.set('zoom', map.getZoom());
     }.bind(this));
-
-
   }.on('didInsertElement'),
   setCenter: function() {
-    if (!this.get('center'))
+    var latLng = this.get('latLng');
+    if (!latLng)
       return;
-    map.panTo(this.get('center'));
-    circle.setCenter(this.get('center'));
-  }.observes('center')
+    circle.setCenter(latLng);
+  }.observes('latLng')
 });

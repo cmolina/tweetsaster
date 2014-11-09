@@ -1,6 +1,6 @@
 localStorage.clear();
 
-var Tweetsaster = window.Tweetsaster = Ember.Application.create({});
+var Tweetsaster = window.Tweetsaster = Ember.Application.create({LOG_TRANSITIONS_INTERNAL: true});
 
 /* Order and include as you please. */
 require('scripts/utilities/*');

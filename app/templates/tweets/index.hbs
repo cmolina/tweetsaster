@@ -1,10 +1,11 @@
-<div class="content-padded">
-  {{input type="search" placeholder="Buscar un lugar..." value=searchAddress insert-newline='searchAddress'}}
-  {{google-maps radius=filterRadius center=filterPosition zoom=filterZoom formattedAddress=searchAddress}}
-  <span class="badge pull-right">{{radiusKm}}km</span>
+{{#if filterActive}}
+<div id="map-filter" class="content-padded">
+  {{input type="search" placeholder="Buscar un lugar..." value=filterAddress insert-newline='searchAddress'}}
+  {{google-maps radius=filterRadius latLng=filterCoords zoom=filterZoom formattedAddress=filterAddress}}
+  <span class="badge pull-right">{{within}}km</span>
 </div>
-
-{{#if hasTweets}}
+{{/if}}
+{{#if model.length}}
   {{#each itemController='tweet'}}
     {{#link-to 'tweet.index' this class="no-underline"}}
     <div class="list-element">

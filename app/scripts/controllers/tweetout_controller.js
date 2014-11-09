@@ -1,7 +1,6 @@
-Tweetsaster.TweetsTweetoutController = Ember.ArrayController.extend({
+Tweetsaster.TweetoutController = Ember.ArrayController.extend({
   text: null,
   selectedChannel: '',
-  needs: ['tweetsIndex'],
   channels: [
     {value: '', label: '#generico'}, 
     {value: 'earthquakes', label: '#terremotos'}, 

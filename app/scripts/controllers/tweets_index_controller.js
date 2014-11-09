@@ -55,7 +55,6 @@ Tweetsaster.getMoreTweets = function(position, controller) {
 };
 
 Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
-  needs: 'tweets',
   sortProperties: ['id'],
   sortAscending: false,
   gettingMore: false,
@@ -63,55 +62,10 @@ Tweetsaster.TweetsIndexController = Ember.ArrayController.extend({
   lastID: false,
   firstID: false,
   moreBottomTweets: true,
-  searchAddress: '',
-  filterRadius: 5000,
-  filterPosition: null,
-  filterZoom: 11,
-  geocoder: new google.maps.Geocoder(),
-  radiusKm: function() {
-    return (this.get('filterRadius')/1000).toFixed(1);
-  }.property('filterRadius'),
-  tweetsCount: function() {
-    return this.get('arrangedContent.length');
-  }.property('length'),
-  hasTweets: function() {
-    return this.get('tweetsCount') > 0;
-  }.property('tweetsCount'),
   showingSpinner: function() {
-    return this.get('tweetsCount') > 10 && this.get('moreBottomTweets');
+    return this.get('arrangedContent.length') > 10 && this.get('moreBottomTweets');
   }.property('length', 'moreBottomTweets'),
-  coordsWillChange: function() {
-    this.set('lastCoords', this.get('filterPosition'));
-  }.observesBefore('filterPosition'),
-  loadData: function() {
-    if (!this.get('lastCoords')) {
-      this.set('lastCoords', this.get('filterPosition'));
-      return;
-    }
-    var latLng = this.get('filterPosition'),
-        radius = this.get('radiusKm');
-    this.set('model', this.store.find('tweet', {
-      coordinates: [latLng.lng(), latLng.lat()],
-      radius: radius
-    }));
-    console.log('load!');
-    return this.get('model');
-  }.observes('filterRadius', 'filterPosition'),
   actions: {
-    searchAddress: function() {
-      geocoder.geocode({address: this.get('searchAddress'), region: 'CL'}, 
-        function(results, status) {
-          if (status != google.maps.GeocoderStatus.OK) {
-            if (status == google.maps.GeocoderStatus.ZERO_RESULTS)
-              alert('No pudimos encontrar ese lugar. ¿Está bien escrito?\n'+
-                    'Cambia la dirección y vuelve a intentar');
-            console.error('Error al buscar dirección, '+status);
-            return;
-          }
-          this.set('filterPosition', results[0].geometry.location);
-          document.querySelector('.map-canvas').focus();
-        }.bind(this));
-    },
     getMoreBottom: function() {
       Tweetsaster.getMoreTweets('bottom', this);
     },

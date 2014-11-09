@@ -1,4 +1,4 @@
-Tweetsaster.TweetsSearchController = Ember.ArrayController.extend({
+Tweetsaster.SearchController = Ember.ArrayController.extend({
   hasTweets: function() {
     return this.get('length');
   }.property('length'),

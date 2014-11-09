@@ -189,6 +189,13 @@ li:active {
   min-height: 200px;
 }
 
+/*tweets/index.hbs*/
+#map-filter {
+  background: #F1EFE9;
+  padding: 10px 5px 20px;
+  margin: 0;
+}
+
 .bar-nav {
   @include background-image(linear-gradient(to top, #5476E8, #7894EF));
 }
