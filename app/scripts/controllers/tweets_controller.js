@@ -1,5 +1,5 @@
 Tweetsaster.TweetsController = Ember.ArrayController.extend({
-  channel: '',
+  channel: 'earthquake',
   lat: null,
   lng: null,
   within: null,

@@ -1,12 +1,45 @@
-<div class="list-wrapper">
-    <div class="tweetout">
-    	<form {{action "tweet" on="submit"}}>
-    		{{focus-text-area value=text cols="23" rows="2"}}
-    		<br />
-    		<div class="controls">
-    			{{view Ember.Select value=selectedChannel content=channels optionValuePath="content.value" optionLabelPath="content.label"}}
-    			<button type="submit">Envia!</button>
-    		</div>
-    	</form>
+<nav class="bar bar-nav">
+  {{#link-to 'tweets' controllers.tweets.channel class='btn btn-link btn-nav pull-left'}}
+    <span class="icon icon-left-nav"></span>
+    Volver
+  {{/link-to}}
+  <h1 class="title">Nueva noticia</h1>
+</nav>
+
+<div class="content">
+  <article class="content-padded">
+    <div class="input-row">
+      <label>Canal</label>
+      {{view 'select' value=selectedChannel content=channels optionValuePath="content.value" optionLabelPath="content.label" required=true}}
     </div>
+    {{textarea value=text placeholder='¿Qué está sucediendo? Escribe un problema, un dato útil que quieras compartir...' class='btn-block' rows=4}}
+    <p class="pull-right">Quedan <span {{bind-attr class=":badge inRange::badge-negative"}}>{{remainingCharacters}}</span> caracteres restantes</p>
+    <button {{action "search"}} {{bind-attr class=":btn :btn-block cantSend::btn-primary" disabled=cantSend}}>
+      Enviar noticia
+    </button>
+  </article>
+</div>
+
+<div class="themodal-overlay" style="display: none;">
+  <div id="similar-tweets" class="modal">
+      <h1 class="title">Noticias similares</h1>
+      <p class="content-padded">
+        Revisa si alguien ya publicó esta noticia. Si no es ninguna de esas, publícala.
+      </p>
+      <ul class="table-view">
+      {{#each tweet in similarTweets}}
+        <li {{action "hideModal"}} class="table-view-cell">
+          {{#link-to 'tweet' tweet class='navigate-right'}}
+            {{tweet.text}}
+          {{/link-to}}
+        </li>
+      {{/each}}
+      </ul>
+      <button {{action "sendTweet"}} class="btn btn-block btn-primary">
+        Enviar noticia de todas maneras
+      </button>
+      <button {{action "hideModal"}} class="btn btn-positive full-width">
+        Seguir editando
+      </button>
+  </div>
 </div>

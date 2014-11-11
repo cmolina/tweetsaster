@@ -189,11 +189,35 @@ li:active {
   min-height: 200px;
 }
 
-/*tweets/index.hbs*/
+/* tweets/index.hbs */
 #map-filter {
   background: #F1EFE9;
   padding: 10px 5px 20px;
   margin: 0;
+}
+
+/* tweetout.hbs */
+.input-row select {
+  float: right;
+  width: 65%;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  border: 0px none;
+}
+
+#similar-tweets {
+  background: white;
+  border-radius: 3px;
+  padding: 5px 10px 10px;
+  margin: 10px;
+
+  h1 {
+    position: static;
+  }
+}
+
+.full-width {
+  width: 100%;
 }
 
 .bar-nav {
