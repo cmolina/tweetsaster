@@ -220,6 +220,35 @@ li:active {
   width: 100%;
 }
 
+/* search.hbs */
+.search {
+  display: table;
+
+  a {
+    display: table-cell;
+  }
+
+  div {
+    display: table-cell;
+    width: 100%;
+    
+    input {
+      width: 100%;
+    }
+  }
+}
+
+#no-margin, #no-margin > :first-child, #no-margin > :last-child {
+  margin: 0;
+}
+
+.error-empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .bar-nav {
   @include background-image(linear-gradient(to top, #5476E8, #7894EF));
 }
