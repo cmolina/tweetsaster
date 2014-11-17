@@ -8,42 +8,41 @@
 </nav>
 
 <div class="content">
+{{#if latestQueries}}
+  <ul class="table-view" id="no-margin">
+    <li class="table-view-divider">Búsquedas recientes</li>
+    {{#each query in latestQueries}}
+    <li class="table-view-cell">
+      {{#link-to 'search' (query-params q=query) class='navigate-right'}}
+        {{query}}
+      {{/link-to}}
+    </li>
+    {{/each}}
+  </ul>
+{{/if}}
+
 {{#if q}}
+  {{#if model}}
+<ul class="table-view" id="no-margin">
+  <li class="table-view-divider">Resultados</li>
   {{#each itemController='report'}}
-  {{#link-to 'report.index' this class="no-underline"}}
-    <div class="list-element">
-      <div class="main-col">
-        <div class="side-col">
-          <div class="time">
-            {{timePassed}}
-          </div>
-        </div>
-        {{{text}}}
-      </div>
-    </div>
-  {{/link-to}}
+  <li class="table-view-cell">
+    {{#link-to 'report.index' this class="no-underline"}}
+      {{text}}
+      <span class="badge badge-primary badge-inverted">{{timePassed}}</span>
+    {{/link-to}}
+  </li>
+  {{/each}}
+</ul>
   {{else}}
     {{#if showSpinner}}
-      <div id="loading-gif"></div>
-    {{else}}
-    <div class="error-empty">
-      <strong>No pudimos encontrar lo que estabas buscando.</strong>
-      ¿Podrías intentar nuevamente usando otras palabras?
-    </div>
-    {{/if}}
-  {{/each}}
+<div id="loading-gif"></div>
 {{else}}
-  {{#if latestQueries}}
-  <ul class="table-view" id="no-margin">
-    <li class="table-view-divider">Búsqueda reciente</li>
-  {{#each query in latestQueries}}
-    <li class="table-view-cell">
-    {{#link-to 'search' (query-params q=query) class='navigate-right'}}
-      {{query}}
-    {{/link-to}}
-    </li>
-  {{/each}}
-  </ul>
+<div class="error-empty">
+  <strong>No pudimos encontrar lo que estabas buscando.</strong>
+  ¿Podrías intentar nuevamente usando otras palabras?
+</div>
+    {{/if}}
   {{/if}}
 {{/if}}
 </div>

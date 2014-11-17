@@ -25,7 +25,6 @@ Tweetsaster.SearchController = Ember.ArrayController.extend({
       JSON.stringify(this.get('latestQueries.content')));
   }.observes('latestQueries.@each'),
   onQueryChanged: function() {
-    this.set('showSpinner', true);
     var q = this.get('q');
     if (q) {
       // add the search text to the recent list
@@ -33,8 +32,8 @@ Tweetsaster.SearchController = Ember.ArrayController.extend({
       latestQueries.removeObject(q);
       latestQueries.unshiftObject(q);
 
-      // keep a max of 5 elements
-      while (latestQueries.length > 5) {
+      // keep a max of 3 elements
+      while (latestQueries.get('length') > 3) {
         latestQueries.popObject();
       }
     }
@@ -42,6 +41,7 @@ Tweetsaster.SearchController = Ember.ArrayController.extend({
 
   actions: {
     findNews: function(q) {
+      this.set('showSpinner', true);
       this.set('q', q);
     }
   }

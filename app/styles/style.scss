@@ -202,8 +202,8 @@ li:active {
 }
 
 /* avoid hidden last element by the nav-bar */
-.table-view-cell:last-child {
-  margin-bottom: 2.5rem;
+.table-view:last-child {
+  margin-bottom: 3rem !important;
 }
 
 /* report/new.hbs */
