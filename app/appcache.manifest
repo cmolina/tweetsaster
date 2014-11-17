@@ -1,0 +1,25 @@
+CACHE MANIFEST
+# version 3
+
+CACHE:
+styles/simple-slideshow-styles.css
+styles/style.css
+bower_components/the-modal/the-modal.css
+bower_components/jquery/dist/jquery.js
+bower_components/handlebars/handlebars.runtime.js
+bower_components/ember/ember.js
+bower_components/ember-data/ember-data.js
+bower_components/fastclick/lib/fastclick.js
+bower_components/ratchet/dist/js/ratchet.js
+scripts/compiled-templates.js
+scripts/combined-scripts.js
+
+NETWORK:
+http://maps.gstatic.com/
+http://maps.google.com/
+http://maps.googleapis.com/
+http://mt0.googleapis.com/
+http://mt1.googleapis.com/
+http://mt2.googleapis.com/
+http://mt3.googleapis.com/
+*
