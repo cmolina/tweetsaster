@@ -24,8 +24,8 @@ Tweetsaster.timePassedFrom = function(date) {
   return timePassed;
 };
 
-Tweetsaster.TweetController = Ember.ObjectController.extend({
+Tweetsaster.ReportController = Ember.ObjectController.extend({
   timePassed: function() {
-    return Tweetsaster.timePassedFrom(this.get("created_at"));
-  }.property('created_at')
+    return Tweetsaster.timePassedFrom(this.get("createdAt"));
+  }.property('createdAt')
 });

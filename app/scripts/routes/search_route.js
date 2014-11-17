@@ -5,9 +5,9 @@ Tweetsaster.SearchRoute = Ember.Route.extend({
   model: function(params) {
     if (params.q) {
       this.controllerFor('search').set('searchText', params.q);
-      return this.store.find('tweet', params).then(function(tweets) {
+      return this.store.find('report', params).then(function(reports) {
         this.controllerFor('search').set('showSpinner', false);
-        return tweets;
+        return reports;
       }.bind(this));
     }
     else {

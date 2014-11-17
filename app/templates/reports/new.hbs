@@ -1,5 +1,5 @@
 <nav class="bar bar-nav">
-  {{#link-to 'tweets' controllers.tweets.channel class='btn btn-link btn-nav pull-left'}}
+  {{#link-to 'reports' controllers.reports.channel class='btn btn-link btn-nav pull-left'}}
     <span class="icon icon-left-nav"></span>
     Volver
   {{/link-to}}
@@ -21,21 +21,21 @@
 </div>
 
 <div class="themodal-overlay" style="display: none;">
-  <div id="similar-tweets" class="modal">
+  <div id="similar-reports" class="modal">
       <h1 class="title">Noticias similares</h1>
       <p class="content-padded">
         Revisa si alguien ya publicó esta noticia. Si no es ninguna de esas, publícala.
       </p>
       <ul class="table-view">
-      {{#each tweet in similarTweets}}
+      {{#each report in similarReports}}
         <li {{action "hideModal"}} class="table-view-cell">
-          {{#link-to 'tweet' tweet class='navigate-right'}}
-            {{tweet.text}}
+          {{#link-to 'report' report class='navigate-right'}}
+            {{report.text}}
           {{/link-to}}
         </li>
       {{/each}}
       </ul>
-      <button {{action "sendTweet"}} class="btn btn-block btn-primary">
+      <button {{action "sendReport"}} class="btn btn-block btn-primary">
         Enviar noticia de todas maneras
       </button>
       <button {{action "hideModal"}} class="btn btn-positive full-width">

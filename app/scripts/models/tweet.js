@@ -1,16 +1,14 @@
 Tweetsaster.GoogleApiKey = 'AIzaSyDiuj2l9-S2bE7K6i6Cxcgv6ZCDXaUiwYc';
 
 Tweetsaster.Tweet = DS.Model.extend({
-  id_str: DS.attr('string'),
-  text: DS.attr('string'),
-  created_at: DS.attr('string'),
+  text: DS.attr('string', {defaultValue: ''}),
+  createdAt: DS.attr('string'),
   channel: DS.attr('string'),
-  user: DS.attr(),
+  user: DS.belongsTo('user'),
   // GeoJSON Point
   coordinates: DS.attr(),
-  // entities.media[{type: 'photo', media_url: 'http://...png'}]
+  // entities.media[{type: 'photo', mediaUrl: 'http://...png'}]
   entities: DS.attr(),
-  in_reply_to_status_id: DS.attr('string'),
 
   pictures: function() {
     var mediaList = this.get('entities').media,
@@ -20,14 +18,15 @@ Tweetsaster.Tweet = DS.Model.extend({
     
     mediaList.forEach(function(media) {
       if (media.type === 'photo')
-        picturesURL.push(media.media_url);
+        picturesURL.push(media.mediaUrl);
     });
     return picturesURL;
   }.property('entities'),
 
   formattedText: function() {
     var text = this.get('text');
-    return text.charAt(0).toUpperCase() + text.slice(1);
+    if (text)
+      return text.charAt(0).toUpperCase() + text.slice(1);
   }.property('text'),
   
   mapURL: function() {

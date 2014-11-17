@@ -6,8 +6,8 @@
 </div>
 {{/if}}
 {{#if model.length}}
-  {{#each itemController='tweet'}}
-    {{#link-to 'tweet.index' this class="no-underline"}}
+  {{#each itemController='report'}}
+    {{#link-to 'report.index' this class="no-underline"}}
     <div class="list-element">
       <div class="main-col">
         <div class="side-col">
@@ -29,9 +29,8 @@
   {{/if}}  
     
 {{else}}
-  <div class="list-element">
-    <div class="main-col">
-      No hay tweets..
-    </div>
+  <div class="error-empty">
+    <strong>No pudimos encontrar ningún resultado</strong><br>
+    Prueba con radios de búsqueda más extensos u otros lugares más poblados.
   </div>
 {{/if}}

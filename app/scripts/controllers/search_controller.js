@@ -1,9 +1,9 @@
 Tweetsaster.SearchController = Ember.ArrayController.extend({
-  needs: 'tweets',
+  needs: 'reports',
   queryParams: ['q'],
   q: null,
   searchText: Ember.computed.oneWay('q'),
-  hasTweets: function() {
+  hasReports: function() {
     return this.get('length');
   }.property('length'),
   showSpinner: false,

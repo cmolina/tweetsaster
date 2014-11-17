@@ -1,8 +1,8 @@
-Tweetsaster.TweetoutController = Ember.ArrayController.extend({
-  needs: 'tweets',
+Tweetsaster.ReportsNewController = Ember.ArrayController.extend({
+  needs: 'reports',
   text: '',
   selectedChannel: '',
-  similarTweets: [],
+  similarReports: [],
   channels: [
     {value: '', label: 'Seleccione un canal'},
     {value: 'earthquake', label: 'Terremoto'}, 
@@ -24,38 +24,38 @@ Tweetsaster.TweetoutController = Ember.ArrayController.extend({
   }.property('remainingCharacters', 'selectedChannel'),
 
   onInit: function() {
-    this.set('selectedChannel', this.get('controllers.tweets.channel'));
+    this.set('selectedChannel', this.get('controllers.reports.channel'));
   }.on('init'),
 
   actions: {
     search: function() {
       // empty any possible previus search
-      this.store.find('tweet', {q: this.get('text')}).then(function(tweets) {
-        if (tweets.get('length') > 0) {
-          this.set('similarTweets', tweets);
+      this.store.find('report', {q: this.get('text')}).then(function(reports) {
+        if (reports.get('length') > 0) {
+          this.set('similarReports', reports);
           Ember.$(".themodal-overlay").show();
         }
         else
-          this.send('sendTweet');
+          this.send('sendReport');
       }.bind(this));
     },
     hideModal: function() {
       Ember.$('.themodal-overlay').hide();
     },
-    sendTweet: function() {
-      var tweet = this.store.createRecord('tweet', {
+    sendReport: function() {
+      var report = this.store.createRecord('report', {
         text: this.get('text'),
         coordinates: this.get('coordinates'),
         channel: this.get('selectedChannel')
       });
-      tweet.save().then(
-        function(tweet) {
+      report.save().then(
+        function(report) {
           this.set('text', '');
           this.send('hideModal');
-          this.transitionToRoute('tweet', tweet);
+          this.transitionToRoute('report', report);
         }.bind(this),
-        function(tweet) {
-          console.error('Tweet no enviado :(');
+        function(error) {
+          console.error('Noticia no enviada :( '+error);
         }.bind(this)
       );
     }

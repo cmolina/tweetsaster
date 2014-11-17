@@ -1,5 +1,6 @@
-Tweetsaster.TweetoutRoute = Ember.Route.extend({
+Tweetsaster.ReportsNewRoute = Ember.Route.extend({
   setupController: function(controller, model) {
+    this.controllerFor('reports').set('showFilter', false);
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(function(position) {
         var geoJSON = {

@@ -1,8 +1,8 @@
-Tweetsaster.TweetsGeolocatedController = Ember.ArrayController.extend({
-  needs: 'tweets',
-  lat: Ember.computed.alias('controllers.tweets.lat'),
-  lng: Ember.computed.alias('controllers.tweets.lng'),
-  within: Ember.computed.alias('controllers.tweets.within'),
+Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
+  needs: 'reports',
+  lat: Ember.computed.alias('controllers.reports.lat'),
+  lng: Ember.computed.alias('controllers.reports.lng'),
+  within: Ember.computed.alias('controllers.reports.within'),
   filterActive: true,
   filterAddress: '',
   filterRadius: function(key, value) {

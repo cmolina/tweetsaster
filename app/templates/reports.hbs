@@ -3,39 +3,42 @@
     <span class="icon icon-search"></span>
     Buscar
   {{/link-to}}
-  {{#link-to 'tweetout' class='btn btn-link btn-nav pull-right'}}
+  {{#link-to 'reports.new' class='btn btn-link btn-nav pull-right'}}
     Redactar
     <span class="icon icon-plus"></span>
   {{/link-to}}
 </nav>
 
+{{#if showFilter}}
 <div class="bar bar-standard bar-header-secondary">
   <div class="segmented-control">
-    {{#link-to 'tweets' channel class='control-item'}}
-      No filtrar
+    {{#link-to 'reports' channel class='control-item'}}
+      Filtrar por temas
     {{/link-to}}
-    {{#link-to 'tweets.geolocated' lat lng within class='control-item'}}
+    {{#link-to 'reports.geolocated' lat lng within class='control-item'}}
       Filtrar por ubicación
     {{/link-to}}
   </div>
 </div>
+{{/if}}
 
 <div class="content">
-  <div class="hook" id="hook"></div>
   {{outlet}}
 </div>
 
+{{#if showFilter}}
 <nav class="bar bar-tab">
-  {{#link-to 'tweets' 'earthquake' class='tab-item' replace=true}}
+  {{#link-to 'reports' 'earthquake' class='tab-item' replace=true}}
     <span class="icon icon-8 earthquakes"></span>
     <span class="tab-label">Terremotos</span> 
   {{/link-to}}
-  {{#link-to 'tweets' 'fire' class='tab-item' replace=true}}
+  {{#link-to 'reports' 'fire' class='tab-item' replace=true}}
     <span class="icon icon-8 fires"></span>
     <span class="tab-label">Incendios</span>
   {{/link-to}}
-  {{#link-to 'tweets' 'flood' class='tab-item' replace=true}}
+  {{#link-to 'reports' 'flood' class='tab-item' replace=true}}
     <span class="icon icon-8 floods"></span>
     <span class="tab-label">Inundaciones</span>
   {{/link-to}}
 </nav>
+{{/if}}

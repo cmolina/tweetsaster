@@ -1,11 +1,11 @@
 Tweetsaster.Router.map(function () {
-  this.resource('tweets', {path: '/noticias/'}, function() {
+  this.resource('reports', {path: '/noticias/'}, function() {
     this.route('index', {path: '/canal/:channel'});
     this.route('geolocated', {path: '/geo/:lat/:lng/:within'});
   });
+  this.route('reports.new', {path: '/reportar'});
   this.route('search');
-  this.route('tweetout');
-  this.resource('tweet', {path: '/noticia/:tweet_id'}, function() {
+  this.resource('report', {path: '/noticia/:report_id'}, function() {
     this.route('index');
     this.route('map');
     this.route('pictures');

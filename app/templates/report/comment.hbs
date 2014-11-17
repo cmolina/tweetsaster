@@ -1,5 +1,5 @@
 <nav class="bar bar-nav">
-  {{#link-to 'tweet.index' tagName='button' class='btn btn-link btn-nav pull-left'}}
+  {{#link-to 'report.index' tagName='button' class='btn btn-link btn-nav pull-left'}}
     <span class="icon icon-left-nav"></span>
     Cancelar
   {{/link-to}}
@@ -8,8 +8,8 @@
 
 <div class="content">
   <article class="content-padded">
-    {{textarea value=textComment placeholder='¿Qué está sucediendo?' class='btn-block'}}
-    <p class="pull-right">Quedan {{remainingCharacters}} caracteres restantes</p>
+    {{textarea value=comment placeholder='¿Qué está sucediendo?' class='btn-block'}}
+    <p class="pull-right">Quedan <span {{bind-attr class=":badge inRange::badge-negative"}}>{{remainingCharacters}}</span> caracteres restantes</p>
     <button {{action 'sendComment'}} {{bind-attr class=":btn :btn-block canSend:btn-primary"}} {{bind-attr disabled=cantSend}}>
       Enviar comentario
     </button>

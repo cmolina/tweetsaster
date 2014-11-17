@@ -1,17 +1,18 @@
-DS.RESTAdapter.reopen({
+DS.ActiveModelAdapter.reopen({
   //host: 'http://localhost:28017'
   host: 'http://restapi-streamsaster.ngrok.com'
 });
 
-Tweetsaster.ApplicationAdapter = DS.RESTAdapter.extend({});
+Tweetsaster.ApplicationAdapter = DS.ActiveModelAdapter.extend({});
 
-Tweetsaster.ApplicationSerializer = DS.RESTSerializer.extend({
-  primaryKey: '_id',
-  serialize: function (record, options) {
-    var json = this._super(record, options);
-    // Make sure the _id is a string
-    if (json._id)
-      json._id = json._id.toString();
-    return json;
+Tweetsaster.ApplicationSerializer = DS.ActiveModelSerializer.extend({});
+var userEmbeddedSerializer = DS.ActiveModelSerializer.extend(
+  DS.EmbeddedRecordsMixin, 
+  {
+    attrs: {
+      user: {embedded: 'always'}
+    }
   }
-});
+);
+Tweetsaster.TweetSerializer = Tweetsaster.ReportSerializer =
+  Tweetsaster.CommentSerializer = userEmbeddedSerializer;

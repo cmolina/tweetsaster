@@ -1,0 +1,42 @@
+<nav class="bar bar-nav">
+  {{#link-to 'reports' model.channel tagName='button' class='btn btn-link btn-nav pull-left'}}
+    <span class="icon icon-left-nav"></span>
+    Noticias
+  {{/link-to}}
+  {{#link-to 'report.comment' tagName='button' class='btn btn-link btn-nav pull-right'}}
+    <span class="icon icon-compose"></span>
+    Comentar
+  {{/link-to}}
+</nav>
+
+<div class="content">
+  <article class="content-padded">
+    <h1 class="report-text">{{model.formattedText}}</h1>
+    <button type="button" class="btn btn-positive">
+      &Uacute;til
+      <span class="icon icon-star"></span>
+    </button>
+    {{#link-to 'report.share' tagName='button' class='btn'}}
+      <span class="icon icon-share">Compartir...</span>
+    {{/link-to}}
+    
+    <button type="button" class="btn btn-negative pull-right">
+      Reportar...
+    </button>
+  </article>
+
+  {{#if comments}}
+  <ul class="table-view comments">
+    {{#each comment in comments}}
+    <li class="table-view-cell">{{comment.formattedText}}</li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <div style="height: 300px;">
+    <div class="error-empty">
+      <em>No hay ningún comentario todavía.</em><br>
+      Si quieres aportar a esta noticia {{#link-to 'report.comment'}}escribe un comentario{{/link-to}}
+    </div>
+  </div>
+  {{/if}}
+</div>

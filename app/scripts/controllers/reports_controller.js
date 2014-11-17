@@ -1,15 +1,16 @@
-Tweetsaster.TweetsController = Ember.ArrayController.extend({
+Tweetsaster.ReportsController = Ember.ArrayController.extend({
   channel: 'earthquake',
   lat: null,
   lng: null,
   within: null,
+  showFilter: true,
   
   onFilterChanges: function() {
     Ember.run.once(this, 'saveFilterParams');
   },
   saveFilterParams: function() {
     // this way the params are save in the URL
-    this.transitionToRoute('tweets.geolocated', this.get('lat'), 
+    this.transitionToRoute('reports.geolocated', this.get('lat'), 
                            this.get('lng'), this.get('within'));
   },
 

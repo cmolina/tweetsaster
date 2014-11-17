@@ -7,7 +7,12 @@ require('scripts/utilities/*');
 require('scripts/mixins/*');
 require('scripts/controllers/*');
 require('scripts/store');
-require('scripts/models/*');
+// 'comment' and 'report' must be loaded after 'tweet' model
+require('scripts/models/user');
+require('scripts/models/tweet');
+require('scripts/models/comment');
+require('scripts/models/report');
+
 require('scripts/routes/*');
 require('scripts/views/*');
 require('scripts/components/*');

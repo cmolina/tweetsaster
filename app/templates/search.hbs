@@ -1,5 +1,5 @@
 <nav class="bar bar-nav search">
-  {{#link-to 'tweets' controllers.tweets.channel class='btn btn-link btn-nav pull-left'}}
+  {{#link-to 'reports' controllers.reports.channel class='btn btn-link btn-nav pull-left'}}
     <span class="icon icon-left-nav"></span>
   {{/link-to}}
   <div>
@@ -9,8 +9,8 @@
 
 <div class="content">
 {{#if q}}
-  {{#each itemController='tweet'}}
-  {{#link-to 'tweet.index' this class="no-underline"}}
+  {{#each itemController='report'}}
+  {{#link-to 'report.index' this class="no-underline"}}
     <div class="list-element">
       <div class="main-col">
         <div class="side-col">
