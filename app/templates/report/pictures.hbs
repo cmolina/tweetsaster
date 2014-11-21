@@ -3,18 +3,58 @@
     <span class="icon icon-left-nav"></span>
     Noticias
   {{/link-to}}
-  {{#link-to 'report.upload' tagName='button' class='btn btn-link btn-nav pull-right'}}
+  <button {{action 'showSelectPhotos'}} class="btn btn-link btn-nav pull-right">
     <span class="icon icon-up"></span>
     Subir foto
-  {{/link-to}}
+  </button>
 </nav>
 
 <div class="content">
-{{#if model.pictures}}
-  {{view Tweetsaster.SlideshowView pictures=model.pictures}}
+{{#if model.inReplyToStatus.pictures}}
+  {{view 'slideshow' pictures=model.inReplyToStatus.pictures}}
 {{else}}
-  <article class="content-padded">
-    <p>No hay im&aacute;genes subidas <i>todav&iacute;a</i></p>
-  </article>
+  <div class="error-empty">
+    No hay im&aacute;genes subidas <i>todav&iacute;a</i><br>
+    ¿Tienes fotos para compartir? <button class="btn btn-link" {{action 'showSelectPhotos'}}>Súbelas</button>
+  </div>
 {{/if}}
+</div>
+
+<div class="themodal-overlay" style="display: none;">
+  <div id="similar-reports" class="modal">
+    <h1 class="title">Subiendo fotos: ({{validFiles.length}} de 4)</h1>
+    <p class="content-padded">Puedes subir o sacar una foto en este momento</p>
+    {{#if uploadStatus.uploading}}
+    <p>
+      Subiendo <span class="badge badge-positive">{{uploadStatus.percentComplete}}%</span>
+    </p>
+    {{/if}}
+
+    {{#view view.DragDrop}}
+      {{#if uploadStatus.error}}
+      <div class="error-empty">
+        Hubo un error al subir las fotos. Por favor intenta más tarde.
+      </div>
+      {{/if}}
+      {{#each controller.validFiles}}
+      <div class="half-screen">
+        {{name}}
+        <button class="btn remove-image" {{action 'deleteFile' this}}>Eliminar</button>
+        {{view view.ImagePreview imageBinding="this"}}
+      </div>
+      {{/each}}
+      {{#if canAddAPhoto}}
+      <div class="half-screen">
+        <button class="btn" {{action 'selectFile'}}>Saca una foto<br>o<br>elige una imagen</button>
+        <div class="opacity-none">
+          {{view view.SingleInput accept='image/*'}}
+        </div>
+      </div>
+      {{/if}}
+    {{/view}}
+    
+    <button {{action 'uploadAllFiles'}} {{bind-attr class=":btn :btn-block cantSend::btn-primary" disabled=cantSend}}>Sube las fotos</button>
+    <button {{action 'hideModal'}} class="btn btn-positive full-width">Salir y no subir nada</button>
+
+  </div>
 </div>

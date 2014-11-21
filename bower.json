@@ -9,9 +9,13 @@
     "fastclick": "~1.0.2",
     "hook": "*",
     "ratchet": "~2.0.2",
-    "the-modal": "~0.1.2"
+    "the-modal": "~0.1.2",
+    "ember-droplet": "~0.8.4"
   },
   "devDependencies": {
     "ember-mocha-adapter": "0.1.2"
+  },
+  "resolutions": {
+    "ember": "1.8.1"
   }
 }

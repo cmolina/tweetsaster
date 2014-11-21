@@ -16,18 +16,15 @@ Tweetsaster.ReportCommentController = Ember.ObjectController.extend({
   actions: {
     sendComment: function() {
       var comment = this.get('model');
-      // TODO: add the comment to the original report ???
-      comment.save().then(
-        function(comment) {
-          this.set('textComment', '');
-          this.transitionToRoute('report.index');
-        }.bind(this),
-        function(error) {
-          // show message to user
-          console.error('Mensaje no enviado :(');
-          console.error(error);
-        }.bind(this)
-      );
+      comment.save().then(function(comment) {
+        this.set('textComment', '');
+        this.transitionToRoute('report.index');
+      }.bind(this),
+      function(error) {
+        // show message to user
+        console.error('Mensaje no enviado :(');
+        console.error(error);
+      }.bind(this));
     }
   }
 });

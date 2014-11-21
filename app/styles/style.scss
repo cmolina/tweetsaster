@@ -10,7 +10,7 @@
 
 @import "../bower_components/ratchet/sass/ratchet";
 /* http://stackoverflow.com/questions/7111610/import-regular-css-file-in-scss-file */
-@import "CSS:../bower_components/hook/hook";
+/* @import "CSS:../bower_components/hook/hook"; */
 
 /* Fix for Ratchicons, not loaded */
 @font-face {
@@ -28,7 +28,7 @@
 $actionbar-blue-1: #7b96f7;
 $actionbar-blue-2: #5476e8;
 $actionbar-color: #e9ebf5;
-
+$gray: #D5D9DC;
 
 /* Rules */
 
@@ -52,7 +52,7 @@ $actionbar-color: #e9ebf5;
 
 .list-element {
   color: black;
-  border-bottom: 1px solid #D5D9DC;
+  border-bottom: 1px solid $gray;
   padding: 10px;
   min-height: 64px;
   @include background-image(linear-gradient(to top, #FEFEFE, #F9F9F9));
@@ -131,11 +131,6 @@ li:active {
   width: 45px;
   min-height: 45px;
   background-image: url('../images/loading.gif');
-}
-
-#search-btn {
-  width: 27%;
-  padding: 5px;
 }
 
 #search-field {
@@ -228,6 +223,34 @@ li:active {
 
 .full-width {
   width: 100%;
+}
+
+/* report/pictures.hbs */
+.half-screen {
+  margin: 1%;
+  padding: 3px 0;
+  float: left;
+  clear: none;
+  width: 48%;
+  height: 120px;
+  border: 1px dashed $gray;
+  border-radius: 5px;
+  text-align: center;
+
+  img {
+    max-height: 120px;
+    max-width: 100%;
+  }
+}
+
+.remove-image {
+  @extend .btn-negative;
+  position: absolute;
+  opacity: 0.85;
+}
+
+.opacity-none {
+  opacity: 0;
 }
 
 /* search.hbs */

@@ -1,5 +1,6 @@
-{{#each pictureURL in view.pictures}}
+{{#eachIndexed pictureURL in view.pictures}}
   <figure>
-    <img {{bind-attr src=pictureURL}} width="100%">
+    <img {{bind-attr src=pictureURL}} class="full-width">
+    <figcaption>{{index_1}} de {{view.pictures.length}}</figcaption>
   </figure>
-{{/each}}
+{{/eachIndexed}}

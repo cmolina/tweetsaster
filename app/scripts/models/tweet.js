@@ -7,21 +7,23 @@ Tweetsaster.Tweet = DS.Model.extend({
   user: DS.belongsTo('user'),
   // GeoJSON Point
   coordinates: DS.attr(),
-  // entities.media[{type: 'photo', mediaUrl: 'http://...png'}]
-  entities: DS.attr(),
+  // extendedEntities.media[{type: 'photo', mediaUrl: 'http://...png'}]
+  extendedEntities: DS.attr(),
+  // temporaly save the media_ids
+  mediaIds: DS.attr(),
 
   pictures: function() {
-    var mediaList = this.get('entities').media,
+    var mediaList = this.get('extendedEntities.media'),
         picturesURL = [];
     if (!mediaList)
       return picturesURL;
     
     mediaList.forEach(function(media) {
       if (media.type === 'photo')
-        picturesURL.push(media.mediaUrl);
+        picturesURL.push(media.media_url);
     });
     return picturesURL;
-  }.property('entities'),
+  }.property('extendedEntities.media'),
 
   formattedText: function() {
     var text = this.get('text');

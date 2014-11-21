@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# version 3
+# version 4
 
 CACHE:
 styles/simple-slideshow-styles.css
@@ -11,8 +11,8 @@ bower_components/ember/ember.js
 bower_components/ember-data/ember-data.js
 bower_components/fastclick/lib/fastclick.js
 bower_components/ratchet/dist/js/ratchet.js
-scripts/compiled-templates.js
-scripts/combined-scripts.js
+#scripts/compiled-templates.js
+#scripts/combined-scripts.js
 
 NETWORK:
 http://maps.gstatic.com/
@@ -22,4 +22,5 @@ http://mt0.googleapis.com/
 http://mt1.googleapis.com/
 http://mt2.googleapis.com/
 http://mt3.googleapis.com/
+http://pbs.twimg.com/
 *
