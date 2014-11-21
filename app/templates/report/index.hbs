@@ -12,9 +12,9 @@
 <div class="content">
   <article class="content-padded">
     <h1 class="report-text">{{model.formattedText}}</h1>
-    <button type="button" class="btn btn-positive">
+    <button {{action 'toggleFavourite'}} type="button" {{bind-attr class=":btn :btn-positive isFavourite::btn-outlined"}}>
       &Uacute;til
-      <span class="icon icon-star"></span>
+      <span {{bind-attr class=":icon isFavourite:icon-star-filled:icon-star"}}></span>
     </button>
     {{#link-to 'report.share' tagName='button' class='btn'}}
       <span class="icon icon-share">Compartir...</span>
