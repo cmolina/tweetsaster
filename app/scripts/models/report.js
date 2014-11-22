@@ -9,5 +9,5 @@ Tweetsaster.Report = Tweetsaster.Tweet.extend({
       });
     }); 
     return allPictures;
-  }.property('comments.length')
+  }.property('comments.@each.pictures', 'pictures')
 });

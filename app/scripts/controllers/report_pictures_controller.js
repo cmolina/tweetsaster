@@ -13,6 +13,7 @@ Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController
     console.log(response);
     // send the comment with the pictures ids
     if (response.success) {
+      this.send('hideModal');
       var comment = this.get('model'),
           mediaIds = [];
       response.files.forEach(function(file) {
@@ -22,7 +23,6 @@ Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController
       comment.save().then(function(comment) {
         // TODO: show confirmation to user
       }.bind(this));
-      this.send('hideModal');
     }
   },
 
