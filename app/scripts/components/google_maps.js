@@ -11,7 +11,8 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
     var options = {
       center: this.get('latLng'),
       zoom: this.get('zoom'),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
     };
     map = new google.maps.Map(container, options);
     
