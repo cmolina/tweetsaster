@@ -10,8 +10,8 @@
 </nav>
 
 <div class="content">
-{{#if model.inReplyToStatus.pictures}}
-  {{view 'slideshow' pictures=model.inReplyToStatus.pictures}}
+{{#if model.inReplyToStatus.allPictures}}
+  {{view 'slideshow' pictures=model.inReplyToStatus.allPictures}}
 {{else}}
   <div class="error-empty">
     No hay im&aacute;genes subidas <i>todav&iacute;a</i><br>
