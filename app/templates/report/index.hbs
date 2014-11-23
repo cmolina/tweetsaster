@@ -1,5 +1,5 @@
 <nav class="bar bar-nav">
-  {{#link-to 'reports' model.channel tagName='button' class='btn btn-link btn-nav pull-left'}}
+  {{#link-to 'reports' channel tagName='button' class='btn btn-link btn-nav pull-left'}}
     <span class="icon icon-left-nav"></span>
     Noticias
   {{/link-to}}
@@ -11,24 +11,43 @@
 
 <div class="content">
   <article class="content-padded">
-    <h1 class="report-text">{{model.formattedText}}</h1>
-    <button {{action 'toggleFavourite'}} type="button" {{bind-attr class=":btn :btn-positive isFavourite::btn-outlined"}}>
-      &Uacute;til
-      <span {{bind-attr class=":icon isFavourite:icon-star-filled:icon-star"}}></span>
-    </button>
-    {{#link-to 'report.share' tagName='button' class='btn'}}
-      <span class="icon icon-share">Compartir...</span>
-    {{/link-to}}
-    
-    <button type="button" class="btn btn-negative pull-right">
-      Reportar...
-    </button>
+    <h1 class="report-text">{{formattedText}}</h1>
+    <p class="user-name pull-right">
+      <img {{bind-attr src=user.profileImageMiniUrl}}>
+      {{#if user.isNotAnonymous}}
+      <strong>{{user.screenName}}</strong>
+      {{else}}
+      Anónimo
+      {{/if}}
+    </p>
+    <div class="buttons">
+      <button {{action 'toggleFavourite'}} type="button" {{bind-attr class=":btn :btn-positive isFavourite::btn-outlined"}}>
+        &Uacute;til
+        <span {{bind-attr class=":icon isFavourite:icon-star-filled:icon-star"}}></span>
+      </button>
+      {{#link-to 'report.share' tagName='button' class='btn'}}
+        <span class="icon icon-share">Compartir...</span>
+      {{/link-to}}
+      
+      <button type="button" class="btn btn-negative pull-right">
+        Reportar...
+      </button>
+    </div>
   </article>
 
   {{#if comments}}
   <ul class="table-view comments">
-    {{#each comment in comments}}
-    <li class="table-view-cell">{{comment.formattedText}}</li>
+    <li class="table-view-divider">Comentarios</li>
+    {{#each comment in filteredComments}}
+    <li class="table-view-cell">
+      {{comment.formattedText}}
+      {{#if comment.user.isNotAnonymous}}
+        <p class="user-name">
+          <img {{bind-attr src=comment.user.profileImageMiniUrl}}>
+          <strong>{{comment.user.screenName}}</strong>
+        </p>
+      {{/if}}
+    </li>
     {{/each}}
   </ul>
   {{else}}

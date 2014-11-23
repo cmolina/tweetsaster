@@ -194,6 +194,22 @@ li:active {
 /* report/index.hbs */
 .comments .table-view-cell {
   min-height: 3rem;
+  padding: 11px 15px;
+  text-align: justify;
+}
+
+.user-name {
+  font-style: italic;
+  vertical-align: middle;
+
+  img {
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+}
+
+.buttons {
+  clear: both;
 }
 
 /* avoid hidden last element by the nav-bar */

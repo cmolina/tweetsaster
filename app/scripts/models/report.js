@@ -1,6 +1,17 @@
 Tweetsaster.Report = Tweetsaster.Tweet.extend({
   comments: DS.hasMany('comment', 
                        {async: true, inverse: 'inReplyToStatus'}),
+  filteredComments: function() {
+    var prefix = '@'+this.get('user.name')+' Nuevas fotos',
+        filtered = [];
+    this.get('comments').then(function(comments) {
+      comments.forEach(function(comment) {
+        if (comment.get('text').lastIndexOf(prefix, 0) !== 0)
+          filtered.pushObject(comment);
+      });
+    });
+    return filtered;
+  }.property('comments'),
   allPictures: function() {
     var allPictures = this.get('pictures').toArray();
     this.get('comments').then(function(comments) {
