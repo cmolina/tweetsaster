@@ -4,7 +4,6 @@ Tweetsaster.ReportsController = Ember.ArrayController.extend({
   lng: null,
   within: null,
   showFilter: true,
-  dontShowFilter: Ember.computed.not('showFilter'),
   
   onFilterChanges: function() {
     Ember.run.once(this, 'saveFilterParams');

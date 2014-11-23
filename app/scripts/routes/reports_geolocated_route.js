@@ -4,7 +4,7 @@ Tweetsaster.ReportsGeolocatedRoute = Ember.Route.extend(Tweetsaster.ScrollTopMix
     reportsController.set('lat', params.lat);
     reportsController.set('lng', params.lng);
     reportsController.set('within', params.within);
-    reportsController.set('showFilter', true);
+    reportsController.set('showChannels', false);
     return this.store.find('report', params);
   },
   renderTemplate: function(controller) {
