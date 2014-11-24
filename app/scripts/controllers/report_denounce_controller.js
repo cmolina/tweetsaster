@@ -11,7 +11,12 @@ Tweetsaster.ReportDenounceController = Ember.ObjectController.extend({
   }.property('selectedReason'),
   actions: {
     sendDenounce: function() {
-      alert('Denuncia envidada ;)');
+      var report = this.get('model');
+      report.set('denounce', {reason: this.get('selectedReason')});
+      report.save().then(function(report) {
+        report.unloadRecord();
+        // TODO msj to the user
+      });
       this.transitionToRoute('reports.index', this.get('model.channel'));
     }
   }

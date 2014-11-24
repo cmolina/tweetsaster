@@ -9,6 +9,7 @@ Tweetsaster.Tweet = DS.Model.extend({
   coordinates: DS.attr(),
   // extendedEntities.media[{type: 'photo', mediaUrl: 'http://...png'}]
   extendedEntities: DS.attr(),
+  denounce: DS.attr(),
   // temporaly save the media_ids
   mediaIds: DS.attr(),
   timePassed: function() {
