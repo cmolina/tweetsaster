@@ -11,7 +11,7 @@
 
 <div class="content">
 {{#if controller.model.coordinates.coordinates}}
-  <iframe class="map" {{bind-attr src=mapURL}}></iframe>
+  {{simple-google-maps latLng=center}}
 {{else}}
   <article class="content-padded">
     <p>No hay informaci&oacute;n geogr&aacute;fica &#x2639;</p>

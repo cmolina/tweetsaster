@@ -10,7 +10,6 @@ Tweetsaster.Router.map(function () {
     this.route('map');
     this.route('pictures');
     this.route('comment');
-    this.route('upload');
   });
   this.route('report.denounce', {path: '/noticia/:report_id/denuncia'});
 });

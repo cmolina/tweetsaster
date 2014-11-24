@@ -181,7 +181,8 @@ li:active {
 
 .map-canvas {
   width: 100%;
-  min-height: 200px;
+  height: 90%;
+  height: calc(100% - 50px);
 }
 
 /* reports/index.hbs */
