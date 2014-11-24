@@ -26,13 +26,12 @@
         &Uacute;til
         <span {{bind-attr class=":icon isFavourite:icon-star-filled:icon-star"}}></span>
       </button>
-      {{#link-to 'report.share' tagName='button' class='btn'}}
+      <button class="btn">
         <span class="icon icon-share">Compartir...</span>
-      {{/link-to}}
-      
-      <button type="button" class="btn btn-negative pull-right">
-        Reportar...
       </button>
+      {{#link-to 'report.denounce' model type="button" class="btn btn-negative pull-right"}}
+        ⚑ Denunciar...
+      {{/link-to}}
     </div>
   </article>
 
