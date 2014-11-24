@@ -11,6 +11,9 @@ Tweetsaster.Tweet = DS.Model.extend({
   extendedEntities: DS.attr(),
   // temporaly save the media_ids
   mediaIds: DS.attr(),
+  timePassed: function() {
+    return Tweetsaster.timePassedFrom(this.get('createdAt'));
+  }.property('createdAt'),
 
   pictures: function() {
     var mediaList = this.get('extendedEntities.media'),

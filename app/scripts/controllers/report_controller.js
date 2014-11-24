@@ -1,24 +1,29 @@
+Tweetsaster.months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct' , 'nov', 'dic'];
+
 Tweetsaster.timePassedFrom = function(date) {
-  var creationDatetime = new Date(date);
-  var nowDatetime = new Date();
-  var dayMs = 24*60*60*1000; //day in ms
-  var dayDiff = (nowDatetime - creationDatetime) / dayMs;
-  var timePassed;
+  var date = new Date(date),
+      nowDatetime = new Date(),
+      hourMs = 60*60*1000, // miliseconds in an hour
+      hours = (nowDatetime - date) / hourMs,
+      timePassed;
   switch (true) {
-    case parseInt(dayDiff*24*60*60) === 0:
-      timePassed = 'ahora';
+    case hours*60*60 < 60:
+      timePassed = parseInt(hours*60*60) + 's';
       break;
-    case dayDiff*24*60*60 < 61:
-      timePassed = parseInt(dayDiff*24*60*60) + 's';
+    case hours*60 < 60:
+      timePassed = parseInt(hours*60) + 'm';
       break;
-    case dayDiff*24*60 < 60:
-      timePassed = parseInt(dayDiff*24*60) + 'm';
+    case hours < 24:
+      timePassed = parseInt(hours) + 'h';
       break;
-    case dayDiff*24 < 24:
-      timePassed = parseInt(dayDiff*24) + 'h';
+    case hours < 2*24:
+      timePassed = 'ayer';
+      break;
+    case hours < 7*24:
+      timePassed = parseInt(hours/24)+'d';
       break;
     default:
-      timePassed = parseInt(dayDiff) + 'd';
+      timePassed = date.getDate()+'-'+Tweetsaster.months[date.getMonth()];
       break;
   }
   return timePassed;

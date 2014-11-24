@@ -15,10 +15,11 @@
     <p class="user-name pull-right">
       <img {{bind-attr src=user.profileImageMiniUrl}}>
       {{#if user.isNotAnonymous}}
-      <strong>{{user.screenName}}</strong>
+      <strong>{{user.screenName}}</strong> 
       {{else}}
-      Anónimo
+      Anónimo 
       {{/if}}
+      {{timePassed}}
     </p>
     <div class="buttons">
       <button {{action 'toggleFavourite'}} type="button" {{bind-attr class=":btn :btn-positive isFavourite::btn-outlined"}}>
@@ -41,12 +42,13 @@
     {{#each comment in filteredComments}}
     <li class="table-view-cell">
       {{comment.formattedText}}
-      {{#if comment.user.isNotAnonymous}}
-        <p class="user-name">
+        <p class="user-name pull-right">
+          {{#if comment.user.isNotAnonymous}}
           <img {{bind-attr src=comment.user.profileImageMiniUrl}}>
-          <strong>{{comment.user.screenName}}</strong>
+          <strong>{{comment.user.screenName}}</strong> 
+          {{/if}}
+          {{timePassed}}
         </p>
-      {{/if}}
     </li>
     {{/each}}
   </ul>
