@@ -21,10 +21,14 @@ Tweetsaster.Report = Tweetsaster.Tweet.extend({
     }); 
     return allPictures;
   }.property('comments.@each.pictures', 'pictures'),
-  center: function() {
-    var coordinates = this.get('coordinates').coordinates;
-    var lat = coordinates[1],
+  center: function(key, value, previousValue) {
+    // setter
+    if (arguments.length > 1) {
+      this.set('coordinates.coordinates', [value.lng(), value.lat()]);
+    }
+    var coordinates = this.get('coordinates.coordinates'),
+        lat = coordinates[1],
         lng = coordinates[0];
     return new google.maps.LatLng(lat, lng);
-  }.property('coordinates')
+  }.property('coordinates.coordinates')
 });

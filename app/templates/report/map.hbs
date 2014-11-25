@@ -1,17 +1,26 @@
 <nav class="bar bar-nav">
+{{#if isDraggable}}
+  <button {{action 'revert'}} class='btn btn-negative pull-left'>
+    ❌ Cancelar
+  </button>
+  <button {{action 'update'}} class='btn btn-positive pull-right' {{bind-attr disabled=coordsHasNotChanged}}>
+    Guardar cambios ✓
+  </button>
+{{else}}
   {{#link-to 'reports' model.channel tagName='button' class='btn btn-link btn-nav pull-left'}}
     <span class="icon icon-left-nav"></span>
     Noticias
   {{/link-to}}
-  <button class='btn btn-link btn-nav pull-right'>
+  <button {{action 'toggleEditing'}} class='btn btn-link btn-nav pull-right'>
     <span class="icon icon-edit"></span>
     Cambiar ubicaci&oacute;n
   </button>
+{{/if}}
 </nav>
 
 <div class="content">
-{{#if controller.model.coordinates.coordinates}}
-  {{simple-google-maps latLng=center}}
+{{#if coordinates.coordinates}}
+  {{simple-google-maps latLng=center draggable=isDraggable}}
 {{else}}
   <article class="content-padded">
     <p>No hay informaci&oacute;n geogr&aacute;fica &#x2639;</p>

@@ -33,11 +33,5 @@ Tweetsaster.Tweet = DS.Model.extend({
     var text = this.get('text');
     if (text)
       return text.charAt(0).toUpperCase() + text.slice(1);
-  }.property('text'),
-  
-  mapURL: function() {
-    var coords = this.get('coordinates').coordinates;
-    return 'https://www.google.com/maps/embed/v1/search?key=' + 
-      Tweetsaster.GoogleApiKey + '&q=' + coords[1] + ',' + coords[0];
-  }.property('coordinates'),
+  }.property('text')
 });
