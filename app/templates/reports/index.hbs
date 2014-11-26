@@ -5,32 +5,36 @@
   <span class="badge pull-right">{{within}}km</span>
 </div>
 {{/if}}
-{{#if model.length}}
-  {{#each itemController='report'}}
-    {{#link-to 'report.index' this class="no-underline"}}
-    <div class="list-element">
-      <div class="main-col">
-        <div class="side-col">
-          <div class="time">
-            {{timePassed}}
-          </div>
-        </div>
-        {{{text}}}
+
+{{#if model}}
+<ul class="table-view">
+{{#each report in model itemController='reportIndex'}}
+  <li class="table-view-cell media">
+    {{#link-to 'report.index' report}}
+      <img class="media-object pull-left" {{bind-attr src=report.user.profileImageMiniUrl}}>
+      <div class="media-object pull-right">
+      {{#if report.isFavourite}}
+        ★
+      {{/if}}
       </div>
-    </div>
+      <div class="media-body">
+        {{{report.text}}}
+        <p class="user-name">
+        {{#if report.user.isNotAnonymous}}
+          <strong>{{report.user.screenName}}</strong> 
+        {{else}}
+          Anónimo 
+        {{/if}}
+          {{report.timePassed}}
+        </p>
+      </div>
     {{/link-to}}
-  {{/each}}
-  
-  {{#if showingSpinner}}
-    <div class="list-element">
-        <div id="loading-gif">
-        </div>
-    </div>
-  {{/if}}  
-    
+  </li>
+{{/each}}
+</ul>
 {{else}}
-  <div class="error-empty">
-    <strong>No pudimos encontrar ningún resultado</strong><br>
-    Prueba con radios de búsqueda más extensos u otros lugares más poblados.
-  </div>
+<div class="error-empty">
+  <strong>No pudimos encontrar ningún resultado</strong><br>
+  Prueba con radios de búsqueda más extensos u otros lugares más poblados.
+</div>
 {{/if}}

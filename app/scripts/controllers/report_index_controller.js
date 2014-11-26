@@ -1,16 +1,20 @@
 Tweetsaster.ReportIndexController = Ember.ObjectController.extend({
-  isFavourite: false,
+  needs: ['application'],
+  lS: Ember.computed.alias('controllers.application.lS'),
+  isFavourite: function(key, value) {
+    if (arguments.length > 1) {
+      this.set('controllers.application.lS.favourites_'+this.get('id'), value);
+    }
+    return this.get('controllers.application.lS.favourites_'+this.get('id'));
+  }.property('id', 'controllers.application.lS'),
   actions: {
     toggleFavourite: function() {
-      var report = this.get('model'),
-          key = 'favourites.'+report.id,
-          isFavourite = !!localStorage.getItem(key);
+      var isFavourite = this.get('isFavourite'),
+          report = this.get('model');
       if (isFavourite)
-        localStorage.removeItem(key);
+        this.set('isFavourite', null);
       else
-        localStorage.setItem(key, 
-                             JSON.stringify(report.toJSON({includeId: true})));
-      this.toggleProperty('isFavourite');
+        this.set('isFavourite', report.toJSON({includeId: true}));
     }
   }
 });

@@ -64,16 +64,6 @@ $gray: #D5D9DC;
   display: block;
 }
 
-.side-col {
-  float: right;
-}
-
-.time {
-  float: right;
-  color: #A5A9AC;
-  font-size: 0.9rem;
-}
-
 .img-report {
   display: none;
 }
@@ -144,14 +134,6 @@ li:active {
 }
 
 @media (orientation: landscape) {
-  .side-col {
-    text-align: center;
-    width: 30%;
-  }
-  
-  .time {
-    float: right;
-  }
   .img-report {
     width: 100%;
     float:right;
@@ -163,23 +145,30 @@ li:active {
   }
 }
 
+/* reports.hbs */
+.bar-header-secondary ~ .content > .table-view:first-child {
+  margin-top: 0;
+}
+
+.table-view-cell.media {
+  padding: 11px 15px;
+
+  a:not(.btn) {
+    margin: -11px -15px;
+    min-height: 4rem;
+  }
+}
+
+img.media-object {
+  border-radius: 50%;
+}
+
+/* reports/index.hbs */
 .report-text {
   font-size: 1.5em;
   min-height: 3em;
 }
 
-.no-underline:hover {
-  text-decoration: none;
-}
-
-.map {
-  width: 100%;
-  min-height: 390px;
-  border: none;
-  @include background-image(linear-gradient(to top, lightgray 0%, white 100%));
-}
-
-/* reports/index.hbs */
 #map-filter {
   background: #F1EFE9;
   padding: 10px 5px 20px;
@@ -215,6 +204,7 @@ li:active {
 /* report/map.hbs */
 .map-canvas {
   width: 100%;
+  min-height: 200px;
   height: 90%;
   height: calc(100% - 50px);
 }
