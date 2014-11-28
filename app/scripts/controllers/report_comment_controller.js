@@ -16,6 +16,7 @@ Tweetsaster.ReportCommentController = Ember.ObjectController.extend({
   actions: {
     sendComment: function() {
       var comment = this.get('model');
+      comment.prepareText();
       comment.save().then(function(comment) {
         this.set('textComment', '');
         this.transitionToRoute('report.index');

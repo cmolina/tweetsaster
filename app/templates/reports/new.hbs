@@ -1,5 +1,5 @@
 <nav class="bar bar-nav">
-  {{#link-to 'reports' controllers.reports.channel class='btn btn-link btn-nav pull-left'}}
+  {{#link-to 'reports' class='btn btn-link btn-nav pull-left'}}
     <span class="icon icon-left-nav"></span>
     Volver
   {{/link-to}}
@@ -8,10 +8,6 @@
 
 <div class="content">
   <article class="content-padded">
-    <div class="input-row">
-      <label>Canal</label>
-      {{view 'select' value=selectedChannel content=channels optionValuePath="content.value" optionLabelPath="content.label" required=true}}
-    </div>
     {{textarea value=text placeholder='¿Qué está sucediendo? Escribe un problema, un dato útil que quieras compartir...' class='btn-block' rows=4}}
     <p class="pull-right">Quedan <span {{bind-attr class=":badge inRange::badge-negative"}}>{{remainingCharacters}}</span> caracteres restantes</p>
     <button {{action "search"}} {{bind-attr class=":btn :btn-block cantSend::btn-primary" disabled=cantSend}}>

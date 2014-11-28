@@ -1,6 +1,6 @@
 Tweetsaster.Router.map(function () {
   this.resource('reports', {path: '/noticias/'}, function() {
-    this.route('index', {path: '/canal/:channel'});
+    this.route('index', {path: '/todos'});
     this.route('geolocated', {path: '/geo/:lat/:lng/:within'});
   });
   this.route('reports.new', {path: '/reportar'});

@@ -196,11 +196,6 @@ img.media-object {
   clear: both;
 }
 
-/* avoid hidden last element by the nav-bar */
-.table-view:last-child {
-  margin-bottom: 3rem !important;
-}
-
 /* report/map.hbs */
 .map-canvas {
   width: 100%;

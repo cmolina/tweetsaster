@@ -5,7 +5,6 @@ Tweetsaster.ReportsGeolocatedRoute = Ember.Route.extend(Tweetsaster.ScrollTopMix
     reportsController.set('lat', params.lat);
     reportsController.set('lng', params.lng);
     reportsController.set('within', params.within);
-    reportsController.set('showChannels', false);
     var radius = reportsGeolocatedController.get('filterRadius'),
         center = reportsGeolocatedController.get('filterCoords'),
         distance = google.maps.geometry.spherical.computeDistanceBetween;

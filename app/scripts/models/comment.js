@@ -1,12 +1,11 @@
 Tweetsaster.Comment = Tweetsaster.Tweet.extend({
   inReplyToStatus: DS.belongsTo('report'),
   comment: '',
-  updatingText: function() {
+  prepareText: function() {
     var name = this.get('inReplyToStatus.user.name'),
         comment = this.get('comment');
-    if (name)
-      this.set('text', '@'+name+' '+comment);
-  }.observes('comment', 'inReplyToStatus').on('init'),
+    this.set('text', '@'+name+' '+comment);
+  },
   formattedText: function() {
     var comment = this.get('comment');
     if (!comment) {

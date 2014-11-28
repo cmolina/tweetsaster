@@ -1,9 +1,7 @@
 Tweetsaster.ReportsController = Ember.ArrayController.extend({
-  channel: 'earthquake',
   lat: null,
   lng: null,
   within: null,
-  showFilter: true,
   
   onFilterChanges: function() {
     Ember.run.once(this, 'saveFilterParams');

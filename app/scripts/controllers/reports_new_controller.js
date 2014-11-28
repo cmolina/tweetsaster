@@ -1,14 +1,6 @@
 Tweetsaster.ReportsNewController = Ember.ArrayController.extend({
-  needs: 'reports',
   text: '',
-  selectedChannel: '',
   similarReports: [],
-  channels: [
-    {value: '', label: 'Seleccione un canal'},
-    {value: 'earthquake', label: 'Terremoto'}, 
-    {value: 'fire', label: 'Incendio'}, 
-    {value: 'flood', label: 'Inundación'}
-  ],
   remainingCharacters: function() {
     return 140 - this.get('text').length;
   }.property('text'),
@@ -19,13 +11,8 @@ Tweetsaster.ReportsNewController = Ember.ArrayController.extend({
   cantSend: function() {
     var thereIsNoText = Ember.isBlank(this.get('text'));
     var isVeryLarge = this.get('remainingCharacters') < 0;
-    var hasNoChannel = Ember.isEmpty(this.get('selectedChannel'));
-    return thereIsNoText || isVeryLarge || hasNoChannel;
-  }.property('remainingCharacters', 'selectedChannel'),
-
-  onInit: function() {
-    this.set('selectedChannel', this.get('controllers.reports.channel'));
-  }.on('init'),
+    return thereIsNoText || isVeryLarge;
+  }.property('remainingCharacters'),
 
   actions: {
     search: function() {
@@ -45,8 +32,7 @@ Tweetsaster.ReportsNewController = Ember.ArrayController.extend({
     sendReport: function() {
       var report = this.store.createRecord('report', {
         text: this.get('text'),
-        coordinates: this.get('coordinates'),
-        channel: this.get('selectedChannel')
+        coordinates: this.get('coordinates')
       });
       report.save().then(
         function(report) {
