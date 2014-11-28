@@ -1,3 +1,5 @@
+// base code from
+// http://www.rvdh.de/2014/05/08/wrapping-localstorage-and-other-pojos-with-ember-object/
 Tweetsaster.LocalStorage = Ember.Object.extend({
   setUpEventListener: function() {
     window.addEventListener('storage', function(e) {
