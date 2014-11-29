@@ -22,6 +22,36 @@
   url('/bower_components/ratchet/fonts/ratchicons.svg#ratchicons') format('svg');
 }
 
+/* Mixins */
+
+/* https://gist.github.com/ericam/1607696 */
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation-duration($seg) {
+  -webkit-animation-duration: $seg;
+  -moz-animation-duration: $seg;
+  animation-duration: $seg;
+}
+
+@mixin animation-name($name) {
+  -webkit-animation-name: $name;
+  -moz-animation-name: $name;
+  animation-name: $name;
+}
+
 
 /* Variables */
 
@@ -161,6 +191,16 @@ li:active {
 
 img.media-object {
   border-radius: 50%;
+}
+
+@include keyframes(highlight-report) {
+  0% { background: yellow; }
+  100% { background: none; }
+}
+
+.highlight-report {
+  @include animation-duration(5s);
+  @include animation-name(highlight-report);
 }
 
 /* reports/index.hbs */

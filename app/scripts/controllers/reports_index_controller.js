@@ -1,4 +1,4 @@
-Tweetsaster.ReportsIndexController = Ember.ArrayController.extend({
+Tweetsaster.ReportsIndexController = Ember.ArrayController.extend(Ember.Evented, {
   sortProperties: ['id'],
   sortAscending: false,
   moreBottomReports: true,
