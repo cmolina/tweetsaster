@@ -38,7 +38,7 @@ Tweetsaster.ReportsNewController = Ember.ArrayController.extend({
         function(report) {
           this.set('text', '');
           this.send('hideModal');
-          this.transitionToRoute('report', report);
+          this.transitionToRoute('reports.index');
         }.bind(this),
         function(error) {
           console.error('Noticia no enviada :( '+error);

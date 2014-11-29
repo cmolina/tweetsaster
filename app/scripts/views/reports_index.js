@@ -1,7 +1,6 @@
 Tweetsaster.ReportsIndexView = Ember.View.extend({
   didInsertElement: function() {
     var element = this.get('element').parentElement;
-    console.log(element);
     $(element).on('scroll', this.didScroll.bind(this));
   },
   isScrolledToBottom: function(element) {
@@ -9,7 +8,6 @@ Tweetsaster.ReportsIndexView = Ember.View.extend({
   },
   didScroll: function(event) {
     if (this.isScrolledToBottom(event.currentTarget)) {
-      console.log('botton!');
       this.get('controller').send('loadMore', 'report', 'previous', 'reportsIndex');
     }
   },

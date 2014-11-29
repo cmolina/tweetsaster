@@ -8,7 +8,7 @@
 
 {{#if model}}
 <ul class="table-view">
-{{#each report in model itemController='reportIndex'}}
+{{#each report in filteredContent itemController='reportIndex'}}
   <li class="table-view-cell media">
     {{#link-to 'report.index' report}}
       <img class="media-object pull-left" {{bind-attr src=report.user.profileImageMiniUrl}}>
