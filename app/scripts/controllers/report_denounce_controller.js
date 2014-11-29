@@ -17,6 +17,7 @@ Tweetsaster.ReportDenounceController = Ember.ObjectController.extend({
         report.unloadRecord();
         // TODO msj to the user
       });
+      this.set('selectedReason', null);
       this.transitionToRoute('reports.index');
     }
   }

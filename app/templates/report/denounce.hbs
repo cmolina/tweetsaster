@@ -10,8 +10,8 @@
     <p>Gracias por hacer esta denuncia.<br>Seleccione una razón:</p>
     {{#eachIndexed reason in reasons}}
     <p>
-      {{radio-button name='reason' value=index groupValue=selectedReason}}
-      {{reason}}
+      {{radio-button id=index_1 name='reason' value=index groupValue=selectedReason}}
+      <label {{bind-attr for=index_1}}>{{reason}}
     </p>
     {{/eachIndexed}}  
     <button {{action 'sendDenounce'}} class="btn btn-negative btn-block" {{bind-attr disabled=cantSend}}>Enviar denuncia</button>
