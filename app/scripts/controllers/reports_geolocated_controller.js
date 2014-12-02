@@ -1,9 +1,10 @@
 Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
   needs: 'reports',
+  sortProperties: ['id'],
+  sortAscending: false,
   lat: Ember.computed.alias('controllers.reports.lat'),
   lng: Ember.computed.alias('controllers.reports.lng'),
   within: Ember.computed.alias('controllers.reports.within'),
-  filterActive: true,
   filterAddress: '',
   filterRadius: function(key, value) {
     if (arguments.length > 1) {
@@ -23,6 +24,14 @@ Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
   }.property('lat', 'lng'),
   filterZoom: 11,
   geocoder: new google.maps.Geocoder(),
+  filteredContent: function() {
+    var radius = this.get('filterRadius'),
+        center = this.get('filterCoords'),
+        distance = google.maps.geometry.spherical.computeDistanceBetween;
+    return this.get('arrangedContent').filter(function(report) {
+      return distance(report.get('center'), center) <= radius;
+    });
+  }.property('model.length', 'filterRadius', 'filterCoords'),
 
   actions: {
     searchAddress: function(address) {
@@ -40,6 +49,12 @@ Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
           this.set('lng', latLng.lng().toFixed(4));
           Ember.$('[type=search]').blur();
         }.bind(this));
-    }
+    },
+    applyFilter: function() {
+      this.set('filterActive', false);
+    },
+    showFilter: function() {
+      this.set('filterActive', true);
+    },
   }
 });

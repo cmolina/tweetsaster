@@ -1,0 +1,11 @@
+<div class="bar bar-standard bar-footer">
+{{#if filterActive}}
+  <button {{action 'applyFilter'}} class="btn btn-block btn-primary">Muestra las noticias de la zona</button>
+{{else}}
+  <button {{action 'showFilter'}} class="btn pull-right">Cambiar ubicación</button>
+  <p>
+    <span class="icon icon-home"></span>
+    <strong>{{filterAddress}}</strong>
+  </p>
+{{/if}}
+</div>

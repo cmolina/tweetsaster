@@ -1,12 +1,17 @@
 {{#if filterActive}}
 <div id="map-filter" class="content-padded">
-  {{input type="search" placeholder="Buscar un lugar..." value=filterAddress insert-newline='searchAddress'}}
+  <p class="content-padded">Puedes buscar una dirección</p>
+  {{input type="search" placeholder="Buscar una dirección..." value=filterAddress insert-newline='searchAddress'}}
+  <button {{action 'searchAddress' filterAddress}} class="btn pull-right">
+    Buscar
+  </button>
+  <p class="content-padded">o puede arrastrar el círculo sobre el mapa</p>
   {{google-maps radius=filterRadius latLng=filterCoords zoom=filterZoom formattedAddress=filterAddress}}
   <span class="badge pull-right">{{within}}km</span>
 </div>
-{{/if}}
+{{else}}
 
-{{#if model}}
+{{#if filteredContent.length}}
 <ul class="table-view">
 {{#each report in filteredContent itemController='reportIndex'}}
   <li class="table-view-cell media">
@@ -40,4 +45,6 @@
   <strong>No pudimos encontrar ningún resultado</strong><br>
   Prueba con radios de búsqueda más extensos u otros lugares más poblados.
 </div>
+{{/if}}
+
 {{/if}}

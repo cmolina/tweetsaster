@@ -210,9 +210,16 @@ img.media-object {
 }
 
 #map-filter {
-  background: #F1EFE9;
-  padding: 10px 5px 20px;
+  padding: 5px;
   margin: 0;
+
+  input[type=search] {
+    width: calc(100% - 60px);
+  }
+
+  button {
+    height: 35px;
+  }
 }
 
 /* report/index.hbs */
@@ -253,7 +260,7 @@ img.media-object {
   border: 0px none;
 }
 
-#similar-reports {
+.themodal-overlay > .modal {
   background: white;
   border-radius: 3px;
   padding: 5px 10px 10px;

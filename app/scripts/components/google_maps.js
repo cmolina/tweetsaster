@@ -1,4 +1,6 @@
 Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
+  tagName: 'div',
+  classNames: ['map-canvas'],
   map: null,
   radius: 1000,
   latLng: null,
@@ -17,10 +19,11 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
     map = new google.maps.Map(container, options);
     
     options = {
-      strokeWeight: 2,
+      strokeColor: '#004E78',
+      strokeWeight: 3,
       strokeOpacity: 0.8,
       fillOpacity: 0.33,
-      fillColor: '#FF0000',
+      fillColor: '#006FAA',
       map: map,
       center: this.get('latLng'),
       radius: this.get('radius'),
