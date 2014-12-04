@@ -16,21 +16,17 @@
 {{#each report in filteredContent itemController='report'}}
   <li class="table-view-cell media">
     {{#link-to 'report.index' report}}
-      <img class="media-object pull-left" {{bind-attr src=report.user.profileImageMiniUrl}}>
-      <div class="media-object pull-right">
-      {{#if report.isFavourite}}
-        ★
-      {{/if}}
+      <div class="media-object pull-left">
+        <img {{bind-attr src=report.user.profileImageMiniUrl}}>
+        {{#if report.isFavourite}}
+          <div class="fav">★</div>
+        {{/if}}
       </div>
       <div class="media-body">
-        {{{report.text}}}
-        <p class="user-name">
-        {{#if report.user.isNotAnonymous}}
-          <strong>{{report.user.screenName}}</strong> 
-        {{else}}
-          Anónimo 
-        {{/if}}
-          {{report.timePassed}}
+        <p>
+          <p class="user-name pull-right">{{report.timePassed}}</p>
+          <strong>{{#if report.user.isNotAnonymous}}{{report.user.screenName}}{{else}}Anónimo{{/if}}</strong><br>
+          {{{report.formattedText}}}
         </p>
       </div>
     {{/link-to}}

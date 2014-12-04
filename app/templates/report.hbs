@@ -5,7 +5,14 @@
 <div class="content display-table full-height full-width">
   <ul class="table-view display-row">
     <li class="table-view-cell media">
-      <img class="media-object pull-left" {{bind-attr src=user.profileImageMiniUrl}}>
+      <div class="media-object pull-left">
+        <img {{bind-attr src=user.profileImageMiniUrl}}>
+        <div class="fav">
+          <button {{action 'toggleFavourite'}} {{bind-attr class=":btn :btn-positive isFavourite::btn-outlined"}}>
+            <span class="icon icon-star-filled"></span><br>Útil
+          </button>
+        </div>
+      </div>
       <div class="media-body">
         <p>
           <p class="user-name pull-right">{{timePassed}}</p>
@@ -13,10 +20,7 @@
           {{{formattedText}}}
         </p>
       </div>
-      <div class="buttons">
-        <button {{action 'toggleFavourite'}} {{bind-attr class=":btn :btn-positive isFavourite::btn-outlined"}}>
-          Útil<span class="icon icon-star-filled"></span>
-        </button>
+      <div>
         {{#link-to 'report.denounce' model type="button" class="btn btn-negative pull-right"}}
           ⚑ Denunciar...
         {{/link-to}}

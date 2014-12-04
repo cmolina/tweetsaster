@@ -55,10 +55,11 @@
 
 /* Variables */
 
-$actionbar-blue-1: #7b96f7;
-$actionbar-blue-2: #5476e8;
+$actionbar-blue-1: #5476E8;
+$actionbar-blue-2: #7894EF;
 $actionbar-color: #e9ebf5;
 $gray: #D5D9DC;
+$yellow: #ffc647;
 
 /* Rules */
 
@@ -188,9 +189,17 @@ li:active {
     min-height: 4rem;
   }
 
-  img.media-object {
-    border-radius: 50%;
-    margin-top: 3px;
+  .media-object {
+    text-align: center;
+    img {
+      border-radius: 50%;
+      margin-top: 3px;
+    }
+    .fav {
+      color: $yellow;
+      font-size: 1.5rem;
+      padding-top: .5rem;
+    }
   }
 }
 
@@ -351,7 +360,7 @@ li:active {
 }
 
 .bar-nav {
-  @include background-image(linear-gradient(to top, #5476E8, #7894EF));
+  @include background-image(linear-gradient(to top, $actionbar-blue-1, $actionbar-blue-2));
 }
 .bar .btn-link, .bar .title {
   color: white;
