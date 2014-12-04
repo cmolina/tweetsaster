@@ -15,7 +15,7 @@
       </div>
       <div class="media-body">
         <p>
-          <p class="user-name pull-right">{{timePassed}}</p>
+          <p class="user-name pull-right"><i class="flaticon-clock"></i> {{timePassed}}</p>
           <strong>{{user.screenName}}</strong><br>
           {{{formattedText}}}
         </p>
@@ -34,15 +34,15 @@
 
 <nav class="bar bar-tab">
   {{#link-to 'report.index' class='tab-item' replace=true}}
-    <span class="icon"><img class="tabs-img" src="images/info-25.png"></span>
-    <span class="tab-label">Informaci&oacute;n</span>
+    <i class="icon flaticon-info"></i>
+    <span class="tab-label">Información</span>
   {{/link-to}}
   {{#link-to 'report.comments' class='tab-item' replace=true}}
-    <span class="icon"><img class="tabs-img" src="images/waypoint_map-25.png"></span>
+    <i class="icon flaticon-chat"></i>
     <span class="tab-label">Comentarios</span>
   {{/link-to}}
   {{#link-to 'report.pictures' class='tab-item' replace=true}}
-    <span class="icon"><img class="tabs-img" src="images/picture-25.png"></span>
+    <i class="icon flaticon-image"></i>
     <span class="tab-label">Fotos</span>
   {{/link-to}}
 </nav>
