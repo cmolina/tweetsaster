@@ -51,6 +51,9 @@ Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
         }.bind(this));
     },
     applyFilter: function() {
+      var count = this.get('filteredContent.length');
+      if (count === 0)
+        this.send('loadMore', 'next');
       this.set('filterActive', false);
     },
     showFilter: function() {

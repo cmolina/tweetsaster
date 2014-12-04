@@ -7,9 +7,9 @@ Tweetsaster.Router.map(function () {
   this.route('search');
   this.resource('report', {path: '/noticia/:report_id'}, function() {
     this.route('index');
-    this.route('map');
+    this.route('comments');
     this.route('pictures');
-    this.route('comment');
   });
+  this.route('report.comment', {path: '/noticia/:report_id/comentar'});
   this.route('report.denounce', {path: '/noticia/:report_id/denuncia'});
 });

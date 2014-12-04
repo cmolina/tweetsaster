@@ -1,26 +1,27 @@
 Tweetsaster.ReportCommentRoute = Ember.Route.extend({
   model: function(params) {
-    var report = this.modelFor('report');
-    return this.store.createRecord('comment', {
-      comment: this.get('comment') || '',
-      inReplyToStatus: report,
-      channel: report.get('channel')
-    });
+    return this.store.find('report', params.report_id);
   },
   setupController: function(controller, model) {
+    var comment = this.store.createRecord('comment', {
+      comment: this.get('comment') || '',
+      inReplyToStatus: model,
+      channel: model.get('channel')
+    });
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(function(position) {
         var geoJSON = {
           type: 'Point', 
           coordinates: [position.coords.longitude, position.coords.latitude]
         };
-        model.set('coordinates', geoJSON);
+        comment.set('coordinates', geoJSON);
       });
-    this._super(controller, model);
+    controller.set('model', comment);
+    this._super(controller, comment);
   },
   deactivate: function() {
     // if the model was not sent to the server, delete it
-    var comment = this.modelFor('reportComment');
+    var comment = this.controllerFor('reportComment').get('model');
     if (comment.get('isNew')) {
       this.set('comment', comment.get('comment'));
       comment.deleteRecord();

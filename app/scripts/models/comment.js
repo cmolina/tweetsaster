@@ -4,8 +4,9 @@ Tweetsaster.Comment = Tweetsaster.Tweet.extend({
   prepareText: function() {
     var name = this.get('inReplyToStatus.user.name'),
         comment = this.get('comment');
-    this.set('text', '@'+name+' '+comment);
-  },
+    if (name && comment)
+      this.set('text', '@'+name+' '+comment);
+  }.observes('comment'),
   formattedText: function() {
     var comment = this.get('comment');
     if (!comment) {

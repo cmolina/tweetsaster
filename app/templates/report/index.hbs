@@ -1,62 +1,7 @@
-<nav class="bar bar-nav">
-  {{#link-to 'reports' tagName='button' class='btn btn-link btn-nav pull-left'}}
-    <span class="icon icon-left-nav"></span>
-    Noticias
-  {{/link-to}}
-  {{#link-to 'report.comment' tagName='button' class='btn btn-link btn-nav pull-right'}}
-    <span class="icon icon-compose"></span>
-    Comentar
-  {{/link-to}}
-</nav>
-
-<div class="content">
-  <article class="content-padded">
-    <h1 class="report-text">{{{formattedText}}}</h1>
-    <p class="user-name pull-right">
-      <img {{bind-attr src=user.profileImageMiniUrl}}>
-      {{#if user.isNotAnonymous}}
-      <strong>{{user.screenName}}</strong> 
-      {{else}}
-      Anónimo 
-      {{/if}}
-      {{timePassed}}
-    </p>
-    <div class="buttons">
-      <button {{action 'toggleFavourite'}} type="button" {{bind-attr class=":btn :btn-positive isFavourite::btn-outlined"}}>
-        &Uacute;til
-        <span {{bind-attr class=":icon isFavourite:icon-star-filled:icon-star"}}></span>
-      </button>
-      <button class="btn">
-        <span class="icon icon-share">Compartir...</span>
-      </button>
-      {{#link-to 'report.denounce' model type="button" class="btn btn-negative pull-right"}}
-        ⚑ Denunciar...
-      {{/link-to}}
-    </div>
-  </article>
-
-  {{#if comments}}
-  <ul class="table-view comments">
-    <li class="table-view-divider">Comentarios</li>
-    {{#each comment in filteredComments}}
-    <li class="table-view-cell">
-      {{comment.formattedText}}
-        <p class="user-name pull-right">
-          {{#if comment.user.isNotAnonymous}}
-          <img {{bind-attr src=comment.user.profileImageMiniUrl}}>
-          <strong>{{comment.user.screenName}}</strong> 
-          {{/if}}
-          {{timePassed}}
-        </p>
-    </li>
-    {{/each}}
-  </ul>
-  {{else}}
-  <div style="height: 300px;">
-    <div class="error-empty">
-      <em>No hay ningún comentario todavía.</em><br>
-      Si quieres aportar a esta noticia {{#link-to 'report.comment'}}escribe un comentario{{/link-to}}
-    </div>
+{{#if coordinates.coordinates}}
+  {{simple-google-maps latLng=center draggable=isDraggable}}
+{{else}}
+  <div class="error-empty">
+    <p>No hay información geográfica asociada</p>
   </div>
-  {{/if}}
-</div>
+{{/if}}

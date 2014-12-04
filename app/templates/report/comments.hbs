@@ -1,0 +1,24 @@
+{{#if comments}}
+<div class="cell">
+  <ul class="table-view comments">
+    <li class="table-view-divider">Comentarios</li>
+    {{#each comment in filteredComments}}
+    <li class="table-view-cell">
+      {{comment.formattedText}}
+        <p class="user-name pull-right">
+          {{#if comment.user.isNotAnonymous}}
+          <img {{bind-attr src=comment.user.profileImageMiniUrl}}>
+          <strong>{{comment.user.screenName}}</strong> 
+          {{/if}}
+          {{timePassed}}
+        </p>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+{{else}}
+<div class="error-empty">
+  <em>No hay ningún comentario todavía.</em><br>
+  Si quieres aportar a esta noticia {{#link-to 'report.comment' model}}escribe un comentario{{/link-to}}.
+</div>
+{{/if}}

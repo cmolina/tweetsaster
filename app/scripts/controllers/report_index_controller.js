@@ -1,20 +1,24 @@
 Tweetsaster.ReportIndexController = Ember.ObjectController.extend({
-  needs: ['application'],
-  lS: Ember.computed.alias('controllers.application.lS'),
-  isFavourite: function(key, value) {
-    if (arguments.length > 1) {
-      this.set('controllers.application.lS.favourites_'+this.get('id'), value);
-    }
-    return this.get('controllers.application.lS.favourites_'+this.get('id'));
-  }.property('id', 'controllers.application.lS'),
+  isDraggable: false,
+  originalCoords: null,
+  coordsHasNotChanged: function() {
+    return this.get('originalCoords') == this.get('coordinates.coordinates');
+  }.property('originalCoords', 'coordinates.coordinates'),
   actions: {
-    toggleFavourite: function() {
-      var isFavourite = this.get('isFavourite'),
-          report = this.get('model');
-      if (isFavourite)
-        this.set('isFavourite', null);
-      else
-        this.set('isFavourite', report.toJSON({includeId: true}));
+    toggleEditing: function() {
+      var isDraggable = this.toggleProperty('isDraggable');
+      this.set('originalCoords', isDraggable ? 
+               this.get('coordinates.coordinates') : null);
+    },
+    revert: function() {
+      this.set('coordinates.coordinates', this.get('originalCoords'));
+      this.send('toggleEditing');
+    },
+    update: function() {
+      this.get('model').save().then(function(report) {
+        // TODO notifies the user everything is fine
+      });
+      this.send('toggleEditing');
     }
   }
 });

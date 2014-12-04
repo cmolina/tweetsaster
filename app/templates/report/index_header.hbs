@@ -1,4 +1,3 @@
-<nav class="bar bar-nav">
 {{#if isDraggable}}
   <button {{action 'revert'}} class='btn btn-negative pull-left'>
     ❌ Cancelar
@@ -9,21 +8,10 @@
 {{else}}
   {{#link-to 'reports' tagName='button' class='btn btn-link btn-nav pull-left'}}
     <span class="icon icon-left-nav"></span>
-    Noticias
+    Atrás
   {{/link-to}}
   <button {{action 'toggleEditing'}} class='btn btn-link btn-nav pull-right'>
+    Cambiar ubicación
     <span class="icon icon-edit"></span>
-    Cambiar ubicaci&oacute;n
   </button>
 {{/if}}
-</nav>
-
-<div class="content">
-{{#if coordinates.coordinates}}
-  {{simple-google-maps latLng=center draggable=isDraggable}}
-{{else}}
-  <article class="content-padded">
-    <p>No hay informaci&oacute;n geogr&aacute;fica &#x2639;</p>
-  </article>
-{{/if}}
-</div>

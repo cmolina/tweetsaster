@@ -13,7 +13,7 @@
 
 {{#if filteredContent.length}}
 <ul class="table-view">
-{{#each report in filteredContent itemController='reportIndex'}}
+{{#each report in filteredContent itemController='report'}}
   <li class="table-view-cell media">
     {{#link-to 'report.index' report}}
       <img class="media-object pull-left" {{bind-attr src=report.user.profileImageMiniUrl}}>
@@ -37,7 +37,7 @@
   </li>
 {{/each}}
   <li class="error-empty">
-    ¡Llegaste al final de las noticias!<br>😊
+    ¡Llegaste al final de las noticias!<br>😊<br><br>
   </li>
 </ul>
 {{else}}

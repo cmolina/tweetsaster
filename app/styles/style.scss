@@ -187,10 +187,11 @@ li:active {
     margin: -11px -15px;
     min-height: 4rem;
   }
-}
 
-img.media-object {
-  border-radius: 50%;
+  img.media-object {
+    border-radius: 50%;
+    margin-top: 3px;
+  }
 }
 
 @include keyframes(highlight-report) {
@@ -222,25 +223,44 @@ img.media-object {
   }
 }
 
-/* report/index.hbs */
-.comments .table-view-cell {
-  min-height: 3rem;
-  padding: 11px 15px;
-  text-align: justify;
+/* report.hbs */
+.full-height {
+  height: 100%;
 }
 
-.user-name {
-  font-style: italic;
-  vertical-align: middle;
+.display-table {
+  display: table;
+}
 
-  img {
-    border-radius: 50%;
-    vertical-align: middle;
+.display-row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  height: 0;
+}
+
+/* report/index.hbs */
+.comments {
+  height: calc(100% - 50px);
+  overflow-y: scroll;
+
+ .table-view-cell {
+    min-height: 3rem;
+    padding: 11px 15px;
+    text-align: justify;
   }
+}
+
+.content > .table-view:first-child {
+  margin: 0 !important;
+  border: 1px solid $gray;
 }
 
 .buttons {
   clear: both;
+  padding-top: 10px;
 }
 
 /* report/map.hbs */
@@ -349,25 +369,4 @@ img.media-object {
 }
 .active .icon.world-map {
   background-image: url("/images/world_map-26.png");
-}
-
-.icon.earthquakes {
-  background-image: url("/images/earthquakes-25.png");
-}
-.active .icon.earthquakes {
-  background-image: url("/images/earthquakes-26.png");
-}
-
-.icon.fires {
-  background-image: url("/images/fires-25.png");
-}
-.active .icon.fires {
-  background-image: url("/images/fires-26.png");
-}
-
-.icon.floods {
-  background-image: url("/images/floods-25.png");
-}
-.active .icon.floods {
-  background-image: url("/images/floods-26.png");
 }

@@ -16,6 +16,7 @@ Tweetsaster.ReportPicturesRoute = Ember.Route.extend({
         };
         model.set('coordinates', geoJSON);
       });
+    controller = this.controllerFor('reportPictures');
     this._super(controller, model);
   },
   deactivate: function() {
@@ -24,5 +25,17 @@ Tweetsaster.ReportPicturesRoute = Ember.Route.extend({
     if (comment.get('isNew')) {
       comment.deleteRecord();
     }
+  },
+  renderTemplates: function(controller) {
+    controller = this.controllerFor('reportPictures');
+    this.render('report/pictures', {controller: controller});
+    this.render('report/pictures_modal', {
+      outlet: 'modal',
+      controller: controller
+    });
+    this.render('report/pictures_header', {
+      outlet: 'header',
+      controller: controller
+    });
   }
 });

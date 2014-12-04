@@ -1,7 +1,7 @@
 Tweetsaster.ReportsController = Ember.ArrayController.extend({
   lat: null,
   lng: null,
-  within: null,
+  within: 5.0,
   
   onFilterChanges: function() {
     Ember.run.once(this, 'saveFilterParams');
@@ -32,7 +32,6 @@ Tweetsaster.ReportsController = Ember.ArrayController.extend({
       getGeolocation.then(function(latLng) {
         this.set('lat', latLng.lat);
         this.set('lng', latLng.lng);
-        this.set('within', 5.0);
 
         this.addObserver('lat', this, this.onFilterChanges);
         this.addObserver('lng', this, this.onFilterChanges);
