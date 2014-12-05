@@ -1,7 +1,7 @@
 <nav class="bar bar-nav search">
-  {{#link-to 'reports' class='btn btn-link btn-nav pull-left'}}
+  <button {{action 'goBack' 'reports'}} class="btn btn-link btn-nav pull-left">
     <span class="icon icon-left-nav"></span>
-  {{/link-to}}
+  </button>
   <div>
     {{input type='search' placeholder='¿Qué quieres saber?' class='pull-left' value=searchText insert-newline='findNews'}}
   </div>

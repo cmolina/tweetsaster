@@ -6,10 +6,10 @@
     Guardar cambios ✓
   </button>
 {{else}}
-  {{#link-to 'reports' tagName='button' class='btn btn-link btn-nav pull-left'}}
+  <button {{action 'goBack' 'reports'}} class="btn btn-link btn-nav pull-left">
     <span class="icon icon-left-nav"></span>
     Atrás
-  {{/link-to}}
+  </button>
   <button {{action 'toggleEditing'}} class='btn btn-link btn-nav pull-right'>
     Cambiar ubicación
     <span class="icon icon-edit"></span>
