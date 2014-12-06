@@ -3,8 +3,8 @@
   <button {{action 'applyFilter'}} class="btn btn-block btn-primary">Muestra las noticias de la zona</button>
 {{else}}
   <button {{action 'showFilter'}} class="btn btn-primary pull-right">Cambiar ubicación</button>
-  <p>
-    <i class="flaticon-pin"></i>{{filterAddress}}
+  <p class="address">
+    <i class="flaticon-pin"></i> {{filterAddress}}
   </p>
 {{/if}}
 </div>

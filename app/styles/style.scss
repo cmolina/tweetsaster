@@ -226,12 +226,18 @@ li:active {
   margin: 0;
 
   input[type=search] {
+    margin-bottom: 0;
     width: calc(100% - 60px);
   }
 
   button {
     height: 35px;
   }
+}
+
+.address {
+  font-size: 0.8rem;
+  color: $actionbar-blue-1;
 }
 
 /* report.hbs */

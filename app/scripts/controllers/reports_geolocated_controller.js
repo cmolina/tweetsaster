@@ -5,6 +5,7 @@ Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
   lat: Ember.computed.alias('controllers.reports.lat'),
   lng: Ember.computed.alias('controllers.reports.lng'),
   within: Ember.computed.alias('controllers.reports.within'),
+  filterActive: true,
   filterAddress: '',
   filterRadius: function(key, value) {
     if (arguments.length > 1) {
@@ -52,8 +53,7 @@ Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
     },
     applyFilter: function() {
       var count = this.get('filteredContent.length');
-      if (count === 0)
-        this.send('loadMore', 'next');
+      this.send('loadMore', 'next');
       this.set('filterActive', false);
     },
     showFilter: function() {

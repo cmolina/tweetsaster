@@ -1,10 +1,13 @@
 Tweetsaster.ReportsGeolocatedRoute = Ember.Route.extend(Tweetsaster.LoadMore, {
   previous: function() {
-    var params = this.get('controller.query.previous') || 
-      this.store.metadataFor('report').previous;
-    params.lat = this.controller.get('lat');
-    params.lng = this.controller.get('lng');
-    params.within = this.controller.get('within');
+    var params = this.get('controller.query.previous');
+    if (!params) {
+      params = {
+        lat: this.controller.get('lat'),
+        lng: this.controller.get('lng'),
+        within: this.controller.get('within')
+      };
+    }
     return {model: 'report', params: params};
   }.property('controller.query.previous'),
   next: function() {
@@ -23,7 +26,6 @@ Tweetsaster.ReportsGeolocatedRoute = Ember.Route.extend(Tweetsaster.LoadMore, {
   },
   setupController: function(controller, model) {
     this._super(controller, model);
-    controller.set('filterActive', true);
   },
   renderTemplate: function(controller) {
     this.render('reports/index', {controller: controller});
