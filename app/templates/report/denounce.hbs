@@ -1,8 +1,8 @@
 <nav class="bar bar-nav">
-  {{#link-to 'report' model tagName='button' class='btn btn-link btn-nav pull-left'}}
+  <button {{action 'goBack' 'report' model}} class="btn btn-link btn-nav pull-left">
     <span class="icon icon-left-nav"></span>
     Cancelar
-  {{/link-to}}
+  </button>
 </nav>
 
 <div class="content">

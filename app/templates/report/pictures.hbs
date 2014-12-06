@@ -2,7 +2,7 @@
   {{view 'slideshow' pictures=model.inReplyToStatus.allPictures}}
 {{else}}
   <div class="error-empty">
-    No hay im&aacute;genes subidas <i>todav&iacute;a</i><br>
-    ¿Tienes fotos para compartir? <button class="btn btn-link" {{action 'showSelectPhotos'}}>Súbelas</button>
+    <i>No hay imágenes subidas todavía</i><br>
+    ¿Tienes fotos para compartir? <a {{action 'showSelectPhotos'}}>Súbelas</a>
   </div>
 {{/if}}

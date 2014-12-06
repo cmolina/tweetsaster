@@ -13,7 +13,7 @@
     <li class="table-view-divider">Búsquedas recientes</li>
     {{#each query in latestQueries}}
     <li class="table-view-cell">
-      {{#link-to 'search' (query-params q=query) class='navigate-right'}}
+      {{#link-to 'search' (query-params q=query) replace=true class='navigate-right'}}
         {{query}}
       {{/link-to}}
     </li>

@@ -5,7 +5,7 @@ CACHE:
 styles/simple-slideshow-styles.css
 styles/style.css
 bower_components/the-modal/the-modal.css
-bower_components/jquery/dist/jquery.js
+bower_components/jquery/jquery.js
 bower_components/handlebars/handlebars.runtime.js
 bower_components/ember/ember.js
 bower_components/ember-data/ember-data.js
