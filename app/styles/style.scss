@@ -1,28 +1,10 @@
 /* Imports */
 
 @import "compass";
-
-/* Used by bootstrap */
-  /* https://github.com/twbs/bootstrap-sass/issues/582 */
-  /* $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; */
-  /* Starts bootstrap */
-  /* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap"; */
-
 @import "../bower_components/ratchet/sass/ratchet";
 @import "CSS:flaticon";
 @import "CSS:jquery.toast";
 /* http://stackoverflow.com/questions/7111610/import-regular-css-file-in-scss-file */
-/* @import "CSS:../bower_components/hook/hook"; */
-
-/* Fix for Ratchicons, not loaded */
-@font-face {
-  font-family: 'Ratchicons';
-  src: url('/bower_components/ratchet/fonts/ratchicons.eot');
-  src: url('/bower_components/ratchet/fonts/ratchicons.eot?#iefix') format('embedded-opentype'),
-  url('/bower_components/ratchet/fonts/ratchicons.woff') format('woff'),
-  url('/bower_components/ratchet/fonts/ratchicons.ttf') format('truetype'),
-  url('/bower_components/ratchet/fonts/ratchicons.svg#ratchicons') format('svg');
-}
 
 /* Mixins */
 
@@ -65,46 +47,6 @@ $yellow: #ffc647;
 
 /* Rules */
 
-.sub-header {
-  height: 49px;
-  position: fixed;
-  background: #ddd;
-  top: 48px;
-  width: 100%;
-  box-shadow: black 0 -1px 11px 0;
-}
-
-.filler {
-  margin-top: 49px;
-}
-
-.list-wrapper {
-  width: 100%;
-  color: black;
-}
-
-.list-element {
-  color: black;
-  border-bottom: 1px solid $gray;
-  padding: 10px;
-  min-height: 64px;
-  @include background-image(linear-gradient(to top, #FEFEFE, #F9F9F9));
-}
-
-.list-element::after {
-  content: '';
-  clear: both;
-  display: block;
-}
-
-.img-report {
-  display: none;
-}
-
-.report-new {
-  margin-top: 10px;
-}
-
 select {
   height: 30px;
   line-height: 30px;
@@ -118,35 +60,6 @@ textarea {
   display: block;
 }
 
-button[type="submit"] {
-  margin-left: 40px;
-  width: 100px;
-}
-
-.controls {
-  width: 285px;
-  margin: auto;
-}
-
-ul.nav li {
-  @include background-image(linear-gradient(to top, #737477, #343538));
-  padding: 2px 0;
-  float: left;
-  position: relative;
-  border: 1px solid #939497;
-  width: 25%;
-  box-sizing: border-box;
-}
-
-ul.nav {
-  text-align: center;
-}
-
-li:active {
-  background: #6EACDE !important;
-  border-bottom: none;
-}
-
 #loading-gif {
   height: 85px;
   background-repeat: no-repeat;
@@ -154,28 +67,6 @@ li:active {
   width: 45px;
   min-height: 45px;
   background-image: url('../images/loading.gif');
-}
-
-#search-field {
-  margin: 10px;
-  padding: 3px 0;
-  width: 60%;
-  display: inline-block;
-  margin-left: 12px;
-  border-radius: 5px;
-  margin-top: 11px;
-}
-
-@media (orientation: landscape) {
-  .img-report {
-    width: 100%;
-    float:right;
-    display: block;
-  }
-  
-  .img-report > img {
-    width: 100%;
-  }
 }
 
 /* reports.hbs */
@@ -211,16 +102,11 @@ li:active {
 }
 
 .highlight-report {
-  @include animation-duration(5s);
+  @include animation-duration(3s);
   @include animation-name(highlight-report);
 }
 
 /* reports/index.hbs */
-.report-text {
-  font-size: 1.5em;
-  min-height: 3em;
-}
-
 #map-filter {
   padding: 5px;
   margin: 0;
@@ -289,13 +175,6 @@ li:active {
 }
 
 /* report/new.hbs */
-.input-row select {
-  float: right;
-  width: 65%;
-  padding-left: 0px;
-  margin-bottom: 0px;
-  border: 0px none;
-}
 
 .themodal-overlay > .modal {
   background: white;
@@ -370,20 +249,9 @@ li:active {
 .bar-nav {
   @include background-image(linear-gradient(to top, $actionbar-blue-1, $actionbar-blue-2));
 }
-.bar .btn-link, .bar .title {
-  color: white;
-}
 
-.icon-8 {
-  width: 26px !important;
-  height: 26px !important;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.icon.world-map {
-  background-image: url("/images/world_map-25.png");
-}
-.active .icon.world-map {
-  background-image: url("/images/world_map-26.png");
+.bar {
+  .btn-link, .title {
+    color: white;
+  }
 }
