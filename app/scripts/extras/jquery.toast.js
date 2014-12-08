@@ -121,6 +121,7 @@ if ( typeof Object.create !== 'function' ) {
 			var that = this;
 
 			if (e) e.preventDefault();
+			this.closed = true;
 
 			that._toastEl.trigger('beforeHide');
 			if( that.options.showHideTransition === 'fade') {
@@ -241,19 +242,18 @@ if ( typeof Object.create !== 'function' ) {
 				var that = this;
 
 				window.setTimeout(function(){
-					
+					if (that.closed)
+						return;
+					that._toastEl.trigger('beforeHide');
 					if ( that.options.showHideTransition.toLowerCase() === 'fade' ) {
-						that._toastEl.trigger('beforeHide');
 						that._toastEl.fadeOut(function () {
 							that._toastEl.trigger('afterHidden');
 						});
 					} else if ( that.options.showHideTransition.toLowerCase() === 'slide' ) {
-						that._toastEl.trigger('beforeHide');
 						that._toastEl.slideUp(function () {
 							that._toastEl.trigger('afterHidden');
 						});
 					} else {
-						that._toastEl.trigger('beforeHide');
 						that._toastEl.hide(function () {
 							that._toastEl.trigger('afterHidden');
 						});

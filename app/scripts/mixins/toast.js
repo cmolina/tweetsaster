@@ -19,7 +19,6 @@ Tweetsaster.Toast = Ember.Mixin.create({
     this.set('toast', $.toast(config));
   },
   hideToast: function() {
-    console.log(this.get('toast'));
     this.get('toast').close();
   }
 });
