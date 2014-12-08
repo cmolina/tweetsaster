@@ -9,7 +9,7 @@ Tweetsaster.Toast = Ember.Mixin.create({
       hideAfter: 5000, // miliseconds
       stack: false, // there should be only one toast at a time
       position: 'bottom-center',        
-      bgColor: '#6f8ced',
+      bgColor: '#7894EF',
       textColor: '#ffffff',
     };
     if (afterHidden)

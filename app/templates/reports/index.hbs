@@ -13,6 +13,20 @@
 
 {{#if filteredContent.length}}
 <ul class="table-view">
+{{#if newFutureReport}}
+  <li class="table-view-cell media">
+    <div class="media-object pull-left">
+      <img src="images/default-user.png">
+    </div>
+    <div class="media-body">
+      <p>
+        <p class="user-name pull-right">hace unos segundos</p>
+        <strong>Anónimo</strong><br>
+        {{{newFutureReport}}}
+      </p>
+    </div>
+  </li>
+{{/if}}
 {{#each report in filteredContent itemController='report'}}
   <li class="table-view-cell media">
     {{#link-to 'report.index' report}}

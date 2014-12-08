@@ -8,6 +8,7 @@ Tweetsaster.ReportsNewRoute = Ember.Route.extend({
         };
         controller.set('coordinates', geoJSON);
       });
+    controller.set('mustContinue', true);
     this._super(controller, model);
   }
 });
