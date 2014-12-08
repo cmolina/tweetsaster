@@ -1,8 +1,8 @@
 <nav class="bar bar-nav">
-  {{#link-to 'report.comments' model.inReplyToStatus tagName='button' class='btn btn-link btn-nav pull-left'}}
+  <button {{action 'goBack' 'report.comments' model.inReplyToStatus}} class="btn btn-link btn-nav pull-left">
     <span class="icon icon-left-nav"></span>
     Cancelar
-  {{/link-to}}
+  </button>
   <h1 class="title">Comentar</h1>
 </nav>
 
