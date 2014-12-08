@@ -1,4 +1,4 @@
-Tweetsaster.ReportDenounceController = Ember.ObjectController.extend({
+Tweetsaster.ReportDenounceController = Ember.ObjectController.extend(Tweetsaster.Toast, {
   selectedReason: null,
   reasons: [
     'Se trata de una broma / no es cierto',
@@ -15,10 +15,11 @@ Tweetsaster.ReportDenounceController = Ember.ObjectController.extend({
       report.set('denounce', {reason: this.get('selectedReason')});
       report.save().then(function(report) {
         report.unloadRecord();
-        // TODO msj to the user
       });
       this.set('selectedReason', null);
-      this.replaceRoute('reports.index');
+      this.replaceRoute('reports.index').then(function() {
+        this.showToast('Gracias por enviar tu denuncia');
+      }.bind(this));
     }
   }
 });
