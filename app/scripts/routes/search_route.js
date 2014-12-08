@@ -1,6 +1,6 @@
 Tweetsaster.SearchRoute = Ember.Route.extend({
   queryParams: {
-    q: {refreshModel: true}
+    q: {refreshModel: true, replace: true}
   },
   model: function(params) {
     if (params.q) {
