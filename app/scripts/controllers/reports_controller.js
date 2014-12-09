@@ -14,24 +14,39 @@ Tweetsaster.ReportsController = Ember.ArrayController.extend({
 
   setDefaultLocation: function() {
     if (Em.isBlank(this.get('lat')) || Em.isEmpty(this.get('lng'))) {
+      // if no geolocation available
+      // return 'San Joaquín' by default
+      var failed = {lat: -33.5001, lng: -70.6092};
       var getGeolocation = new Ember.RSVP.Promise(function(resolve) {
-          if (navigator.geolocation)
-            navigator.geolocation.getCurrentPosition(function(position) {
+          if ('geolocation' in navigator)
+            navigator.geolocation.getCurrentPosition(
+              function(position) {
                 var latLng = {
                   lat: position.coords.latitude,
                   lng: position.coords.longitude
                 };
                 resolve(latLng);
-            });
+              }, 
+              function(e) {
+                console.warn('ERROR(' + e.code + '): ' + e.message);
+                console.warn(e);
+                resolve(failed);
+              },
+              {
+                enableHighAccuracy: true,
+                timeout: 3000,
+                maximumAge: 60000
+              }
+            );
           else
-            // if no geolocation available
-            // return 'San Joaquín' by default
-            resolve({lat: -33.5001, lng: -70.6092});
+            resolve(failed);
         });
       // now set the default value
       getGeolocation.then(function(latLng) {
-        this.set('lat', latLng.lat);
-        this.set('lng', latLng.lng);
+        if (Em.isBlank(this.get('lat')) || Em.isEmpty(this.get('lng'))) {
+          this.set('lat', latLng.lat);
+          this.set('lng', latLng.lng);
+        }
 
         this.addObserver('lat', this, this.onFilterChanges);
         this.addObserver('lng', this, this.onFilterChanges);

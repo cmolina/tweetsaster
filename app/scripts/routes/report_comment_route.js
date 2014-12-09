@@ -8,14 +8,33 @@ Tweetsaster.ReportCommentRoute = Ember.Route.extend({
       inReplyToStatus: model,
       channel: model.get('channel')
     });
-    if (navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var geoJSON = {
-          type: 'Point', 
-          coordinates: [position.coords.longitude, position.coords.latitude]
-        };
-        comment.set('coordinates', geoJSON);
-      });
+    var makeGeoJSON = function(lng, lat) {
+      return {
+        type: 'Point', 
+        coordinates: [lng, lat]
+      };
+    };
+    var failed = makeGeoJSON(-70.6092, -33.5001);
+    if ('geolocation' in navigator)
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          var geoJSON = makeGeoJSON(position.coords.longitude, 
+                                    position.coords.latitude);
+          comment.set('coordinates', geoJSON);
+        },
+        function(e) {
+          console.warn('ERROR(' + e.code + '): ' + e.message);
+          console.warn(e);
+          comment.set('coordinates', failed);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 60000
+        }
+      );
+    else
+      comment.set('coordinates', failed);
     controller.set('model', comment);
     this._super(controller, comment);
   },
