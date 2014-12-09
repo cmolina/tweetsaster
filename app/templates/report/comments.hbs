@@ -5,13 +5,9 @@
     {{#each comment in filteredComments}}
     <li class="table-view-cell">
       {{comment.formattedText}}
-        <p class="user-name pull-right">
-          {{#if comment.user.isNotAnonymous}}
-          <img {{bind-attr src=comment.user.profileImageMiniUrl}}>
-          <strong>{{comment.user.screenName}}</strong> 
-          {{/if}}
-          {{timePassed}}
-        </p>
+      <div class="pull-right less-important">
+         — <strong>{{comment.user.screenName}}</strong> {{comment.timePassed}}
+      </div>
     </li>
     {{/each}}
   </ul>

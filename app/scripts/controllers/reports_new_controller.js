@@ -32,7 +32,16 @@ Tweetsaster.ReportsNewController = Ember.ArrayController.extend(Tweetsaster.Toas
           this.set('newFutureReport', null);
         }.bind(this),
         function(error) {
-          console.error('Noticia no enviada :( '+error);
+          console.warn('Noticia no enviada :( ', error);
+          this.showToast({
+            heading: 'Ups',
+            text: 'Hubo un error al enviar tu noticia.<br>'+
+                  'Asegúrate de tener internet e intenta más tarde', 
+            error: true, hideAfter: 10000
+          });
+          report.deleteRecord();
+          // remove fake report
+          this.set('newFutureReport', null);
         }.bind(this)
       );
     }
@@ -66,12 +75,15 @@ Tweetsaster.ReportsNewController = Ember.ArrayController.extend(Tweetsaster.Toas
         this.set('newFutureReport', this.get('text'));
         route.controller.trigger('newElementCreated');
         // show toast message
-        var html = 'Tu noticia ha sido enviada <a class="pull-right">Deshacer</a>';
-        this.showToast(html, this.sendOrEdit.bind(this), function() {
-          // the user clicked on 'undo'
-          this.set('mustContinue', false);
-          this.hideToast();
-        }.bind(this));
+        this.showToast({
+          text: 'Tu noticia ha sido enviada <a class="pull-right">Deshacer</a>', 
+          afterHidden: this.sendOrEdit.bind(this), 
+          clicked: function() {
+            // the user clicked on 'undo'
+            this.set('mustContinue', false);
+            this.hideToast();
+          }.bind(this)
+        });
       }.bind(this));
     }
   }

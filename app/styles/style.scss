@@ -166,7 +166,6 @@ textarea {
   padding-top: 10px;
 }
 
-/* report/map.hbs */
 .map-canvas {
   width: 100%;
   min-height: 200px;
@@ -174,8 +173,13 @@ textarea {
   height: calc(100% - 50px);
 }
 
-/* report/new.hbs */
+/* report/comments.hbs */
+.less-important {
+  color: gray;
+  font-size: smaller;
+}
 
+/* report/new.hbs */
 .themodal-overlay > .modal {
   background: white;
   border-radius: 3px;

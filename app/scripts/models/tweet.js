@@ -3,7 +3,7 @@ Tweetsaster.GoogleApiKey = 'AIzaSyDiuj2l9-S2bE7K6i6Cxcgv6ZCDXaUiwYc';
 Tweetsaster.Tweet = DS.Model.extend({
   text: DS.attr('string', {defaultValue: ''}),
   createdAt: DS.attr('string'),
-  channel: DS.attr('string'),
+  channel: DS.attr('string', {defaultValue: 'earthquake'}),
   user: DS.belongsTo('user'),
   // GeoJSON Point
   coordinates: DS.attr(),

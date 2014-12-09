@@ -3,11 +3,6 @@ Tweetsaster.ReportCommentRoute = Ember.Route.extend({
     return this.store.find('report', params.report_id);
   },
   setupController: function(controller, model) {
-    var comment = this.store.createRecord('comment', {
-      comment: this.get('comment') || '',
-      inReplyToStatus: model,
-      channel: model.get('channel')
-    });
     var makeGeoJSON = function(lng, lat) {
       return {
         type: 'Point', 
@@ -20,12 +15,12 @@ Tweetsaster.ReportCommentRoute = Ember.Route.extend({
         function(position) {
           var geoJSON = makeGeoJSON(position.coords.longitude, 
                                     position.coords.latitude);
-          comment.set('coordinates', geoJSON);
+          controller.set('coordinates', geoJSON);
         },
         function(e) {
           console.warn('ERROR(' + e.code + '): ' + e.message);
           console.warn(e);
-          comment.set('coordinates', failed);
+          controller.set('coordinates', failed);
         },
         {
           enableHighAccuracy: true,
@@ -34,19 +29,8 @@ Tweetsaster.ReportCommentRoute = Ember.Route.extend({
         }
       );
     else
-      comment.set('coordinates', failed);
-    controller.set('model', comment);
-    this._super(controller, comment);
-  },
-  deactivate: function() {
-    // if the model was not sent to the server, delete it
-    var comment = this.controllerFor('reportComment').get('model');
-    if (comment.get('isNew')) {
-      this.set('comment', comment.get('comment'));
-      comment.deleteRecord();
-    }
-    else {
-      this.set('comment', '');
-    }
+      controller.set('coordinates', failed);
+    controller.set('mustContinue', true);
+    this._super(controller, model);
   }
 });

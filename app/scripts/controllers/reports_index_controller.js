@@ -3,6 +3,8 @@ Tweetsaster.ReportsIndexController = Ember.ArrayController.extend(Ember.Evented,
   sortAscending: false,
   newFutureReport: null,
   filteredContent: function() {
-    return this.get('arrangedContent');
-  }.property('arrangedContent')
+    return this.get('arrangedContent').filter(function(report) {
+      return report.id;
+    });
+  }.property('arrangedContent', 'newFutureReport')
 });

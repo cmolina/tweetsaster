@@ -18,7 +18,7 @@ Tweetsaster.ReportDenounceController = Ember.ObjectController.extend(Tweetsaster
       });
       this.set('selectedReason', null);
       this.replaceRoute('reports.index').then(function() {
-        this.showToast('Gracias por enviar tu denuncia');
+        this.showToast({text: 'Gracias por enviar tu denuncia'});
       }.bind(this));
     }
   }
