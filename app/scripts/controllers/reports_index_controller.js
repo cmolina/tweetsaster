@@ -6,5 +6,5 @@ Tweetsaster.ReportsIndexController = Ember.ArrayController.extend(Ember.Evented,
     return this.get('arrangedContent').filter(function(report) {
       return report.id;
     });
-  }.property('arrangedContent', 'newFutureReport')
+  }.property('model.length', 'newFutureReport')
 });
