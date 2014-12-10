@@ -1,6 +1,6 @@
 DS.ActiveModelAdapter.reopen({
   //host: 'http://localhost:28017'
-  host: 'http://restapi-streamsaster.ngrok.com'
+  host: 'http://restapi-dsas3.ngrok.com'
 });
 
 Tweetsaster.ApplicationAdapter = DS.ActiveModelAdapter.extend({});

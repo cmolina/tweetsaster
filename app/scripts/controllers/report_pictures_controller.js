@@ -1,5 +1,5 @@
 Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController, {
-  dropletUrl: 'http://restapi-streamsaster.ngrok.com/upload',
+  dropletUrl: 'http://restapi-dsas3.ngrok.com/upload',
 
   canAddAPhoto: function() {
     return this.get('validFiles.length') < 4;

@@ -1,8 +1,8 @@
 auth_token: "Yney0b7Wgh7Jat0w9IiH"
 tunnels:
-  restapi-streamsaster:
+  restapi-dsas3:
     proto:
       http: "28017"
-  streamsaster:
+  dsas3:
     proto:
       http: "9000"
