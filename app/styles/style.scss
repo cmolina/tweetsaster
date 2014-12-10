@@ -70,6 +70,14 @@ textarea {
 }
 
 /* reports.hbs */
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .bar-header-secondary ~ .content > .table-view:first-child {
   margin-top: 0;
 }
