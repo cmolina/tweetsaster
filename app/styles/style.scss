@@ -90,16 +90,28 @@ textarea {
     min-height: 4rem;
   }
 
+  .media-body {
+    min-height: 4rem;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
   .media-object {
     text-align: center;
     img {
       border-radius: 50%;
       margin-top: 3px;
+      width: 34px;
     }
     .fav {
+      bottom: 0;
       color: $yellow;
       font-size: 1.5rem;
-      padding-top: .5rem;
+      line-height: 30px;
+      padding-top: 0.5rem;
+      padding-bottom: 11px;
+      position: absolute;
+      width: 34px;
     }
   }
 }

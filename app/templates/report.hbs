@@ -6,10 +6,10 @@
   <ul class="table-view display-row">
     <li class="table-view-cell media">
       <div class="media-object pull-left">
-        <img {{bind-attr src=user.profileImageMiniUrl}}>
+        <img {{bind-attr src=user.profileImageUrl}}>
         <div class="fav">
           <button {{action 'toggleFavourite'}} {{bind-attr class=":btn :btn-positive isFavourite::btn-outlined"}}>
-            <span class="icon icon-star-filled"></span><br>Útil
+            <span class="icon icon-star-filled"></span><br>Es<br>útil
           </button>
         </div>
       </div>
