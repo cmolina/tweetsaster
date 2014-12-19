@@ -36,7 +36,7 @@ Tweetsaster.ReportsNewController = Ember.ArrayController.extend(Tweetsaster.Toas
           this.showToast({
             heading: 'Ups',
             text: 'Hubo un error al enviar tu noticia.<br>'+
-                  'Asegúrate de tener internet e intenta más tarde', 
+                  'Asegúrate de tener internet, y <strong>envia nuevamente la noticia</strong> más tarde', 
             error: true, hideAfter: 10000
           });
           report.deleteRecord();
