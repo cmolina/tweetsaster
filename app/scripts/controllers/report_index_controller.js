@@ -1,4 +1,4 @@
-Tweetsaster.ReportIndexController = Ember.ObjectController.extend({
+Tweetsaster.ReportIndexController = Ember.ObjectController.extend(Tweetsaster.Toast, {
   isDraggable: false,
   originalCoords: null,
   coordsHasNotChanged: function() {
@@ -7,8 +7,13 @@ Tweetsaster.ReportIndexController = Ember.ObjectController.extend({
   actions: {
     toggleEditing: function() {
       var isDraggable = this.toggleProperty('isDraggable');
-      this.set('originalCoords', isDraggable ? 
-               this.get('coordinates.coordinates') : null);
+      if (isDraggable) {
+        this.showToast({
+          text: 'Arrastra el pin para darle una nueva posición',
+          hideAfter: 3000
+        });
+        this.set('originalCoords', this.get('coordinates.coordinates'));
+      }
     },
     revert: function() {
       this.set('coordinates.coordinates', this.get('originalCoords'));
@@ -16,8 +21,11 @@ Tweetsaster.ReportIndexController = Ember.ObjectController.extend({
     },
     update: function() {
       this.get('model').save().then(function(report) {
-        // TODO notifies the user everything is fine
-      });
+        this.showToast({
+          text: 'La posición se ha cambiado exitosamente',
+          hideAfter: 3000
+        });
+      }.bind(this));
       this.send('toggleEditing');
     }
   }
