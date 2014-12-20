@@ -30,13 +30,12 @@ Tweetsaster.timePassedFrom = function(date) {
 };
 
 Tweetsaster.ReportController = Ember.ObjectController.extend({
-  needs: ['application'],
   isFavourite: function(key, value) {
     if (arguments.length > 1) {
-      this.set('controllers.application.lS.favourites_'+this.get('id'), value);
+      Tweetsaster.lS.set('favourites_'+this.get('id'), value);
     }
-    return this.get('controllers.application.lS.favourites_'+this.get('id'));
-  }.property('id', 'controllers.application.lS'),
+    return Tweetsaster.lS.get('favourites_'+this.get('id'));
+  }.property('id', 'Tweetsaster.lS'),
   timePassed: function() {
     return Tweetsaster.timePassedFrom(this.get("createdAt"));
   }.property('createdAt'),

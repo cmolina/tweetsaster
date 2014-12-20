@@ -44,6 +44,7 @@ $actionbar-blue-2: #7894EF;
 $actionbar-color: #e9ebf5;
 $gray: #D5D9DC;
 $yellow: #ffc647;
+$dark-yellow: darken($yellow, 20%);
 
 /* Rules */
 
@@ -106,7 +107,9 @@ textarea {
     .fav {
       bottom: 0;
       color: $yellow;
-      font-size: 1.5rem;
+      text-shadow: 1px 1px 1px $dark-yellow, 1px -1px 1px $dark-yellow, 
+        -1px 1px 1px $dark-yellow, -1px -1px 1px $dark-yellow;
+      font-size: 1.4rem;
       line-height: 30px;
       padding-top: 0.5rem;
       padding-bottom: 11px;

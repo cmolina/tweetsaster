@@ -10,5 +10,9 @@ Tweetsaster.ReportsIndexRoute = Ember.Route.extend(Tweetsaster.LoadMore, {
   }.property('controller.query.next'),
   model: function(params) {
     return this.store.all('report');
+  },
+  activate: function() {
+    // load more reports after the stack is free
+    window.setTimeout(function() {this.send('loadMore', 'next');}.bind(this));
   }
 });

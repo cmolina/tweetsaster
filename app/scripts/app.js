@@ -17,3 +17,5 @@ require('scripts/views/*');
 require('scripts/components/*');
 require('scripts/router');
 require('scripts/extras/*');
+
+Tweetsaster.lS = Tweetsaster.LocalStorage.create();
