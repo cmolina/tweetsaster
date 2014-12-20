@@ -15,10 +15,18 @@ Tweetsaster.ReportsGeolocatedRoute = Ember.Route.extend(Tweetsaster.LoadMore, {
     return {model: 'report', params: params};
   }.property('controller.query.previous'),
   next: function() {
-    var params = this.get('controller.query.next') || {};
-    params.lat = this.controller.get('lat');
-    params.lng = this.controller.get('lng');
-    params.within = this.controller.get('within');
+    var params = this.get('controller.query.next') || {},
+        lng = this.controller.get('lng'), 
+        lat = this.controller.get('lat'),
+        within = this.controller.get('within'),
+        isValid = params.lng==lng && params.lat==lat && params.within==within;
+    if (!(params && isValid)) {
+      params = {
+        lng: lng,
+        lat: lat,
+        within: within
+      };
+    }
     return {model: 'report', params: params};
   }.property('controller.query.next'),
   model: function(params) {

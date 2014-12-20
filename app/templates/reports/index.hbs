@@ -13,7 +13,7 @@
 
 {{#if filteredContent.length}}
 <ul class="table-view">
-{{#if newFutureReport}}
+  {{#if newFutureReport}}
   <li class="table-view-cell media">
     <div class="media-object pull-left">
       <img src="images/default-user.png">
@@ -26,8 +26,8 @@
       </p>
     </div>
   </li>
-{{/if}}
-{{#each report in filteredContent itemController='report'}}
+  {{/if}}
+  {{#each report in filteredContent itemController='report'}}
   <li class="table-view-cell media">
     {{#link-to 'report.index' report}}
       <div class="media-object pull-left">
@@ -45,16 +45,26 @@
       </div>
     {{/link-to}}
   </li>
-{{/each}}
+  {{/each}}
+  {{#if isLoading}}
+  <div id="loading-gif"></div>
+  {{else}}
   <li class="error-empty">
     ¡Llegaste al final de las noticias!<br>😊<br><br>
   </li>
+  {{/if}}
 </ul>
+{{else}}
+
+{{#if isLoading}}
+<div id="loading-gif"></div>
 {{else}}
 <div class="error-empty">
   <strong>No pudimos encontrar ningún resultado</strong><br>
   Prueba con radios de búsqueda más extensos u otros lugares más poblados.
 </div>
+{{/if}}
+
 {{/if}}
 
 {{/if}}
