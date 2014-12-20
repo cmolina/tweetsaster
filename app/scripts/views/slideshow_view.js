@@ -184,7 +184,7 @@ Tweetsaster.SlideshowView = Ember.View.extend({
     if (this.pictures.length <= 0)
       console.log('There is no "pictures" to display in the Slideshow.');
     else
-      this.makeBSS('.bss-slides');
+      this.makeBSS('.bss-slides', {swipe: true});
   },
   onPicturesChanged: function() {
     var $slideshow = {};

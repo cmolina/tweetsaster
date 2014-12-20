@@ -13,7 +13,8 @@
     "ember-droplet": "~0.8.4"
   },
   "devDependencies": {
-    "ember-mocha-adapter": "0.1.2"
+    "ember-mocha-adapter": "0.1.2",
+    "hammerjs": "~2.0.4"
   },
   "resolutions": {
     "ember": "1.8.1"

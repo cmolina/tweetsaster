@@ -3,9 +3,11 @@ CACHE MANIFEST
 
 CACHE:
 styles/simple-slideshow-styles.css
+styles/fonts/flaticon.woff
 #styles/style.css
 bower_components/the-modal/the-modal.css
-bower_components/jquery/jquery.js
+bower_components/jquery/jquery.min.js
+bower_components/hammerjs/hammer.min.js
 bower_components/handlebars/handlebars.runtime.js
 bower_components/ember/ember.js
 bower_components/ember-data/ember-data.js
