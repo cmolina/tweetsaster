@@ -67,6 +67,8 @@ Tweetsaster.GoogleMapsComponent = Ember.Component.extend({
     google.maps.event.addListener(map, 'zoom_changed', function() {
       this.set('zoom', map.getZoom());
     }.bind(this));
+
+    reverseGeocoding(this.get('latLng'));
   }.on('didInsertElement'),
   setCenter: function() {
     var latLng = this.get('latLng');

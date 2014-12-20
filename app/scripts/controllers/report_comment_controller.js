@@ -38,9 +38,8 @@ Tweetsaster.ReportCommentController = Ember.ObjectController.extend(Tweetsaster.
             heading: 'Ups',
             text: 'Hubo un error al enviar el comentario.<br>'+
                   'Asegúrate de tener internet e intenta más tarde', 
-            error: true, hideAfter: 10000
+            error: error, hideAfter: 10000
           });
-          console.error(error);
           comment.deleteRecord();
         }.bind(this)
       );

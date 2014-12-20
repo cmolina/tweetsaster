@@ -15,6 +15,8 @@ Tweetsaster.Toast = Ember.Mixin.create({
       if (key in params) return;
       params[key] = defaultParams[key];
     });
+    if (params.error) 
+      console.error(params.error);
     this.set('toast', $.toast(params));
   },
   hideToast: function() {

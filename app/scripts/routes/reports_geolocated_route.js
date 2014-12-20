@@ -36,9 +36,6 @@ Tweetsaster.ReportsGeolocatedRoute = Ember.Route.extend(Tweetsaster.LoadMore, {
     reportsController.set('within', params.within);
     return this.store.all('report');
   },
-  setupController: function(controller, model) {
-    this._super(controller, model);
-  },
   renderTemplate: function(controller) {
     this.render('reports/index', {controller: controller});
     this.render('reports/_footer', {
