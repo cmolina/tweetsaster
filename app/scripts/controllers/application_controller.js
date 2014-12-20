@@ -1,6 +1,11 @@
 Tweetsaster.ApplicationController = Ember.Controller.extend({
   currentPathDidChange: function() {
-    this.set('_previousPath', this.get('_currentPath'));
+    if (this.get('_goingBack')) {
+      this.set('_previousPath', null);
+      this.set('_goingBack', false);
+    }
+    else
+      this.set('_previousPath', this.get('_currentPath'));
     this.set('_currentPath', this.get('currentPath'));
   }.observes('currentPath'),
   actions: {

@@ -3,17 +3,20 @@
     <span class="icon icon-left-nav"></span>
     Cancelar
   </button>
+  <h1 class="title">Denuncia</h1>
 </nav>
 
 <div class="content">
   <article class="content-padded">
-    <p>Gracias por hacer esta denuncia.<br>Seleccione una razón:</p>
-    {{#eachIndexed reason in reasons}}
-    <p>
-      {{radio-button id=index_1 name='reason' value=index groupValue=selectedReason}}
-      <label {{bind-attr for=index_1}}>{{reason}}
-    </p>
-    {{/eachIndexed}}  
+    Dinos la razón de tu denuncia:
+    <ul class="table-view comments">
+      {{#eachIndexed reason in reasons}}
+      <li class="table-view-cell">
+        {{radio-button id=index_1 name='reason' value=index groupValue=selectedReason}}
+        <label {{bind-attr for=index_1}}>{{reason}}</label>
+      </li>
+      {{/eachIndexed}}
+    </ul>
     <button {{action 'sendDenounce'}} class="btn btn-negative btn-block" {{bind-attr disabled=cantSend}}>Enviar denuncia</button>
   </article>
 </div>
