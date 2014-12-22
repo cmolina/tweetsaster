@@ -1,4 +1,4 @@
-Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
+Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend(Tweetsaster.Toast, {
   needs: 'reports',
   sortProperties: ['id'],
   sortAscending: false,
@@ -38,11 +38,13 @@ Tweetsaster.ReportsGeolocatedController = Ember.ArrayController.extend({
     searchAddress: function(address) {
       this.get('geocoder').geocode({address: address, region: 'CL'}, 
         function(results, status) {
-          if (status != google.maps.GeocoderStatus.OK) {
-            if (status == google.maps.GeocoderStatus.ZERO_RESULTS)
-              alert('No pudimos encontrar ese lugar. ¿Está bien escrito?\n'+
-                    'Cambia la dirección y vuelve a intentar');
-            console.error('Error al buscar dirección, '+status);
+          if (status !== google.maps.GeocoderStatus.OK) {
+            if (status === google.maps.GeocoderStatus.ZERO_RESULTS)
+              this.showToast({
+                text: 'No pudimos encontrar ese lugar. ¿Está bien escrito?<br>'+
+                  'Cambia la dirección y vuelve a intentar',
+                error: 'Error al buscar dirección: '+status
+              });
             return;
           }
           var latLng = results[0].geometry.location;

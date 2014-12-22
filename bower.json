@@ -10,7 +10,7 @@
     "hook": "*",
     "ratchet": "~2.0.2",
     "the-modal": "~0.1.2",
-    "ember-droplet": "~0.8.4"
+    "ember-droplet": "~0.8.9"
   },
   "devDependencies": {
     "ember-mocha-adapter": "0.1.2",

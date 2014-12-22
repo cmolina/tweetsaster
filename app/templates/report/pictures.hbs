@@ -1,5 +1,5 @@
-{{#if model.inReplyToStatus.allPictures}}
-  {{view 'slideshow' pictures=model.inReplyToStatus.allPictures}}
+{{#if model.allPictures}}
+  {{view 'slideshow' pictures=model.allPictures}}
 {{else}}
   <div class="error-empty">
     <i>No hay imágenes subidas todavía</i><br>

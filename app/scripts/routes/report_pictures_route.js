@@ -1,12 +1,4 @@
 Tweetsaster.ReportPicturesRoute = Ember.Route.extend({
-  model: function(params) {
-    var report = this.modelFor('report');
-    return this.store.createRecord('comment', {
-      comment: 'Nuevas fotos',
-      inReplyToStatus: report,
-      channel: report.get('channel')
-    });
-  },
   setupController: function(controller, model) {
     var makeGeoJSON = function(lng, lat) {
       return {
@@ -20,12 +12,12 @@ Tweetsaster.ReportPicturesRoute = Ember.Route.extend({
         function(position) {
           var geoJSON = makeGeoJSON(position.coords.longitude, 
                                     position.coords.latitude);
-          model.set('coordinates', geoJSON);
+          controller.set('coordinates', geoJSON);
         },
         function(e) {
           console.warn('ERROR(' + e.code + '): ' + e.message);
           console.warn(e);
-          model.set('coordinates', failed);
+          controller.set('coordinates', failed);
         },
         {
           enableHighAccuracy: true,
@@ -34,7 +26,7 @@ Tweetsaster.ReportPicturesRoute = Ember.Route.extend({
         }
       );
     else
-      model.set('coordinates', failed);
+      controller.set('coordinates', failed);
     controller = this.controllerFor('reportPictures');
     this._super(controller, model);
   },

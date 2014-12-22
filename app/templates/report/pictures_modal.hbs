@@ -1,6 +1,6 @@
 <div class="themodal-overlay" style="display: none;">
   <div id="similar-reports" class="modal">
-    <h1 class="title">Subiendo fotos: ({{validFiles.length}} de 4)</h1>
+    <h1 class="title">Subiendo fotos: ({{validAndUploadedFiles.length}} de 4)</h1>
     <p class="content-padded">Puedes subir o sacar una foto en este momento</p>
     {{#if uploadStatus.uploading}}
     <p>
@@ -14,11 +14,11 @@
         Hubo un error al subir las fotos. Por favor intenta más tarde.
       </div>
       {{/if}}
-      {{#each controller.validFiles}}
+      {{#each file in validAndUploadedFiles}}
       <div class="half-screen">
         {{name}}
-        <button class="btn remove-image" {{action 'deleteFile' this}}>Eliminar</button>
-        {{view view.ImagePreview imageBinding="this"}}
+        <button class="btn remove-image" {{action 'deletePicture' file index}}>Eliminar</button>
+        {{view view.ImagePreview imageBinding="file"}}
       </div>
       {{/each}}
       {{#if canAddAPhoto}}
@@ -31,7 +31,7 @@
       {{/if}}
     {{/view}}
     
-    <button {{action 'uploadAllFiles'}} {{bind-attr class=":btn :btn-block cantSend::btn-primary" disabled=cantSend}}>Sube las fotos</button>
+    <button {{action 'sendComment'}} {{bind-attr class=":btn :btn-block cantSend::btn-primary" disabled=cantSend}}>Sube las fotos</button>
     <button {{action 'hideModal'}} class="btn btn-positive full-width">Salir y no subir nada</button>
 
   </div>
