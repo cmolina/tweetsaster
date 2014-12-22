@@ -246,6 +246,28 @@ textarea {
   opacity: 0.85;
 }
 
+.file-input {
+  position: relative;
+
+  .file-input-hidden {
+    position: relative;
+    text-align: right;
+    opacity: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .fake-btn {
+    position: absolute;
+    font-size: 0.9rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 1;
+  }
+}
+
 .opacity-none {
   opacity: 0;
 }
