@@ -4,21 +4,14 @@
     <p class="content-padded">Puedes subir o sacar una foto en este momento</p>
 
     {{#view view.DragDrop}}
+      {{#if uploadStatus.uploading}}
+      <p>
+        Subiendo <span class="badge badge-positive">{{uploadStatus.percentComplete}}%</span>
+      </p>
+      {{/if}}
       {{#if uploadStatus.error}}
       <div class="error-empty">
         Hubo un error al subir las fotos. Por favor intenta más tarde.
-      </div>
-      {{/if}}
-      {{#if canAddAPhoto}}
-      <div class="file-input">
-        {{#if uploadStatus.uploading}}
-        <p>
-          Subiendo <span class="badge badge-positive">{{uploadStatus.percentComplete}}%</span>
-        </p>
-        {{else}}
-          {{view view.SingleInput accept='image/*' class="file-input-hidden"}}
-          <button class="btn fake-btn" {{action 'selectFile'}}>Saca una foto o elige una imagen</button>
-        {{/if}}
       </div>
       {{/if}}
       {{#eachIndexed file in validAndUploadedFiles}}
@@ -27,9 +20,15 @@
         <button class="btn remove-image" {{action 'deletePicture' file index}}>Eliminar</button>
         {{view view.ImagePreview imageBinding="file"}}
       </div>
-      {{else}}
-      <div class="half-screen"></div>
       {{/eachIndexed}}
+      {{#if canAddAPhoto}}
+      <div class="half-screen">
+        <div class="file-input">
+            {{view view.SingleInput accept='image/*' class="file-input-hidden"}}
+            <button class="btn btn-link fake-btn" {{action 'selectFile'}}>Saca una foto <br>o <br>elige una imagen</button>
+        </div>
+      </div>
+      {{/if}}
     {{/view}}
     
     <button {{action 'sendComment'}} {{bind-attr class=":btn :btn-block cantSend::btn-primary" disabled=cantSend}}>Envia las fotos</button>

@@ -46,14 +46,11 @@ Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController
             error: error, hideAfter: 10000
           });
         }.bind(this)
+      ).then(
+        function() {
+          this.send('hideModal');
+        }.bind(this)
       );
-      Ember.run.schedule('afterRender', this, function() {
-        this.send('hideModal');
-        this.showToast({
-          heading: 'Fotos enviadas',
-          text: 'Las fotos apareceran en los próximos minutos'
-        });
-      });
     },
     deletePicture: function(file, index) {
       this.send('deleteFile', file);
