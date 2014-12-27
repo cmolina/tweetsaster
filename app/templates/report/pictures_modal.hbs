@@ -1,8 +1,6 @@
 <div class="themodal-overlay" style="display: none;">
   <div id="similar-reports" class="modal">
     <h1 class="title">Subiendo fotos: ({{validAndUploadedFiles.length}} de 4)</h1>
-    <p class="content-padded">Puedes subir o sacar una foto en este momento</p>
-
     {{#view view.DragDrop}}
       {{#if uploadStatus.uploading}}
       <p>
@@ -25,7 +23,9 @@
       <div class="half-screen">
         <div class="file-input">
             {{view view.SingleInput accept='image/*' class="file-input-hidden"}}
-            <button class="btn btn-link fake-btn" {{action 'selectFile'}}>Saca una foto <br>o <br>elige una imagen</button>
+            <button class="btn btn-link fake-btn" {{action 'selectFile'}}>
+              <span class="icon icon-plus"></span><br>Agregar otra foto
+            </button>
         </div>
       </div>
       {{/if}}

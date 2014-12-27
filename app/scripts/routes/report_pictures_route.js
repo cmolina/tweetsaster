@@ -31,11 +31,7 @@ Tweetsaster.ReportPicturesRoute = Ember.Route.extend({
     this._super(controller, model);
   },
   deactivate: function() {
-    // if the model was not sent to the server, delete it
-    var comment = this.modelFor('reportPictures');
-    if (comment.get('isNew')) {
-      comment.deleteRecord();
-    }
+    this.controllerFor('reportPictures').send('clearPictures');
   },
   renderTemplates: function(controller) {
     controller = this.controllerFor('reportPictures');

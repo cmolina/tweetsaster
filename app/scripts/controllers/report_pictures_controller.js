@@ -34,7 +34,7 @@ Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController
       comment.set('mediaIds', tasks);
       comment.save().then(
         function(comment) {
-          this.showToast({text: 'Ya puedes ver las nuevas fotos'}); 
+          this.showToast({text: 'Ya puedes comenzar a ver las nuevas fotos'});
         }.bind(this),
         function(error) {
           this.send('hideModal');
@@ -46,11 +46,12 @@ Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController
             error: error, hideAfter: 10000
           });
         }.bind(this)
-      ).then(
-        function() {
-          this.send('hideModal');
-        }.bind(this)
       );
+      this.send('hideModal');
+      this.showToast({
+        heading: 'Fotos enviadas',
+        text: 'Las fotos aparecerán en los próximos minutos'
+      });
     },
     deletePicture: function(file, index) {
       this.send('deleteFile', file);
@@ -58,6 +59,7 @@ Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController
     },
     showSelectPhotos: function() {
       // show the modal
+      this.send('clearPictures');
       Ember.$('.themodal-overlay').show();
     },
     selectFile: function() {
@@ -65,6 +67,8 @@ Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController
     },
     hideModal: function() {
       Ember.$('.themodal-overlay').hide();
+    },
+    clearPictures: function() {
       this.get('tasks').clear();
       this.send('clearAllFiles');
     }
