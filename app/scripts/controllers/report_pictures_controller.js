@@ -1,6 +1,7 @@
 Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController, Tweetsaster.Toast, {
   dropletUrl: 'http://restapi-dsas3.ngrok.com/upload',
   tasks: [],
+  uploading: false,
   validAndUploadedFiles: function() {
     return this._filesByProperties({valid: true, deleted: false, uploaded: true});
   }.property('files.length', 'files.@each.deleted', 'files.@each.uploaded'),
@@ -8,17 +9,20 @@ Tweetsaster.ReportPicturesController = Ember.Controller.extend(DropletController
     return this.get('validAndUploadedFiles.length') < 4;
   }.property('validAndUploadedFiles.length'),
   cantSend: function() {
-    var countFiles = this.get('validAndUploadedFiles.length');
-    return !(0 < countFiles && countFiles <= 4);
-  }.property('validAndUploadedFiles.length'),
+    var countFiles = this.get('validAndUploadedFiles.length'),
+        uploading = this.get('uploading');
+    return uploading || 0 === countFiles || countFiles > 4;
+  }.property('validAndUploadedFiles.length', 'uploading'),
   didAddFiles: function(files) {
     // TODO compress pictures
+    this.set('uploading', true);
     this.send('uploadAllFiles');
   },
   didUploadFiles: function(response) {
     if (response._id) {
       var tasks = this.get('tasks');
       tasks.pushObject(response._id);
+      this.set('uploading', false);
     }
   },
   actions: {

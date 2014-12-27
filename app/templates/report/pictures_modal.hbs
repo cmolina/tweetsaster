@@ -31,7 +31,13 @@
       {{/if}}
     {{/view}}
     
-    <button {{action 'sendComment'}} {{bind-attr class=":btn :btn-block cantSend::btn-primary" disabled=cantSend}}>Envia las fotos</button>
+    <button {{action 'sendComment'}} {{bind-attr class=":btn :btn-block cantSend::btn-primary" disabled=cantSend}}>
+    {{#if uploading}}
+    <div id="loading-gif"></div>sólo unos segundos más...
+    {{else}}
+    Envia las fotos
+    {{/if}}
+    </button>
     <button {{action 'hideModal'}} class="btn btn-positive full-width">Salir y no enviar nada</button>
 
   </div>
